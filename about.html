@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>About Us - RecallLook</title>
+    <title data-i18n="aboutUs">About Us - RecallLook</title>
     <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         .about-container {
             max-width: 1200px;
@@ -172,16 +172,7 @@
     </style>
 </head>
 <body>
-    <header>
-        <nav>
-            <div class="logo">RecallLook</div>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="tools.html">All Tools</a></li>
-                <li><a href="about.html">About</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div id="header-container"></div>
 
     <main>
         <div class="about-container">
@@ -192,12 +183,16 @@
             
             <section class="about-section">
                 <h2 data-i18n="ourStory">Our Story</h2>
-                <p data-i18n="storyContent">Founded in 2024, RecallLook emerged from a simple observation: the AI voice technology landscape was growing rapidly, but finding the right tools was becoming increasingly challenging. Our mission is to simplify this process by providing a comprehensive directory of AI voice tools, complete with detailed reviews and user feedback.</p>
+                <div class="about-content">
+                    <p data-i18n="storyContent">RecallLook was founded in 2024 with a vision to make AI voice technology accessible to everyone. We believe that voice technology has the power to transform how we communicate, create, and interact with the digital world.</p>
+                </div>
             </section>
             
             <section class="about-section">
                 <h2 data-i18n="ourMission">Our Mission</h2>
-                <p data-i18n="missionContent">At RecallLook, we're committed to helping users discover and evaluate AI voice tools that best suit their needs. We curate and review tools across various categories, from speech synthesis to voice cloning, ensuring our users have access to the most reliable and effective solutions in the market.</p>
+                <div class="mission-content">
+                    <p data-i18n="missionContent">Our mission is to help people discover and use the best AI voice tools for their needs. We curate and review the latest voice technology tools, making it easier for everyone to find the right solution.</p>
+                </div>
             </section>
             
             <section class="about-section">
@@ -210,6 +205,7 @@
                         <div class="social-links">
                             <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
                             <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
                         </div>
                     </div>
                     <div class="team-member">
@@ -218,16 +214,18 @@
                         <p data-i18n="cto">Chief Technology Officer</p>
                         <div class="social-links">
                             <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
                             <a href="#" class="social-link"><i class="fab fa-github"></i></a>
                         </div>
                     </div>
                     <div class="team-member">
                         <img src="https://storage.googleapis.com/pai-images/team3.jpg" alt="Mike Johnson">
                         <h3>Mike Johnson</h3>
-                        <p data-i18n="contentLead">Content Lead</p>
+                        <p data-i18n="productManager">Product Manager</p>
                         <div class="social-links">
                             <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
                             <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
                         </div>
                     </div>
                 </div>
@@ -235,45 +233,47 @@
             
             <section class="contact-section">
                 <h2 data-i18n="contactUs">Contact Us</h2>
-                <form class="contact-form">
-                    <div class="form-group">
-                        <label for="name" data-i18n="name">Name</label>
-                        <input type="text" id="name" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="email" data-i18n="email">Email</label>
-                        <input type="email" id="email" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="message" data-i18n="message">Message</label>
-                        <textarea id="message" required></textarea>
-                    </div>
-                    <button type="submit" class="submit-btn" data-i18n="sendMessage">Send Message</button>
-                </form>
+                <div class="contact-content">
+                    <form id="contactForm" class="contact-form">
+                        <div class="form-group">
+                            <label for="name" data-i18n="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email" data-i18n="email">Email</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message" data-i18n="message">Message</label>
+                            <textarea id="message" name="message" rows="5" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-btn" data-i18n="sendMessage">Send Message</button>
+                    </form>
+                </div>
             </section>
         </div>
     </main>
 
-    <footer>
-        <p>&copy; 2024 RecallLook. All rights reserved.</p>
-    </footer>
+    <div id="footer-container"></div>
+
+    <div id="modal-container"></div>
 
     <script src="js/languages.js"></script>
+    <script src="js/utils/loading.js"></script>
+    <script src="js/utils/performance.js"></script>
+    <script src="js/utils/auth.js"></script>
+    <script src="js/utils/validation.js"></script>
     <script src="js/components.js"></script>
     <script>
-        // 初始化组件
         document.addEventListener('DOMContentLoaded', () => {
-            new NavigationBar();
-            new Modal();
-        });
+            const navBar = new NavigationBar();
+            const modal = new Modal();
+            const footer = new Footer();
 
-        // 表单提交
-        const contactForm = document.querySelector('.contact-form');
-        contactForm.addEventListener('submit', (e) => {
-            e.preventDefault();
-            // 添加表单提交逻辑
-            console.log('Contact form submitted');
-        });
-    </script>
-</body>
-</html> 
+            const loadingManager = new LoadingManager();
+            const performanceOptimizer = new PerformanceOptimizer();
+            const authManager = new AuthManager();
+            const formValidation = new FormValidation();
+
+            navBar.init();
+        
