@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title data-i18n="heroTitle">发现最佳AI语音工具</title>
+  <title>RecallLook - AI Voice Tools Directory</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
@@ -585,92 +585,143 @@
   <!-- 导航栏占位符 -->
   <div id="header-placeholder"></div>
 
-  <!-- 搜索设置 -->
-  <section class="search-settings">
-    <div class="search-box">
-      <input type="text" id="searchInput" placeholder="Search AI voice tools...">
-      <button class="search-btn"><i class="fas fa-search"></i></button>
-    </div>
-    <div class="filters">
-      <select id="categoryFilter">
-        <option value="">All Categories</option>
-        <option value="speech-synthesis">Speech Synthesis</option>
-        <option value="speech-recognition">Speech Recognition</option>
-        <option value="audio-editing">Audio Editing</option>
-        <option value="music-generation">Music Generation</option>
-        <option value="voice-cloning">Voice Cloning</option>
-      </select>
-      <select id="priceFilter">
-        <option value="">All Prices</option>
-        <option value="free">Free</option>
-        <option value="low">Under $10</option>
-        <option value="medium">$10 - $50</option>
-        <option value="high">Over $50</option>
-      </select>
-      <select id="ratingFilter">
-        <option value="">All Ratings</option>
-        <option value="4">4+ Stars</option>
-        <option value="3">3+ Stars</option>
-        <option value="2">2+ Stars</option>
-      </select>
-    </div>
-  </section>
-
   <!-- 主要内容 -->
   <main>
     <!-- 英雄区域 -->
-    <section class="hero">
-      <div class="hero-content">
-        <h1 data-i18n="heroTitle">发现最佳AI语音工具</h1>
-        <p data-i18n="heroDesc">查找和比较最新的AI语音技术工具,包括语音合成、识别等。</p>
-        <a href="tools.html" class="cta-button" data-i18n="allTools">浏览所有工具</a>
+    <section class="hero-section">
+      <div class="container">
+        <div class="hero-content">
+          <h1>Discover the Best AI Voice Tools</h1>
+          <p>Explore, compare, and choose the perfect AI voice tools for your needs. We provide comprehensive tool directories and detailed reviews.</p>
+          <div class="hero-buttons">
+            <a href="tools.html" class="btn btn-primary">Explore Tools</a>
+            <a href="#categories" class="btn btn-secondary">View Categories</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 搜索区域 -->
+    <section class="search-section">
+      <div class="container">
+        <div class="search-box">
+          <input type="text" id="searchInput" placeholder="Search AI voice tools...">
+          <button class="search-btn">
+            <i class="fas fa-search"></i>
+          </button>
+        </div>
+        <div class="quick-filters">
+          <button class="filter-btn active" data-category="all">All</button>
+          <button class="filter-btn" data-category="speech-synthesis">Speech Synthesis</button>
+          <button class="filter-btn" data-category="speech-recognition">Speech Recognition</button>
+          <button class="filter-btn" data-category="audio-editing">Audio Editing</button>
+          <button class="filter-btn" data-category="music-generation">Music Generation</button>
+          <button class="filter-btn" data-category="voice-cloning">Voice Cloning</button>
+        </div>
       </div>
     </section>
 
     <!-- 分类区域 -->
-    <section class="categories">
-      <h2 data-i18n="categories">分类</h2>
-      <div class="category-grid">
-        <a href="tools.html#speech-synthesis" class="category-card">
-          <i class="fas fa-microphone"></i>
-          <h3 data-i18n="speechSynthesis">语音合成</h3>
-        </a>
-        <a href="tools.html#speech-recognition" class="category-card">
-          <i class="fas fa-comments"></i>
-          <h3 data-i18n="speechRecognition">语音识别</h3>
-        </a>
-        <a href="tools.html#audio-editing" class="category-card">
-          <i class="fas fa-cut"></i>
-          <h3 data-i18n="audioEditing">音频编辑</h3>
-        </a>
-        <a href="tools.html#music-generation" class="category-card">
-          <i class="fas fa-music"></i>
-          <h3 data-i18n="musicGeneration">音乐生成</h3>
-        </a>
-        <a href="tools.html#voice-cloning" class="category-card">
-          <i class="fas fa-user-circle"></i>
-          <h3 data-i18n="voiceCloning">语音克隆</h3>
-        </a>
+    <section id="categories" class="categories-section">
+      <div class="container">
+        <h2>Tool Categories</h2>
+        <div class="categories-grid">
+          <div class="category-card">
+            <div class="category-icon">
+              <i class="fas fa-microphone"></i>
+            </div>
+            <h3>Speech Synthesis</h3>
+            <p>Convert text to natural-sounding speech</p>
+            <a href="tools.html#speech-synthesis" class="category-link">View Tools</a>
+          </div>
+          <div class="category-card">
+            <div class="category-icon">
+              <i class="fas fa-comments"></i>
+            </div>
+            <h3>Speech Recognition</h3>
+            <p>Convert speech to text accurately</p>
+            <a href="tools.html#speech-recognition" class="category-link">View Tools</a>
+          </div>
+          <div class="category-card">
+            <div class="category-icon">
+              <i class="fas fa-wave-square"></i>
+            </div>
+            <h3>Audio Editing</h3>
+            <p>Edit and process audio files</p>
+            <a href="tools.html#audio-editing" class="category-link">View Tools</a>
+          </div>
+          <div class="category-card">
+            <div class="category-icon">
+              <i class="fas fa-music"></i>
+            </div>
+            <h3>Music Generation</h3>
+            <p>Create music with AI</p>
+            <a href="tools.html#music-generation" class="category-link">View Tools</a>
+          </div>
+          <div class="category-card">
+            <div class="category-icon">
+              <i class="fas fa-user-voice"></i>
+            </div>
+            <h3>Voice Cloning</h3>
+            <p>Clone and mimic voices</p>
+            <a href="tools.html#voice-cloning" class="category-link">View Tools</a>
+          </div>
+        </div>
       </div>
     </section>
 
-    <!-- 精选工具 -->
+    <!-- 特色工具 -->
     <section class="featured-tools">
-      <h2 data-i18n="featuredTools">精选工具</h2>
-      <div class="tools-grid" id="featuredToolsGrid">
-        <!-- 工具卡片将通过JavaScript动态加载 -->
+      <div class="container">
+        <div class="section-header">
+          <h2>Featured Tools</h2>
+          <p>Discover our top-rated AI voice tools</p>
+        </div>
+        <div class="tools-grid">
+          <!-- 工具卡片将通过JavaScript动态加载 -->
+        </div>
       </div>
     </section>
 
-    <!-- 新闻通讯 -->
-    <section class="newsletter">
-      <div class="newsletter-content">
-        <h2 data-i18n="newsletterTitle">保持更新</h2>
-        <p data-i18n="newsletterDesc">订阅我们的新闻通讯,获取最新的AI语音工具和更新。</p>
-        <form class="newsletter-form">
-          <input type="email" placeholder="输入您的邮箱" data-i18n="newsletterPlaceholder" required>
-          <button type="submit" data-i18n="subscribe">订阅</button>
-        </form>
+    <!-- 最新工具 -->
+    <section class="latest-tools">
+      <div class="container">
+        <div class="section-header">
+          <h2>Latest Tools</h2>
+          <p>Stay updated with the newest AI voice tools</p>
+        </div>
+        <div class="tools-grid">
+          <!-- 工具卡片将通过JavaScript动态加载 -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 用户评价 -->
+    <section class="testimonials">
+      <div class="container">
+        <div class="section-header">
+          <h2>User Reviews</h2>
+          <p>What our users say about our tools</p>
+        </div>
+        <div class="testimonials-grid">
+          <!-- 用户评价将通过JavaScript动态加载 -->
+        </div>
+      </div>
+    </section>
+
+    <!-- 订阅区域 -->
+    <section class="newsletter-section">
+      <div class="container">
+        <div class="newsletter-content">
+          <h2>Stay Updated</h2>
+          <p>Subscribe to our newsletter for the latest AI voice tools and updates</p>
+          <form id="newsletterForm" class="newsletter-form">
+            <div class="form-group">
+              <input type="email" id="newsletterEmail" name="email" placeholder="Enter your email address" required>
+            </div>
+            <button type="submit">Subscribe</button>
+          </form>
+        </div>
       </div>
     </section>
   </main>
@@ -682,24 +733,24 @@
   <div id="loginModal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
-      <h2 data-i18n="login">登录</h2>
+      <h2>Login</h2>
       <form id="loginForm" class="auth-form">
         <div class="form-group">
-          <label for="loginEmail" data-i18n="email">邮箱</label>
-          <input type="email" id="loginEmail" name="email" data-validate="email" required>
+          <label for="loginEmail">Email</label>
+          <input type="email" id="loginEmail" name="email" required>
         </div>
         <div class="form-group">
-          <label for="loginPassword" data-i18n="password">密码</label>
-          <input type="password" id="loginPassword" name="password" data-validate="password" required>
+          <label for="loginPassword">Password</label>
+          <input type="password" id="loginPassword" name="password" required>
         </div>
         <div class="checkbox">
           <input type="checkbox" id="rememberMe" name="remember">
-          <label for="rememberMe" data-i18n="rememberMe">记住我</label>
+          <label for="rememberMe">Remember me</label>
         </div>
-        <button type="submit" data-i18n="login">登录</button>
-        <a href="#" class="forgot-password" data-i18n="forgotPassword">忘记密码?</a>
+        <button type="submit">Login</button>
+        <a href="#" class="forgot-password">Forgot password?</a>
         <div class="social-login">
-          <p data-i18n="orLoginWith">或使用以下方式登录</p>
+          <p>Or login with</p>
           <div class="social-buttons">
             <button type="button" class="social-btn google">
               <i class="fab fa-google"></i>
@@ -712,7 +763,7 @@
           </div>
         </div>
         <div class="auth-switch">
-          <p data-i18n="noAccount">还没有账号? <a href="#" class="switch-to-signup" data-i18n="signup">注册</a></p>
+          <p>Don't have an account? <a href="#" class="switch-to-signup">Sign up</a></p>
         </div>
       </form>
     </div>
@@ -722,31 +773,31 @@
   <div id="signupModal" class="modal">
     <div class="modal-content">
       <span class="close">&times;</span>
-      <h2 data-i18n="signup">注册</h2>
+      <h2>Sign Up</h2>
       <form id="signupForm" class="auth-form">
         <div class="form-group">
-          <label for="signupName" data-i18n="name">姓名</label>
-          <input type="text" id="signupName" name="name" data-validate="name" required>
+          <label for="signupName">Name</label>
+          <input type="text" id="signupName" name="name" required>
         </div>
         <div class="form-group">
-          <label for="signupEmail" data-i18n="email">邮箱</label>
-          <input type="email" id="signupEmail" name="email" data-validate="email" required>
+          <label for="signupEmail">Email</label>
+          <input type="email" id="signupEmail" name="email" required>
         </div>
         <div class="form-group">
-          <label for="signupPassword" data-i18n="password">密码</label>
-          <input type="password" id="signupPassword" name="password" data-validate="password" required>
+          <label for="signupPassword">Password</label>
+          <input type="password" id="signupPassword" name="password" required>
         </div>
         <div class="form-group">
-          <label for="confirmPassword" data-i18n="password">确认密码</label>
-          <input type="password" id="confirmPassword" name="confirmPassword" data-validate="password" required>
+          <label for="confirmPassword">Confirm Password</label>
+          <input type="password" id="confirmPassword" name="confirmPassword" required>
         </div>
         <div class="checkbox">
           <input type="checkbox" id="acceptTerms" name="acceptTerms" required>
-          <label for="acceptTerms" data-i18n="acceptTerms">我同意服务条款和隐私政策</label>
+          <label for="acceptTerms">I agree to the Terms of Service and Privacy Policy</label>
         </div>
-        <button type="submit" data-i18n="signup">注册</button>
+        <button type="submit">Sign Up</button>
         <div class="social-login">
-          <p data-i18n="orSignupWith">或使用以下方式注册</p>
+          <p>Or sign up with</p>
           <div class="social-buttons">
             <button type="button" class="social-btn google">
               <i class="fab fa-google"></i>
@@ -759,7 +810,7 @@
           </div>
         </div>
         <div class="auth-switch">
-          <p data-i18n="haveAccount">已有账号? <a href="#" class="switch-to-login" data-i18n="login">登录</a></p>
+          <p>Already have an account? <a href="#" class="switch-to-login">Login</a></p>
         </div>
       </form>
     </div>
