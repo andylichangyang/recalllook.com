@@ -1,347 +1,130 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>About Us - RecallLook</title>
-  <link rel="stylesheet" href="css/style.css">
-  <style>
-    .about-container {
-      max-width: 1000px;
-      margin: 0 auto;
-      padding: 2rem;
-    }
-    
-    .about-header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-    
-    .about-header h1 {
-      font-size: 2.8rem;
-      color: #1a237e;
-      margin-bottom: 1rem;
-      font-weight: 800;
-    }
-    
-    .about-header p {
-      color: #666;
-      font-size: 1.2rem;
-      max-width: 800px;
-      margin: 0 auto;
-      line-height: 1.6;
-    }
-    
-    .about-content {
-      display: grid;
-      grid-template-columns: 1fr;
-      gap: 2rem;
-    }
-    
-    .about-section {
-      background: white;
-      padding: 2.5rem;
-      border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      border: 1px solid rgba(0,0,0,0.1);
-    }
-    
-    .about-section h2 {
-      color: #1a237e;
-      margin-bottom: 1.5rem;
-      font-size: 2rem;
-      font-weight: 700;
-    }
-    
-    .about-section p {
-      color: #666;
-      line-height: 1.6;
-      margin-bottom: 1.5rem;
-      font-size: 1.1rem;
-    }
-    
-    .about-section ul {
-      list-style: none;
-      margin-bottom: 1.5rem;
-    }
-    
-    .about-section ul li {
-      color: #666;
-      margin-bottom: 0.8rem;
-      padding-left: 1.5rem;
-      position: relative;
-      font-size: 1.1rem;
-    }
-    
-    .about-section ul li::before {
-      content: '•';
-      color: #1a237e;
-      position: absolute;
-      left: 0;
-      font-weight: bold;
-    }
-    
-    .mission-vision {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    
-    .mission-box, .vision-box {
-      background: #f8f9fa;
-      padding: 2rem;
-      border-radius: 15px;
-      text-align: center;
-      border: 1px solid rgba(0,0,0,0.1);
-    }
-    
-    .mission-box h3, .vision-box h3 {
-      color: #1a237e;
-      margin-bottom: 1rem;
-      font-size: 1.5rem;
-      font-weight: 700;
-    }
-    
-    .mission-box p, .vision-box p {
-      color: #666;
-      line-height: 1.6;
-      font-size: 1.1rem;
-    }
-    
-    .contact-form {
-      max-width: 600px;
-      margin: 2rem auto;
-    }
-    
-    .form-group {
-      margin-bottom: 1.5rem;
-    }
-    
-    .form-group label {
-      display: block;
-      margin-bottom: 0.8rem;
-      color: #1a237e;
-      font-weight: 600;
-      font-size: 1.1rem;
-    }
-    
-    .form-group input,
-    .form-group textarea {
-      width: 100%;
-      padding: 1rem;
-      border: 2px solid #e0e0e0;
-      border-radius: 8px;
-      font-size: 1rem;
-      transition: all 0.3s;
-    }
-    
-    .form-group input:focus,
-    .form-group textarea:focus {
-      outline: none;
-      border-color: #1a237e;
-      box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.1);
-    }
-    
-    .form-group textarea {
-      height: 150px;
-      resize: vertical;
-    }
-    
-    .submit-btn {
-      background: #1a237e;
-      color: white;
-      padding: 1rem 2.5rem;
-      border: none;
-      border-radius: 8px;
-      cursor: pointer;
-      font-size: 1.1rem;
-      font-weight: 600;
-      transition: all 0.3s;
-      width: 100%;
-    }
-    
-    .submit-btn:hover {
-      background: #0d47a1;
-      transform: translateY(-2px);
-    }
-    
-    .team-section {
-      margin-top: 3rem;
-    }
-    
-    .team-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-    
-    .team-member {
-      text-align: center;
-      padding: 2rem;
-      background: white;
-      border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      border: 1px solid rgba(0,0,0,0.1);
-    }
-    
-    .team-member img {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      margin-bottom: 1rem;
-      object-fit: cover;
-      border: 3px solid #1a237e;
-    }
-    
-    .team-member h3 {
-      color: #1a237e;
-      margin-bottom: 0.5rem;
-      font-size: 1.3rem;
-      font-weight: 700;
-    }
-    
-    .team-member p {
-      color: #666;
-      font-size: 1rem;
-      margin-bottom: 1rem;
-    }
-    
-    .social-links {
-      display: flex;
-      justify-content: center;
-      gap: 1rem;
-    }
-    
-    .social-links a {
-      color: #1a237e;
-      font-size: 1.2rem;
-      transition: all 0.3s;
-    }
-    
-    .social-links a:hover {
-      color: #0d47a1;
-      transform: translateY(-2px);
-    }
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>关于我们 - RecallLook</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        // ... existing code ...
+    </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <div class="logo">RecallLook</div>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="tools.html">All Tools</a></li>
-        <li><a href="about.html">About</a></li>
-      </ul>
-    </nav>
-  </header>
+    <header>
+        <nav>
+            <div class="logo">RecallLook</div>
+            <ul>
+                <li><a href="index.html">首页</a></li>
+                <li><a href="tools.html">全部工具</a></li>
+                <li><a href="about.html">关于我们</a></li>
+            </ul>
+        </nav>
+    </header>
 
-  <main>
-    <div class="about-container">
-      <div class="about-header">
-        <h1>About RecallLook</h1>
-        <p>Your trusted resource for discovering and exploring AI voice technology tools</p>
-      </div>
-      
-      <div class="about-content">
-        <section class="about-section">
-          <h2>Our Story</h2>
-          <p>RecallLook was founded with a simple mission: to help people find and understand the best AI voice technology tools available today. As the field of AI voice technology continues to grow rapidly, we recognized the need for a comprehensive, user-friendly directory that makes it easy to discover and compare different tools.</p>
-          
-          <div class="mission-vision">
-            <div class="mission-box">
-              <h3>Our Mission</h3>
-              <p>To provide a comprehensive and accessible directory of AI voice tools, helping users make informed decisions about which tools best suit their needs.</p>
+    <main>
+        <div class="about-container">
+            <div class="about-header">
+                <h1>关于 RecallLook</h1>
+                <p>您值得信赖的AI语音技术工具导航平台</p>
             </div>
             
-            <div class="vision-box">
-              <h3>Our Vision</h3>
-              <p>To become the go-to resource for anyone looking to explore and utilize AI voice technology, fostering innovation and accessibility in the field.</p>
+            <div class="about-content">
+                <section class="about-section">
+                    <h2>我们的故事</h2>
+                    <p>RecallLook 成立于一个简单的使命：帮助人们找到并了解当今最好的AI语音技术工具。随着AI语音技术领域的快速发展，我们认识到需要一个全面的、用户友好的导航平台，让用户能够轻松发现和比较不同的工具。</p>
+                    
+                    <div class="mission-vision">
+                        <div class="mission-box">
+                            <h3>我们的使命</h3>
+                            <p>提供一个全面且易于访问的AI语音工具导航，帮助用户做出明智的决策，选择最适合其需求的工具。</p>
+                        </div>
+                        
+                        <div class="vision-box">
+                            <h3>我们的愿景</h3>
+                            <p>成为探索和利用AI语音技术的首选资源，促进该领域的创新和可访问性。</p>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="about-section">
+                    <h2>我们提供的服务</h2>
+                    <p>我们的导航平台包含精心策划的AI语音工具集合，包括：</p>
+                    <ul>
+                        <li>用于创建自然声音的语音合成平台</li>
+                        <li>用于复制特定声音的声音克隆工具</li>
+                        <li>具有AI功能的音频处理软件</li>
+                        <li>用于准确转录的语音识别服务</li>
+                    </ul>
+                    <p>我们目录中的每个工具都经过全面审查和评分，基于易用性、功能性和用户反馈等多个因素。</p>
+                </section>
+                
+                <section class="about-section team-section">
+                    <h2>我们的团队</h2>
+                    <div class="team-grid">
+                        <div class="team-member">
+                            <img src="https://storage.googleapis.com/pai-images/team1.jpg" alt="团队成员 1">
+                            <h3>张明</h3>
+                            <p>创始人 & CEO</p>
+                            <div class="social-links">
+                                <a href="#" title="领英">🔗</a>
+                                <a href="#" title="推特">🐦</a>
+                                <a href="#" title="GitHub">💻</a>
+                            </div>
+                        </div>
+                        
+                        <div class="team-member">
+                            <img src="https://storage.googleapis.com/pai-images/team2.jpg" alt="团队成员 2">
+                            <h3>李华</h3>
+                            <p>内容总监</p>
+                            <div class="social-links">
+                                <a href="#" title="领英">🔗</a>
+                                <a href="#" title="推特">🐦</a>
+                                <a href="#" title="GitHub">💻</a>
+                            </div>
+                        </div>
+                        
+                        <div class="team-member">
+                            <img src="https://storage.googleapis.com/pai-images/team3.jpg" alt="团队成员 3">
+                            <h3>王强</h3>
+                            <p>技术主管</p>
+                            <div class="social-links">
+                                <a href="#" title="领英">🔗</a>
+                                <a href="#" title="推特">🐦</a>
+                                <a href="#" title="GitHub">💻</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+                
+                <section class="about-section">
+                    <h2>联系我们</h2>
+                    <p>有问题或建议？我们很乐意听取您的意见！填写下面的表单，我们会尽快回复您。</p>
+                    
+                    <form class="contact-form">
+                        <div class="form-group">
+                            <label for="name">姓名</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="email">邮箱</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">消息</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        
+                        <button type="submit" class="submit-btn">发送消息</button>
+                    </form>
+                </section>
             </div>
-          </div>
-        </section>
-        
-        <section class="about-section">
-          <h2>What We Offer</h2>
-          <p>Our directory features a carefully curated collection of AI voice tools, including:</p>
-          <ul>
-            <li>Text-to-Speech platforms for creating natural-sounding voices</li>
-            <li>Voice cloning tools for replicating specific voices</li>
-            <li>Audio processing software with AI-powered features</li>
-            <li>Voice recognition services for accurate transcription</li>
-          </ul>
-          <p>Each tool in our directory is thoroughly reviewed and rated based on various factors including ease of use, features, and user feedback.</p>
-        </section>
-        
-        <section class="about-section team-section">
-          <h2>Our Team</h2>
-          <div class="team-grid">
-            <div class="team-member">
-              <img src="https://storage.googleapis.com/pai-images/team1.jpg" alt="Team Member 1">
-              <h3>John Smith</h3>
-              <p>Founder & CEO</p>
-              <div class="social-links">
-                <a href="#" title="LinkedIn">🔗</a>
-                <a href="#" title="Twitter">🐦</a>
-                <a href="#" title="GitHub">💻</a>
-              </div>
-            </div>
-            
-            <div class="team-member">
-              <img src="https://storage.googleapis.com/pai-images/team2.jpg" alt="Team Member 2">
-              <h3>Sarah Johnson</h3>
-              <p>Content Director</p>
-              <div class="social-links">
-                <a href="#" title="LinkedIn">🔗</a>
-                <a href="#" title="Twitter">🐦</a>
-                <a href="#" title="GitHub">💻</a>
-              </div>
-            </div>
-            
-            <div class="team-member">
-              <img src="https://storage.googleapis.com/pai-images/team3.jpg" alt="Team Member 3">
-              <h3>Michael Chen</h3>
-              <p>Technical Lead</p>
-              <div class="social-links">
-                <a href="#" title="LinkedIn">🔗</a>
-                <a href="#" title="Twitter">🐦</a>
-                <a href="#" title="GitHub">💻</a>
-              </div>
-            </div>
-          </div>
-        </section>
-        
-        <section class="about-section">
-          <h2>Contact Us</h2>
-          <p>Have questions or suggestions? We'd love to hear from you! Fill out the form below and we'll get back to you as soon as possible.</p>
-          
-          <form class="contact-form">
-            <div class="form-group">
-              <label for="name">Name</label>
-              <input type="text" id="name" name="name" required>
-            </div>
-            
-            <div class="form-group">
-              <label for="email">Email</label>
-              <input type="email" id="email" name="email" required>
-            </div>
-            
-            <div class="form-group">
-              <label for="message">Message</label>
-              <textarea id="message" name="message" required></textarea>
-            </div>
-            
-            <button type="submit" class="submit-btn">Send Message</button>
-          </form>
-        </section>
-      </div>
-    </div>
-  </main>
+        </div>
+    </main>
 
-  <footer>
-    <p>&copy; 2024 RecallLook. All rights reserved.</p>
-  </footer>
+    <footer>
+        <p>&copy; 2024 RecallLook. All rights reserved.</p>
+    </footer>
 </body>
 </html>
