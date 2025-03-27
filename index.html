@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>RecallLook - AI Voice Tools Directory</title>
   <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
   <style>
     .hero-section {
       background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
@@ -612,12 +613,12 @@
 
   <main>
     <section class="hero-section">
-      <h1>Your AI Voice Tools Directory</h1>
-      <p>Discover, compare, and choose the perfect voice tools for your needs</p>
+      <h1 data-i18n="heroTitle">Your AI Voice Tools Directory</h1>
+      <p data-i18n="heroDesc">Discover, compare, and choose the perfect voice tools for your needs</p>
     </section>
 
     <div class="category-nav">
-      <a href="tools.html" class="category-btn">All Tools</a>
+      <a href="tools.html" class="category-btn" data-i18n="allTools">All Tools</a>
       <a href="tools.html#speech-synthesis" class="category-btn">Speech Synthesis</a>
       <a href="tools.html#speech-recognition" class="category-btn">Speech Recognition</a>
       <a href="tools.html#audio-editing" class="category-btn">Audio Editing</a>
@@ -627,8 +628,8 @@
 
     <section class="featured-tools">
       <div class="section-title">
-        <h2>Featured Tools</h2>
-        <p>Explore our handpicked selection of the best AI voice tools</p>
+        <h2 data-i18n="featuredTools">Featured Tools</h2>
+        <p data-i18n="featuredDesc">Explore our handpicked selection of the best AI voice tools</p>
       </div>
 
       <div class="tools-grid">
@@ -756,29 +757,28 @@
 
     <section class="newsletter-section">
       <div class="newsletter-content">
-        <h2>Subscribe to AI Voice Tools Updates</h2>
-        <p>Stay updated with the latest AI voice tools and industry news</p>
+        <h2 data-i18n="newsletterTitle">Subscribe to AI Voice Tools Updates</h2>
+        <p data-i18n="newsletterDesc">Stay updated with the latest AI voice tools and industry news</p>
         <form class="newsletter-form">
-          <input type="email" placeholder="Enter your email address" required>
-          <button type="submit">Subscribe</button>
+          <input type="email" placeholder="Enter your email address" required data-i18n-placeholder="newsletterPlaceholder">
+          <button type="submit" data-i18n="subscribe">Subscribe</button>
         </form>
       </div>
     </section>
 
-    <!-- Search Settings -->
     <div class="search-settings">
       <div class="search-container">
         <div class="search-box">
-          <input type="text" placeholder="Search for AI voice tools..." id="searchInput">
+          <input type="text" placeholder="Search for AI voice tools..." id="searchInput" data-i18n-placeholder="searchPlaceholder">
           <button type="button" class="search-btn">
             <i class="fas fa-search"></i>
           </button>
         </div>
         <div class="search-filters">
           <div class="filter-group">
-            <label>Category:</label>
+            <label data-i18n="category">Category:</label>
             <select id="categoryFilter">
-              <option value="all">All Categories</option>
+              <option value="all" data-i18n="allCategories">All Categories</option>
               <option value="speech-synthesis">Speech Synthesis</option>
               <option value="speech-recognition">Speech Recognition</option>
               <option value="audio-editing">Audio Editing</option>
@@ -787,18 +787,18 @@
             </select>
           </div>
           <div class="filter-group">
-            <label>Price Range:</label>
+            <label data-i18n="priceRange">Price Range:</label>
             <select id="priceFilter">
-              <option value="all">All Prices</option>
+              <option value="all" data-i18n="allPrices">All Prices</option>
               <option value="free">Free</option>
               <option value="freemium">Freemium</option>
               <option value="paid">Paid</option>
             </select>
           </div>
           <div class="filter-group">
-            <label>Rating:</label>
+            <label data-i18n="rating">Rating:</label>
             <select id="ratingFilter">
-              <option value="all">All Ratings</option>
+              <option value="all" data-i18n="allRatings">All Ratings</option>
               <option value="5">5 Stars</option>
               <option value="4">4+ Stars</option>
               <option value="3">3+ Stars</option>
@@ -881,63 +881,16 @@
     </div>
   </div>
 
+  <script src="js/languages.js"></script>
+  <script src="js/components.js"></script>
   <script>
-    // Modal functionality
-    const loginBtn = document.querySelector('.login-btn');
-    const signupBtn = document.querySelector('.signup-btn');
-    const loginModal = document.getElementById('loginModal');
-    const signupModal = document.getElementById('signupModal');
-    const closeBtns = document.querySelectorAll('.close');
-
-    loginBtn.addEventListener('click', () => {
-      loginModal.style.display = 'block';
+    // 初始化组件
+    document.addEventListener('DOMContentLoaded', () => {
+      new NavigationBar();
+      new Modal();
     });
 
-    signupBtn.addEventListener('click', () => {
-      signupModal.style.display = 'block';
-    });
-
-    closeBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        loginModal.style.display = 'none';
-        signupModal.style.display = 'none';
-      });
-    });
-
-    window.addEventListener('click', (e) => {
-      if (e.target === loginModal) {
-        loginModal.style.display = 'none';
-      }
-      if (e.target === signupModal) {
-        signupModal.style.display = 'none';
-      }
-    });
-
-    // Form submission
-    document.querySelectorAll('.auth-form').forEach(form => {
-      form.addEventListener('submit', (e) => {
-        e.preventDefault();
-        // Add your form submission logic here
-        console.log('Form submitted');
-      });
-    });
-
-    // Language switching functionality
-    const langLinks = document.querySelectorAll('.lang-dropdown a');
-    const currentLang = document.querySelector('.current-lang');
-
-    langLinks.forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const lang = link.dataset.lang;
-        currentLang.textContent = lang.toUpperCase();
-        
-        // Add your language switching logic here
-        console.log('Switching to language:', lang);
-      });
-    });
-
-    // Search functionality
+    // 搜索功能
     const searchInput = document.getElementById('searchInput');
     const categoryFilter = document.getElementById('categoryFilter');
     const priceFilter = document.getElementById('priceFilter');
@@ -949,7 +902,7 @@
       const price = priceFilter.value;
       const rating = ratingFilter.value;
 
-      // Add your search logic here
+      // 添加搜索逻辑
       console.log('Searching with:', {
         term: searchTerm,
         category,
@@ -962,12 +915,6 @@
     categoryFilter.addEventListener('change', performSearch);
     priceFilter.addEventListener('change', performSearch);
     ratingFilter.addEventListener('change', performSearch);
-
-    // Add Font Awesome for icons
-    const fontAwesome = document.createElement('link');
-    fontAwesome.rel = 'stylesheet';
-    fontAwesome.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css';
-    document.head.appendChild(fontAwesome);
   </script>
 </body>
 </html>
