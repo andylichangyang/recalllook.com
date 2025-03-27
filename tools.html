@@ -6,29 +6,25 @@
   <title>All AI Voice Tools - RecallLook</title>
   <link rel="stylesheet" href="css/style.css">
   <style>
-    .tools-container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 2rem;
+    // ... existing code ...
+    
+    .category-section {
+      margin-bottom: 4rem;
     }
     
-    .tools-header {
-      text-align: center;
-      margin-bottom: 3rem;
-    }
-    
-    .tools-header h1 {
-      font-size: 2.8rem;
+    .category-title {
+      font-size: 2.2rem;
       color: #1a237e;
-      margin-bottom: 1rem;
-      font-weight: 800;
+      margin-bottom: 2rem;
+      padding-bottom: 1rem;
+      border-bottom: 3px solid #1a237e;
+      font-weight: 700;
     }
     
-    .tools-header p {
+    .category-description {
       color: #666;
-      font-size: 1.2rem;
-      max-width: 800px;
-      margin: 0 auto;
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
       line-height: 1.6;
     }
     
@@ -36,6 +32,7 @@
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
       gap: 2rem;
+      margin-bottom: 3rem;
     }
     
     .tool-card {
@@ -226,144 +223,189 @@
   <main>
     <div class="tools-container">
       <div class="tools-header">
-        <h1>All AI Voice Tools</h1>
-        <p>Explore our comprehensive collection of AI voice tools, from text-to-speech to voice cloning and audio processing.</p>
+        <h1>AI Voice Tools Directory</h1>
+        <p>探索我们精心策划的AI语音工具集合，从语音合成到声音克隆，应有尽有。</p>
       </div>
       
       <div class="search-box">
-        <input type="text" placeholder="Search tools...">
+        <input type="text" placeholder="搜索工具...">
       </div>
       
       <div class="filter-section">
         <div class="filter-buttons">
-          <button class="filter-btn active">All</button>
-          <button class="filter-btn">Text-to-Speech</button>
-          <button class="filter-btn">Voice Cloning</button>
-          <button class="filter-btn">Audio Processing</button>
-          <button class="filter-btn">Voice Recognition</button>
+          <button class="filter-btn active">全部</button>
+          <button class="filter-btn">语音合成</button>
+          <button class="filter-btn">语音识别</button>
+          <button class="filter-btn">音频编辑</button>
+          <button class="filter-btn">音乐生成</button>
+          <button class="filter-btn">声音克隆</button>
         </div>
       </div>
-      
-      <div class="tools-grid">
-        <!-- Text-to-Speech Tools -->
-        <div class="tool-card" data-category="text-to-speech">
-          <a href="https://elevenlabs.io" target="_blank" class="tool-thumbnail">
-            <img src="https://storage.googleapis.com/pai-images/elevenlabs.jpg" alt="ElevenLabs">
-            <div class="tool-overlay">
-              <div class="visit-icon">Visit Site</div>
-            </div>
-          </a>
-          <div class="tool-info">
-            <h3>ElevenLabs</h3>
-            <p>Advanced AI voice synthesis platform offering realistic text-to-speech and voice cloning capabilities. Perfect for content creators and developers.</p>
-            <div class="tool-meta">
-              <span class="tool-category">Text-to-Speech</span>
-              <div class="tool-rating">
-                <span class="star">★</span>
-                <span class="star">★</span>
-                <span class="star">★</span>
-                <span class="star">★</span>
-                <span class="star">★</span>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <div class="tool-card" data-category="text-to-speech">
-          <a href="https://play.ht" target="_blank" class="tool-thumbnail">
-            <img src="https://storage.googleapis.com/pai-images/playht.jpg" alt="Play.ht">
-            <div class="tool-overlay">
-              <div class="visit-icon">Visit Site</div>
-            </div>
-          </a>
-          <div class="tool-info">
-            <h3>Play.ht</h3>
-            <p>Create natural-sounding AI voices for your content with a wide range of voices and languages. Ideal for audiobooks and podcasts.</p>
-            <div class="tool-meta">
-              <span class="tool-category">Text-to-Speech</span>
-              <div class="tool-rating">
-                <span class="star">★</span>
-                <span class="star">★</span>
-                <span class="star">★</span>
-                <span class="star">★</span>
-                <span>☆</span>
+      <!-- 语音合成 -->
+      <section class="category-section" id="text-to-speech">
+        <h2 class="category-title">语音合成</h2>
+        <p class="category-description">将文本转换为自然流畅的语音，支持多种语言和声音风格。</p>
+        <div class="tools-grid">
+          <div class="tool-card" data-category="text-to-speech">
+            <a href="https://elevenlabs.io/" target="_blank" class="tool-thumbnail">
+              <img src="https://storage.googleapis.com/pai-images/elevenlabs.jpg" alt="ElevenLabs">
+              <div class="tool-overlay">
+                <div class="visit-icon">访问网站</div>
+              </div>
+            </a>
+            <div class="tool-info">
+              <h3>ElevenLabs</h3>
+              <p>提供极其逼真的多语言AI语音合成，支持微妙的情感表达和语调控制。拥有大量预设声音，也支持声音克隆功能。</p>
+              <div class="tool-meta">
+                <span class="tool-category">语音合成</span>
+                <div class="tool-rating">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                </div>
               </div>
             </div>
           </div>
+          
+          <!-- 继续添加其他语音合成工具 -->
+          // ... 其他工具卡片 ...
         </div>
+      </section>
 
-        <!-- Voice Cloning Tools -->
-        <div class="tool-card" data-category="voice-cloning">
-          <a href="https://www.descript.com" target="_blank" class="tool-thumbnail">
-            <img src="https://storage.googleapis.com/pai-images/descript.jpg" alt="Descript">
-            <div class="tool-overlay">
-              <div class="visit-icon">Visit Site</div>
-            </div>
-          </a>
-          <div class="tool-info">
-            <h3>Descript</h3>
-            <p>All-in-one audio and video editor with AI-powered transcription and voice cloning features. Perfect for content creators and podcasters.</p>
-            <div class="tool-meta">
-              <span class="tool-category">Voice Cloning</span>
-              <div class="tool-rating">
-                <span class="star">★</span>
-                <span class="star">★</span>
-                <span class="star">★</span>
-                <span class="star">★</span>
-                <span class="star">★</span>
+      <!-- 语音识别 -->
+      <section class="category-section" id="speech-recognition">
+        <h2 class="category-title">语音识别</h2>
+        <p class="category-description">将语音转换为文本，支持多种语言和实时识别功能。</p>
+        <div class="tools-grid">
+          <div class="tool-card" data-category="speech-recognition">
+            <a href="https://deepgram.com/" target="_blank" class="tool-thumbnail">
+              <img src="https://storage.googleapis.com/pai-images/deepgram.jpg" alt="Deepgram">
+              <div class="tool-overlay">
+                <div class="visit-icon">访问网站</div>
+              </div>
+            </a>
+            <div class="tool-info">
+              <h3>Deepgram</h3>
+              <p>专注于实时高精度语音转文字技术，使用深度学习提供行业领先的准确率。支持噪音环境下的识别和多种专业术语。</p>
+              <div class="tool-meta">
+                <span class="tool-category">语音识别</span>
+                <div class="tool-rating">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                </div>
               </div>
             </div>
           </div>
+          
+          <!-- 继续添加其他语音识别工具 -->
+          // ... 其他工具卡片 ...
         </div>
+      </section>
 
-        <!-- Audio Processing Tools -->
-        <div class="tool-card" data-category="audio-processing">
-          <a href="https://www.adobe.com/products/audition.html" target="_blank" class="tool-thumbnail">
-            <img src="https://storage.googleapis.com/pai-images/audition.jpg" alt="Adobe Audition">
-            <div class="tool-overlay">
-              <div class="visit-icon">Visit Site</div>
-            </div>
-          </a>
-          <div class="tool-info">
-            <h3>Adobe Audition</h3>
-            <p>Professional audio editing software with AI-powered noise reduction and audio enhancement features. Industry standard for audio professionals.</p>
-            <div class="tool-meta">
-              <span class="tool-category">Audio Processing</span>
-              <div class="tool-rating">
-                <span class="star">★</span>
-                <span class="star">★</span>
-                <span class="star">★</span>
-                <span class="star">★</span>
-                <span class="star">★</span>
+      <!-- 音频编辑 -->
+      <section class="category-section" id="audio-editing">
+        <h2 class="category-title">音频编辑</h2>
+        <p class="category-description">专业的音频处理工具，提供降噪、混音、剪辑等功能。</p>
+        <div class="tools-grid">
+          <div class="tool-card" data-category="audio-editing">
+            <a href="https://www.descript.com/" target="_blank" class="tool-thumbnail">
+              <img src="https://storage.googleapis.com/pai-images/descript.jpg" alt="Descript">
+              <div class="tool-overlay">
+                <div class="visit-icon">访问网站</div>
+              </div>
+            </a>
+            <div class="tool-info">
+              <h3>Descript</h3>
+              <p>基于AI的音频和视频编辑平台，允许像编辑文档一样编辑媒体。提供转录、音频去除、声音克隆和内容编辑功能。</p>
+              <div class="tool-meta">
+                <span class="tool-category">音频编辑</span>
+                <div class="tool-rating">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                </div>
               </div>
             </div>
           </div>
+          
+          <!-- 继续添加其他音频编辑工具 -->
+          // ... 其他工具卡片 ...
         </div>
+      </section>
 
-        <!-- Voice Recognition Tools -->
-        <div class="tool-card" data-category="voice-recognition">
-          <a href="https://www.ibm.com/watson/speech-to-text" target="_blank" class="tool-thumbnail">
-            <img src="https://storage.googleapis.com/pai-images/watson.jpg" alt="IBM Watson Speech to Text">
-            <div class="tool-overlay">
-              <div class="visit-icon">Visit Site</div>
-            </div>
-          </a>
-          <div class="tool-info">
-            <h3>IBM Watson Speech to Text</h3>
-            <p>Advanced speech recognition service that converts audio and voice into written text. Enterprise-grade solution with high accuracy.</p>
-            <div class="tool-meta">
-              <span class="tool-category">Voice Recognition</span>
-              <div class="tool-rating">
-                <span class="star">★</span>
-                <span class="star">★</span>
-                <span class="star">★</span>
-                <span class="star">★</span>
-                <span>☆</span>
+      <!-- 音乐生成 -->
+      <section class="category-section" id="music-generation">
+        <h2 class="category-title">音乐生成</h2>
+        <p class="category-description">AI驱动的音乐创作工具，可根据情绪和风格生成原创音乐。</p>
+        <div class="tools-grid">
+          <div class="tool-card" data-category="music-generation">
+            <a href="https://www.aiva.ai/" target="_blank" class="tool-thumbnail">
+              <img src="https://storage.googleapis.com/pai-images/aiva.jpg" alt="AIVA">
+              <div class="tool-overlay">
+                <div class="visit-icon">访问网站</div>
+              </div>
+            </a>
+            <div class="tool-info">
+              <h3>AIVA</h3>
+              <p>专注于情感驱动的AI音乐创作，可创作古典、电影配乐和现代风格的原创音乐。适用于电影、游戏和媒体制作。</p>
+              <div class="tool-meta">
+                <span class="tool-category">音乐生成</span>
+                <div class="tool-rating">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                </div>
               </div>
             </div>
           </div>
+          
+          <!-- 继续添加其他音乐生成工具 -->
+          // ... 其他工具卡片 ...
         </div>
-      </div>
+      </section>
+
+      <!-- 声音克隆 -->
+      <section class="category-section" id="voice-cloning">
+        <h2 class="category-title">声音克隆</h2>
+        <p class="category-description">创建和使用AI声音克隆，支持名人声音模仿和自定义声音模型。</p>
+        <div class="tools-grid">
+          <div class="tool-card" data-category="voice-cloning">
+            <a href="https://voice.ai/" target="_blank" class="tool-thumbnail">
+              <img src="https://storage.googleapis.com/pai-images/voiceai.jpg" alt="Voice.ai">
+              <div class="tool-overlay">
+                <div class="visit-icon">访问网站</div>
+              </div>
+            </a>
+            <div class="tool-info">
+              <h3>Voice.ai</h3>
+              <p>实时声音转换和克隆工具，可以在通话和直播中模仿名人声音或创建自定义声音。支持实时转换和多种声音预设。</p>
+              <div class="tool-meta">
+                <span class="tool-category">声音克隆</span>
+                <div class="tool-rating">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          
+          <!-- 继续添加其他声音克隆工具 -->
+          // ... 其他工具卡片 ...
+        </div>
+      </section>
     </div>
   </main>
 
@@ -372,12 +414,10 @@
   </footer>
 
   <script>
-    // Tool filtering functionality
+    // 工具筛选功能
     const filterButtons = document.querySelectorAll('.filter-btn');
-    const toolCards = document.querySelectorAll('.tool-card');
-    const searchInput = document.querySelector('.search-box input');
+    const categorySections = document.querySelectorAll('.category-section');
 
-    // Filter by category
     filterButtons.forEach(button => {
       button.addEventListener('click', () => {
         filterButtons.forEach(btn => btn.classList.remove('active'));
@@ -385,21 +425,22 @@
 
         const category = button.textContent.toLowerCase();
         
-        toolCards.forEach(card => {
-          if (category === 'all' || card.dataset.category === category) {
-            card.style.display = 'block';
+        categorySections.forEach(section => {
+          if (category === '全部' || section.id === category) {
+            section.style.display = 'block';
           } else {
-            card.style.display = 'none';
+            section.style.display = 'none';
           }
         });
       });
     });
 
-    // Search functionality
+    // 搜索功能
+    const searchInput = document.querySelector('.search-box input');
     searchInput.addEventListener('input', (e) => {
       const searchTerm = e.target.value.toLowerCase();
       
-      toolCards.forEach(card => {
+      document.querySelectorAll('.tool-card').forEach(card => {
         const title = card.querySelector('h3').textContent.toLowerCase();
         const description = card.querySelector('p').textContent.toLowerCase();
         const category = card.dataset.category;
