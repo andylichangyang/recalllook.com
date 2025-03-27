@@ -1,1 +1,92 @@
+<!-- 登录模态框 -->
+<div id="loginModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2 data-i18n="login">登录</h2>
+    <form id="loginForm" class="auth-form">
+      <div class="form-group">
+        <label for="loginEmail" data-i18n="email">邮箱</label>
+        <input type="email" id="loginEmail" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="loginPassword" data-i18n="password">密码</label>
+        <input type="password" id="loginPassword" name="password" required>
+      </div>
+      <div class="form-group">
+        <label class="checkbox">
+          <input type="checkbox" name="remember">
+          <span data-i18n="rememberMe">记住我</span>
+        </label>
+        <a href="#" class="forgot-password" data-i18n="forgotPassword">忘记密码?</a>
+      </div>
+      <button type="submit" class="submit-btn" data-i18n="login">登录</button>
+      <div class="social-login">
+        <p data-i18n="orLoginWith">或使用以下方式登录</p>
+        <div class="social-buttons">
+          <button type="button" class="social-btn google">
+            <i class="fab fa-google"></i>
+            <span>Google</span>
+          </button>
+          <button type="button" class="social-btn github">
+            <i class="fab fa-github"></i>
+            <span>GitHub</span>
+          </button>
+        </div>
+      </div>
+    </form>
+    <div class="auth-switch">
+      <p data-i18n="noAccount">还没有账号?</p>
+      <a href="#" class="switch-btn" data-i18n="signup">注册</a>
+    </div>
+  </div>
+</div>
 
+<!-- 注册模态框 -->
+<div id="signupModal" class="modal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h2 data-i18n="signup">注册</h2>
+    <form id="signupForm" class="auth-form">
+      <div class="form-group">
+        <label for="signupName" data-i18n="name">姓名</label>
+        <input type="text" id="signupName" name="name" required>
+      </div>
+      <div class="form-group">
+        <label for="signupEmail" data-i18n="email">邮箱</label>
+        <input type="email" id="signupEmail" name="email" required>
+      </div>
+      <div class="form-group">
+        <label for="signupPassword" data-i18n="password">密码</label>
+        <input type="password" id="signupPassword" name="password" required>
+      </div>
+      <div class="form-group">
+        <label for="confirmPassword" data-i18n="confirmPassword">确认密码</label>
+        <input type="password" id="confirmPassword" name="confirmPassword" required>
+      </div>
+      <div class="form-group">
+        <label class="checkbox">
+          <input type="checkbox" name="terms" required>
+          <span data-i18n="acceptTerms">我同意服务条款和隐私政策</span>
+        </label>
+      </div>
+      <button type="submit" class="submit-btn" data-i18n="signup">注册</button>
+      <div class="social-login">
+        <p data-i18n="orSignupWith">或使用以下方式注册</p>
+        <div class="social-buttons">
+          <button type="button" class="social-btn google">
+            <i class="fab fa-google"></i>
+            <span>Google</span>
+          </button>
+          <button type="button" class="social-btn github">
+            <i class="fab fa-github"></i>
+            <span>GitHub</span>
+          </button>
+        </div>
+      </div>
+    </form>
+    <div class="auth-switch">
+      <p data-i18n="haveAccount">已有账号?</p>
+      <a href="#" class="switch-btn" data-i18n="login">登录</a>
+    </div>
+  </div>
+</div> 
