@@ -276,4 +276,42 @@
             const formValidation = new FormValidation();
 
             navBar.init();
-        
+            modal.init();
+            footer.init();
+
+            performanceOptimizer.init();
+            authManager.init();
+            formValidation.init();
+
+            const contactForm = document.getElementById('contactForm');
+            contactForm.addEventListener('submit', async (e) => {
+                e.preventDefault();
+                const loadingManager = new LoadingManager();
+                try {
+                    loadingManager.showLoading();
+                    await mockContactAPI({
+                        name: contactForm.name.value,
+                        email: contactForm.email.value,
+                        message: contactForm.message.value
+                    });
+                    loadingManager.showSuccess('Message sent successfully!');
+                    contactForm.reset();
+                } catch (error) {
+                    loadingManager.showError('Failed to send message');
+                } finally {
+                    loadingManager.hideLoading();
+                }
+            });
+        });
+
+        function mockContactAPI(data) {
+            return new Promise((resolve) => {
+                setTimeout(() => {
+                    console.log('Contact form data:', data);
+                    resolve();
+                }, 1000);
+            });
+        }
+    </script>
+</body>
+</html> 
