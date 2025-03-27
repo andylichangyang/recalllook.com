@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us - RecallLook</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         .about-container {
             max-width: 1200px;
@@ -18,15 +19,14 @@
         }
         
         .about-header h1 {
-            font-size: 2.8rem;
+            font-size: 2.5rem;
             color: #1a237e;
             margin-bottom: 1rem;
-            font-weight: 800;
         }
         
         .about-header p {
             color: #666;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             max-width: 800px;
             margin: 0 auto;
             line-height: 1.6;
@@ -37,19 +37,18 @@
         }
         
         .about-section h2 {
-            font-size: 2.2rem;
+            font-size: 2rem;
             color: #1a237e;
-            margin-bottom: 2rem;
-            padding-bottom: 1rem;
-            border-bottom: 3px solid #1a237e;
-            font-weight: 700;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #e0e0e0;
         }
         
         .about-section p {
             color: #666;
             font-size: 1.1rem;
             line-height: 1.8;
-            margin-bottom: 1.5rem;
+            margin-bottom: 2rem;
         }
         
         .team-section {
@@ -77,30 +76,48 @@
             width: 150px;
             height: 150px;
             border-radius: 50%;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
             object-fit: cover;
         }
         
         .team-member h3 {
             color: #1a237e;
-            font-size: 1.5rem;
             margin-bottom: 0.5rem;
-            font-weight: 700;
         }
         
         .team-member p {
             color: #666;
-            font-size: 1rem;
+            font-size: 0.9rem;
             margin-bottom: 1rem;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+        
+        .social-link {
+            color: #1a237e;
+            font-size: 1.2rem;
+            transition: all 0.3s;
+        }
+        
+        .social-link:hover {
+            color: #0d47a1;
+            transform: translateY(-2px);
+        }
+        
+        .contact-section {
+            background: #f8f9fa;
+            padding: 3rem;
+            border-radius: 15px;
+            margin-top: 4rem;
         }
         
         .contact-form {
             max-width: 600px;
             margin: 0 auto;
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
         }
         
         .form-group {
@@ -109,9 +126,9 @@
         
         .form-group label {
             display: block;
-            color: #1a237e;
-            font-weight: 600;
             margin-bottom: 0.5rem;
+            color: #333;
+            font-weight: 500;
         }
         
         .form-group input,
@@ -137,16 +154,15 @@
         }
         
         .submit-btn {
+            padding: 1rem 2rem;
             background: #1a237e;
             color: white;
-            padding: 1rem 2rem;
             border: none;
-            border-radius: 50px;
+            border-radius: 8px;
             font-size: 1rem;
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s;
-            width: 100%;
         }
         
         .submit-btn:hover {
@@ -170,67 +186,70 @@
     <main>
         <div class="about-container">
             <div class="about-header">
-                <h1>About RecallLook</h1>
-                <p>Your trusted platform for discovering and comparing AI voice technology tools</p>
+                <h1 data-i18n="aboutTitle">About RecallLook</h1>
+                <p data-i18n="aboutDesc">Your trusted source for AI voice tools and resources</p>
             </div>
             
             <section class="about-section">
-                <h2>Our Story</h2>
-                <p>RecallLook was founded in 2024 with a mission to help content creators, developers, and businesses find the perfect AI voice tools for their needs. We understand that choosing the right voice technology can be overwhelming, with countless options available in the market.</p>
-                <p>Our platform provides comprehensive information, detailed comparisons, and user reviews to help you make informed decisions about which AI voice tools to use for your projects.</p>
+                <h2 data-i18n="ourStory">Our Story</h2>
+                <p data-i18n="storyContent">Founded in 2024, RecallLook emerged from a simple observation: the AI voice technology landscape was growing rapidly, but finding the right tools was becoming increasingly challenging. Our mission is to simplify this process by providing a comprehensive directory of AI voice tools, complete with detailed reviews and user feedback.</p>
             </section>
             
             <section class="about-section">
-                <h2>Our Mission</h2>
-                <p>We strive to be the most comprehensive and reliable directory for AI voice tools. Our mission is to:</p>
-                <ul>
-                    <li>Curate and review the best AI voice tools in the market</li>
-                    <li>Provide detailed comparisons and feature breakdowns</li>
-                    <li>Share real user experiences and feedback</li>
-                    <li>Keep our community updated with the latest developments in AI voice technology</li>
-                </ul>
+                <h2 data-i18n="ourMission">Our Mission</h2>
+                <p data-i18n="missionContent">At RecallLook, we're committed to helping users discover and evaluate AI voice tools that best suit their needs. We curate and review tools across various categories, from speech synthesis to voice cloning, ensuring our users have access to the most reliable and effective solutions in the market.</p>
             </section>
             
             <section class="about-section">
-                <h2>Our Team</h2>
+                <h2 data-i18n="ourTeam">Our Team</h2>
                 <div class="team-section">
                     <div class="team-member">
-                        <img src="https://storage.googleapis.com/pai-images/team1.jpg" alt="John Smith">
-                        <h3>John Smith</h3>
-                        <p>Founder & CEO</p>
+                        <img src="https://storage.googleapis.com/pai-images/team1.jpg" alt="John Doe">
+                        <h3>John Doe</h3>
+                        <p data-i18n="ceo">CEO & Founder</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        </div>
                     </div>
                     <div class="team-member">
-                        <img src="https://storage.googleapis.com/pai-images/team2.jpg" alt="Sarah Johnson">
-                        <h3>Sarah Johnson</h3>
-                        <p>Content Director</p>
+                        <img src="https://storage.googleapis.com/pai-images/team2.jpg" alt="Jane Smith">
+                        <h3>Jane Smith</h3>
+                        <p data-i18n="cto">Chief Technology Officer</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                        </div>
                     </div>
                     <div class="team-member">
-                        <img src="https://storage.googleapis.com/pai-images/team3.jpg" alt="Michael Chen">
-                        <h3>Michael Chen</h3>
-                        <p>Technical Lead</p>
+                        <img src="https://storage.googleapis.com/pai-images/team3.jpg" alt="Mike Johnson">
+                        <h3>Mike Johnson</h3>
+                        <p data-i18n="contentLead">Content Lead</p>
+                        <div class="social-links">
+                            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                            <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                        </div>
                     </div>
                 </div>
             </section>
             
-            <section class="about-section">
-                <h2>Contact Us</h2>
-                <div class="contact-form">
-                    <form>
-                        <div class="form-group">
-                            <label for="name">Name</label>
-                            <input type="text" id="name" name="name" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="email">Email</label>
-                            <input type="email" id="email" name="email" required>
-                        </div>
-                        <div class="form-group">
-                            <label for="message">Message</label>
-                            <textarea id="message" name="message" required></textarea>
-                        </div>
-                        <button type="submit" class="submit-btn">Send Message</button>
-                    </form>
-                </div>
+            <section class="contact-section">
+                <h2 data-i18n="contactUs">Contact Us</h2>
+                <form class="contact-form">
+                    <div class="form-group">
+                        <label for="name" data-i18n="name">Name</label>
+                        <input type="text" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email" data-i18n="email">Email</label>
+                        <input type="email" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="message" data-i18n="message">Message</label>
+                        <textarea id="message" required></textarea>
+                    </div>
+                    <button type="submit" class="submit-btn" data-i18n="sendMessage">Send Message</button>
+                </form>
             </section>
         </div>
     </main>
@@ -238,5 +257,23 @@
     <footer>
         <p>&copy; 2024 RecallLook. All rights reserved.</p>
     </footer>
+
+    <script src="js/languages.js"></script>
+    <script src="js/components.js"></script>
+    <script>
+        // 初始化组件
+        document.addEventListener('DOMContentLoaded', () => {
+            new NavigationBar();
+            new Modal();
+        });
+
+        // 表单提交
+        const contactForm = document.querySelector('.contact-form');
+        contactForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // 添加表单提交逻辑
+            console.log('Contact form submitted');
+        });
+    </script>
 </body>
 </html> 
