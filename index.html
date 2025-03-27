@@ -3,35 +3,11 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RecallLook - AI Voice Tools Directory</title>
+  <title>RecallLook - AI语音工具导航</title>
   <link rel="stylesheet" href="css/style.css">
   <style>
-    /* Enhanced homepage styles */
-    .hero {
-      background: linear-gradient(135deg, #1a237e, #0d47a1);
-      padding: 6rem 2rem;
-      text-align: center;
-      margin-bottom: 3rem;
-      border-radius: 0 0 20px 20px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-    
-    .hero h1 {
-      font-size: 3.5rem;
-      margin-bottom: 1.5rem;
-      animation: fadeInUp 1s ease;
-      color: white;
-      font-weight: 800;
-    }
-    
-    .hero p {
-      font-size: 1.3rem;
-      max-width: 800px;
-      margin: 0 auto;
-      animation: fadeInUp 1.3s ease;
-      color: rgba(255, 255, 255, 0.9);
-      line-height: 1.6;
-    }
+    /* 保持现有样式 */
+    // ... existing code ...
     
     .category-nav {
       display: flex;
@@ -78,194 +54,6 @@
       margin: 15px auto;
       border-radius: 2px;
     }
-    
-    .tool-grid {
-      margin-bottom: 4rem;
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 2rem;
-      padding: 0 2rem;
-    }
-    
-    .tool-card {
-      transition: all 0.3s;
-      border-radius: 15px;
-      overflow: hidden;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      background: white;
-      border: 1px solid rgba(0,0,0,0.1);
-    }
-    
-    .tool-card:hover {
-      transform: translateY(-10px);
-      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
-    }
-    
-    .tool-thumbnail {
-      position: relative;
-      overflow: hidden;
-      height: 220px;
-      cursor: pointer;
-    }
-    
-    .tool-thumbnail img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s;
-    }
-    
-    .tool-card:hover .tool-thumbnail img {
-      transform: scale(1.05);
-    }
-    
-    .tool-overlay {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background: rgba(26, 35, 126, 0.3);
-      opacity: 0;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      transition: opacity 0.3s;
-    }
-    
-    .tool-thumbnail:hover .tool-overlay {
-      opacity: 1;
-    }
-    
-    .visit-icon {
-      color: white;
-      font-size: 1.5rem;
-      padding: 0.8rem 1.5rem;
-      background: rgba(26, 35, 126, 0.9);
-      border-radius: 8px;
-      font-weight: bold;
-      transition: all 0.3s;
-    }
-    
-    .visit-icon:hover {
-      background: rgba(26, 35, 126, 1);
-      transform: scale(1.05);
-    }
-    
-    .tool-info {
-      padding: 1.8rem;
-    }
-    
-    .tool-info h3 {
-      margin: 0 0 1rem;
-      font-size: 1.5rem;
-      color: #1a237e;
-      font-weight: 700;
-    }
-    
-    .tool-info p {
-      color: #666;
-      font-size: 1rem;
-      line-height: 1.6;
-      margin-bottom: 1.2rem;
-    }
-    
-    .tool-meta {
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      font-size: 0.95rem;
-      color: #888;
-    }
-    
-    .tool-category {
-      background: #f5f5f5;
-      padding: 0.5rem 1rem;
-      border-radius: 20px;
-      color: #1a237e;
-      font-weight: 500;
-    }
-    
-    .tool-rating {
-      display: flex;
-      align-items: center;
-      gap: 2px;
-    }
-    
-    .star {
-      color: #ffd700;
-      font-size: 1.1rem;
-    }
-    
-    .newsletter {
-      background: #f8f9fa;
-      padding: 4rem 2rem;
-      text-align: center;
-      border-radius: 15px;
-      margin: 0 2rem 3rem;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
-    }
-    
-    .newsletter h3 {
-      margin-bottom: 1rem;
-      color: #1a237e;
-      font-size: 2rem;
-      font-weight: 700;
-    }
-    
-    .newsletter p {
-      color: #666;
-      font-size: 1.1rem;
-      margin-bottom: 2rem;
-    }
-    
-    .newsletter form {
-      display: flex;
-      max-width: 600px;
-      margin: 1.5rem auto 0;
-    }
-    
-    .newsletter input {
-      flex: 1;
-      padding: 1rem 1.5rem;
-      border: 2px solid #e0e0e0;
-      border-radius: 8px 0 0 8px;
-      outline: none;
-      font-size: 1rem;
-      transition: border-color 0.3s;
-    }
-    
-    .newsletter input:focus {
-      border-color: #1a237e;
-    }
-    
-    .newsletter button {
-      padding: 1rem 2rem;
-      background: #1a237e;
-      color: white;
-      border: none;
-      border-radius: 0 8px 8px 0;
-      cursor: pointer;
-      transition: all 0.3s;
-      font-size: 1rem;
-      font-weight: bold;
-    }
-    
-    .newsletter button:hover {
-      background: #0d47a1;
-      transform: translateY(-2px);
-    }
-    
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(20px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
   </style>
 </head>
 <body>
@@ -273,9 +61,9 @@
     <nav>
       <div class="logo">RecallLook</div>
       <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="tools.html">All Tools</a></li>
-        <li><a href="about.html">About</a></li>
+        <li><a href="index.html">首页</a></li>
+        <li><a href="tools.html">全部工具</a></li>
+        <li><a href="about.html">关于我们</a></li>
       </ul>
     </nav>
   </header>
@@ -283,32 +71,34 @@
   <main>
     <section class="hero">
       <h1>RecallLook</h1>
-      <p>Your comprehensive directory for AI voice technology tools. Discover, compare, and choose the perfect voice tools for your needs.</p>
+      <p>您的AI语音工具导航平台，发现、比较并选择最适合您需求的语音工具。</p>
     </section>
     
     <div class="category-nav">
-      <button class="category-btn active">All Tools</button>
-      <button class="category-btn">Text-to-Speech</button>
-      <button class="category-btn">Voice Cloning</button>
-      <button class="category-btn">Audio Processing</button>
-      <button class="category-btn">Voice Recognition</button>
+      <button class="category-btn active">全部工具</button>
+      <button class="category-btn">语音合成</button>
+      <button class="category-btn">语音识别</button>
+      <button class="category-btn">音频编辑</button>
+      <button class="category-btn">音乐生成</button>
+      <button class="category-btn">声音克隆</button>
     </div>
 
-    <h2 class="section-title">Featured Tools</h2>
+    <h2 class="section-title">精选工具</h2>
     <section class="featured-tools">
       <div class="tool-grid">
+        <!-- 语音合成 -->
         <div class="tool-card">
-          <a href="https://elevenlabs.io" target="_blank" class="tool-thumbnail">
+          <a href="https://elevenlabs.io/" target="_blank" class="tool-thumbnail">
             <img src="https://storage.googleapis.com/pai-images/elevenlabs.jpg" alt="ElevenLabs">
             <div class="tool-overlay">
-              <div class="visit-icon">Visit Site</div>
+              <div class="visit-icon">访问网站</div>
             </div>
           </a>
           <div class="tool-info">
             <h3>ElevenLabs</h3>
-            <p>Advanced AI voice synthesis platform offering realistic text-to-speech and voice cloning capabilities. Perfect for content creators and developers.</p>
+            <p>提供极其逼真的多语言AI语音合成，支持微妙的情感表达和语调控制。拥有大量预设声音，也支持声音克隆功能。</p>
             <div class="tool-meta">
-              <span class="tool-category">Text-to-Speech</span>
+              <span class="tool-category">语音合成</span>
               <div class="tool-rating">
                 <span class="star">★</span>
                 <span class="star">★</span>
@@ -320,41 +110,91 @@
           </div>
         </div>
 
+        <!-- 语音识别 -->
         <div class="tool-card">
-          <a href="https://play.ht" target="_blank" class="tool-thumbnail">
-            <img src="https://storage.googleapis.com/pai-images/playht.jpg" alt="Play.ht">
+          <a href="https://deepgram.com/" target="_blank" class="tool-thumbnail">
+            <img src="https://storage.googleapis.com/pai-images/deepgram.jpg" alt="Deepgram">
             <div class="tool-overlay">
-              <div class="visit-icon">Visit Site</div>
+              <div class="visit-icon">访问网站</div>
             </div>
           </a>
           <div class="tool-info">
-            <h3>Play.ht</h3>
-            <p>Create natural-sounding AI voices for your content with a wide range of voices and languages. Ideal for audiobooks and podcasts.</p>
+            <h3>Deepgram</h3>
+            <p>专注于实时高精度语音转文字技术，使用深度学习提供行业领先的准确率。支持噪音环境下的识别和多种专业术语。</p>
             <div class="tool-meta">
-              <span class="tool-category">Text-to-Speech</span>
+              <span class="tool-category">语音识别</span>
               <div class="tool-rating">
                 <span class="star">★</span>
                 <span class="star">★</span>
                 <span class="star">★</span>
                 <span class="star">★</span>
-                <span>☆</span>
+                <span class="star">★</span>
               </div>
             </div>
           </div>
         </div>
-        
+
+        <!-- 音频编辑 -->
         <div class="tool-card">
-          <a href="https://www.descript.com" target="_blank" class="tool-thumbnail">
+          <a href="https://www.descript.com/" target="_blank" class="tool-thumbnail">
             <img src="https://storage.googleapis.com/pai-images/descript.jpg" alt="Descript">
             <div class="tool-overlay">
-              <div class="visit-icon">Visit Site</div>
+              <div class="visit-icon">访问网站</div>
             </div>
           </a>
           <div class="tool-info">
             <h3>Descript</h3>
-            <p>All-in-one audio and video editor with AI-powered transcription and voice cloning features. Perfect for content creators and podcasters.</p>
+            <p>基于AI的音频和视频编辑平台，允许像编辑文档一样编辑媒体。提供转录、音频去除、声音克隆和内容编辑功能。</p>
             <div class="tool-meta">
-              <span class="tool-category">Audio Processing</span>
+              <span class="tool-category">音频编辑</span>
+              <div class="tool-rating">
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 音乐生成 -->
+        <div class="tool-card">
+          <a href="https://www.aiva.ai/" target="_blank" class="tool-thumbnail">
+            <img src="https://storage.googleapis.com/pai-images/aiva.jpg" alt="AIVA">
+            <div class="tool-overlay">
+              <div class="visit-icon">访问网站</div>
+            </div>
+          </a>
+          <div class="tool-info">
+            <h3>AIVA</h3>
+            <p>专注于情感驱动的AI音乐创作，可创作古典、电影配乐和现代风格的原创音乐。适用于电影、游戏和媒体制作。</p>
+            <div class="tool-meta">
+              <span class="tool-category">音乐生成</span>
+              <div class="tool-rating">
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 声音克隆 -->
+        <div class="tool-card">
+          <a href="https://voice.ai/" target="_blank" class="tool-thumbnail">
+            <img src="https://storage.googleapis.com/pai-images/voiceai.jpg" alt="Voice.ai">
+            <div class="tool-overlay">
+              <div class="visit-icon">访问网站</div>
+            </div>
+          </a>
+          <div class="tool-info">
+            <h3>Voice.ai</h3>
+            <p>实时声音转换和克隆工具，可以在通话和直播中模仿名人声音或创建自定义声音。支持实时转换和多种声音预设。</p>
+            <div class="tool-meta">
+              <span class="tool-category">声音克隆</span>
               <div class="tool-rating">
                 <span class="star">★</span>
                 <span class="star">★</span>
@@ -369,11 +209,11 @@
     </section>
     
     <section class="newsletter">
-      <h3>Stay Updated with AI Voice Tools</h3>
-      <p>Subscribe to our newsletter for the latest updates on AI voice technology and new tools</p>
+      <h3>订阅AI语音工具更新</h3>
+      <p>订阅我们的新闻通讯，获取最新的AI语音技术更新和新工具信息</p>
       <form>
-        <input type="email" placeholder="Enter your email address">
-        <button type="submit">Subscribe</button>
+        <input type="email" placeholder="输入您的邮箱地址">
+        <button type="submit">订阅</button>
       </form>
     </section>
   </main>
@@ -383,13 +223,13 @@
   </footer>
 
   <script>
-    // Category filtering functionality
+    // 分类筛选功能
     const categoryBtns = document.querySelectorAll('.category-btn');
     categoryBtns.forEach(btn => {
       btn.addEventListener('click', () => {
         categoryBtns.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
-        // Add actual filtering functionality here
+        // 添加实际的筛选功能
       });
     });
   </script>
