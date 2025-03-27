@@ -1,10 +1,27 @@
+// 组件加载器
+class ComponentLoader {
+  static async loadComponent(url) {
+    try {
+      const response = await fetch(url);
+      const html = await response.text();
+      return html;
+    } catch (error) {
+      console.error('Error loading component:', error);
+      return '';
+    }
+  }
+}
+
+// 导航栏组件
 class NavigationBar {
   constructor() {
     this.currentLang = localStorage.getItem('language') || 'en';
     this.init();
   }
 
-  init() {
+  async init() {
+    const headerHtml = await ComponentLoader.loadComponent('components/header.html');
+    document.body.insertAdjacentHTML('afterbegin', headerHtml);
     this.createNav();
     this.setupEventListeners();
     this.updateLanguage();
@@ -45,6 +62,21 @@ class NavigationBar {
   }
 
   setupEventListeners() {
+    const loginBtn = document.querySelector('.login-btn');
+    const signupBtn = document.querySelector('.signup-btn');
+
+    if (loginBtn) {
+      loginBtn.addEventListener('click', () => {
+        document.getElementById('loginModal').style.display = 'block';
+      });
+    }
+
+    if (signupBtn) {
+      signupBtn.addEventListener('click', () => {
+        document.getElementById('signupModal').style.display = 'block';
+      });
+    }
+
     // 语言切换
     document.querySelectorAll('.lang-dropdown a').forEach(link => {
       link.addEventListener('click', (e) => {
@@ -54,15 +86,6 @@ class NavigationBar {
         localStorage.setItem('language', lang);
         this.updateLanguage();
       });
-    });
-
-    // 登录/注册按钮
-    document.querySelector('.login-btn').addEventListener('click', () => {
-      document.getElementById('loginModal').style.display = 'block';
-    });
-
-    document.querySelector('.signup-btn').addEventListener('click', () => {
-      document.getElementById('signupModal').style.display = 'block';
     });
   }
 
@@ -77,93 +100,27 @@ class NavigationBar {
   }
 }
 
-// 创建模态框组件
+// 模态框组件
 class Modal {
   constructor() {
-    this.createModals();
+    this.init();
+  }
+
+  async init() {
+    const modalHtml = await ComponentLoader.loadComponent('components/modal.html');
+    document.body.insertAdjacentHTML('beforeend', modalHtml);
     this.setupEventListeners();
   }
 
-  createModals() {
-    const modals = `
-      <!-- Login Modal -->
-      <div class="modal" id="loginModal">
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <h2 data-i18n="login">Login</h2>
-          <form class="auth-form">
-            <div class="form-group">
-              <label for="loginEmail">Email</label>
-              <input type="email" id="loginEmail" required>
-            </div>
-            <div class="form-group">
-              <label for="loginPassword">Password</label>
-              <input type="password" id="loginPassword" required>
-            </div>
-            <div class="form-options">
-              <label>
-                <input type="checkbox"> Remember me
-              </label>
-              <a href="#" class="forgot-password">Forgot Password?</a>
-            </div>
-            <button type="submit" class="submit-btn" data-i18n="login">Login</button>
-          </form>
-          <div class="social-login">
-            <p>Or login with</p>
-            <div class="social-buttons">
-              <button class="social-btn google">
-                <i class="fab fa-google"></i> Google
-              </button>
-              <button class="social-btn facebook">
-                <i class="fab fa-facebook-f"></i> Facebook
-              </button>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Signup Modal -->
-      <div class="modal" id="signupModal">
-        <div class="modal-content">
-          <span class="close">&times;</span>
-          <h2 data-i18n="signup">Create Account</h2>
-          <form class="auth-form">
-            <div class="form-group">
-              <label for="signupName">Full Name</label>
-              <input type="text" id="signupName" required>
-            </div>
-            <div class="form-group">
-              <label for="signupEmail">Email</label>
-              <input type="email" id="signupEmail" required>
-            </div>
-            <div class="form-group">
-              <label for="signupPassword">Password</label>
-              <input type="password" id="signupPassword" required>
-            </div>
-            <div class="form-group">
-              <label for="confirmPassword">Confirm Password</label>
-              <input type="password" id="confirmPassword" required>
-            </div>
-            <div class="form-options">
-              <label>
-                <input type="checkbox" required> I agree to the Terms of Service
-              </label>
-            </div>
-            <button type="submit" class="submit-btn" data-i18n="signup">Create Account</button>
-          </form>
-        </div>
-      </div>
-    `;
-
-    document.body.insertAdjacentHTML('beforeend', modals);
-  }
-
   setupEventListeners() {
-    // 关闭按钮
-    document.querySelectorAll('.close').forEach(btn => {
-      btn.addEventListener('click', () => {
-        document.getElementById('loginModal').style.display = 'none';
-        document.getElementById('signupModal').style.display = 'none';
+    // 关闭按钮事件
+    const closeButtons = document.querySelectorAll('.close');
+    closeButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const modal = button.closest('.modal');
+        if (modal) {
+          modal.style.display = 'none';
+        }
       });
     });
 
@@ -182,5 +139,17 @@ class Modal {
         console.log('Form submitted');
       });
     });
+  }
+}
+
+// 页脚组件
+class Footer {
+  constructor() {
+    this.init();
+  }
+
+  async init() {
+    const footerHtml = await ComponentLoader.loadComponent('components/footer.html');
+    document.body.insertAdjacentHTML('beforeend', footerHtml);
   }
 } 
