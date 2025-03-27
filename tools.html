@@ -1,19 +1,692 @@
-           <!-- Audio Editing Section -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All AI Voice Tools - RecallLook</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .tools-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 4rem 2rem;
+    }
+    
+    .tools-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .tools-header h1 {
+      font-size: 2.8rem;
+      color: #1a237e;
+      margin-bottom: 1rem;
+      font-weight: 800;
+    }
+    
+    .tools-header p {
+      color: #666;
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    
+    .search-section {
+      max-width: 800px;
+      margin: 0 auto 4rem;
+      text-align: center;
+    }
+    
+    .search-box {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    
+    .search-box input {
+      flex: 1;
+      padding: 1rem 1.5rem;
+      border: 2px solid #e0e0e0;
+      border-radius: 50px;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+    
+    .search-box input:focus {
+      outline: none;
+      border-color: #1a237e;
+      box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.1);
+    }
+    
+    .search-box button {
+      padding: 1rem 2rem;
+      background: #1a237e;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .search-box button:hover {
+      background: #0d47a1;
+      transform: translateY(-2px);
+    }
+    
+    .filter-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+    }
+    
+    .filter-btn {
+      padding: 0.8rem 1.5rem;
+      border: 2px solid #1a237e;
+      border-radius: 50px;
+      background: white;
+      color: #1a237e;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-weight: 600;
+      font-size: 0.95rem;
+    }
+    
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: #1a237e;
+      color: white;
+      transform: translateY(-2px);
+    }
+    
+    .category-section {
+      margin-bottom: 4rem;
+      scroll-margin-top: 2rem;
+    }
+    
+    .category-title {
+      font-size: 2.2rem;
+      color: #1a237e;
+      margin-bottom: 1rem;
+      font-weight: 700;
+      padding-bottom: 1rem;
+      border-bottom: 3px solid #1a237e;
+    }
+    
+    .category-description {
+      color: #666;
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+    
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+    
+    .tool-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s;
+      border: 1px solid rgba(0,0,0,0.1);
+    }
+    
+    .tool-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+    
+    .tool-thumbnail {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+    }
+    
+    .tool-thumbnail img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    
+    .tool-card:hover .tool-thumbnail img {
+      transform: scale(1.05);
+    }
+    
+    .tool-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(26, 35, 126, 0.3);
+      opacity: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 0.3s;
+    }
+    
+    .tool-thumbnail:hover .tool-overlay {
+      opacity: 1;
+    }
+    
+    .visit-icon {
+      color: white;
+      font-size: 1.5rem;
+      padding: 0.8rem 1.5rem;
+      background: rgba(26, 35, 126, 0.9);
+      border-radius: 8px;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+    
+    .visit-icon:hover {
+      background: rgba(26, 35, 126, 1);
+      transform: scale(1.05);
+    }
+    
+    .tool-info {
+      padding: 1.8rem;
+    }
+    
+    .tool-info h3 {
+      margin: 0 0 1rem;
+      font-size: 1.5rem;
+      color: #1a237e;
+      font-weight: 700;
+    }
+    
+    .tool-info p {
+      color: #666;
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 1.2rem;
+    }
+    
+    .tool-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.95rem;
+      color: #888;
+    }
+    
+    .tool-category {
+      background: #f5f5f5;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      color: #1a237e;
+      font-weight: 500;
+    }
+    
+    .tool-rating {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+    
+    .star {
+      color: #ffd700;
+      font-size: 1.1rem;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">RecallLook</div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="tools.html">All Tools</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="tools-container">
+      <div class="tools-header">
+        <h1>All AI Voice Tools</h1>
+        <p>Browse our comprehensive collection of AI voice technology tools, categorized by functionality</p>
+      </div>
+
+      <div class="search-section">
+        <div class="search-box">
+          <input type="text" placeholder="Search for tools..." id="searchInput">
+          <button type="button">Search</button>
+        </div>
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-category="all">All</button>
+          <button class="filter-btn" data-category="speech-synthesis">Speech Synthesis</button>
+          <button class="filter-btn" data-category="speech-recognition">Speech Recognition</button>
+          <button class="filter-btn" data-category="audio-editing">Audio Editing</button>
+          <button class="filter-btn" data-category="music-generation">Music Generation</button>
+          <button class="filter-btn" data-category="voice-cloning">Voice Cloning</button>
+        </div>
+      </div>
+
+      <!-- Speech Synthesis Section -->
+      <section class="category-section" id="speech-synthesis">
+        <h2 class="category-title">Speech Synthesis</h2>
+        <p class="category-description">Convert text to natural-sounding speech with advanced AI technology.</p>
+        <div class="tools-grid">
+          <!-- ElevenLabs -->
+          <div class="tool-card" data-category="speech-synthesis">
+            <a href="https://elevenlabs.io/" target="_blank" class="tool-thumbnail">
+              <img src="https://storage.googleapis.com/pai-images/elevenlabs.jpg" alt="ElevenLabs">
+              <div class="tool-overlay">
+                <div class="visit-icon">Visit Site</div>
+              </div>
+            </a>
+            <div class="tool-info">
+              <h3>ElevenLabs</h3>
+              <p>Advanced AI voice synthesis with emotional expression and voice cloning capabilities. Supports multiple languages and fine-grained control.</p>
+              <div class="tool-meta">
+                <span class="tool-category">Speech Synthesis</span>
+                <div class="tool-rating">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Play.ht -->
+          <div class="tool-card" data-category="speech-synthesis">
+            <a href="https://play.ht/" target="_blank" class="tool-thumbnail">
+              <img src="https://storage.googleapis.com/pai-images/playht.jpg" alt="Play.ht">
+              <div class="tool-overlay">
+                <div class="visit-icon">Visit Site</div>
+              </div>
+            </a>
+            <div class="tool-info">
+              <h3>Play.ht</h3>
+              <p>Create natural-sounding AI voices for your content with a wide range of voices and languages. Ideal for audiobooks and podcasts.</p>
+              <div class="tool-meta">
+                <span class="tool-category">Speech Synthesis</span>
+                <div class="tool-rating">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span>☆</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Amazon Polly -->
+          <div class="tool-card" data-category="speech-synthesis">
+            <a href="https://aws.amazon.com/polly/" target="_blank" class="tool-thumbnail">
+              <img src="https://storage.googleapis.com/pai-images/polly.jpg" alt="Amazon Polly">
+              <div class="tool-overlay">
+                <div class="visit-icon">Visit Site</div>
+              </div>
+            </a>
+            <div class="tool-info">
+              <h3>Amazon Polly</h3>
+              <p>Cloud-based service that turns text into lifelike speech using advanced deep learning technologies.</p>
+              <div class="tool-meta">
+                <span class="tool-category">Speech Synthesis</span>
+                <div class="tool-rating">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Google Cloud Text-to-Speech -->
+          <div class="tool-card" data-category="speech-synthesis">
+            <a href="https://cloud.google.com/text-to-speech" target="_blank" class="tool-thumbnail">
+              <img src="https://storage.googleapis.com/pai-images/google-tts.jpg" alt="Google Cloud Text-to-Speech">
+              <div class="tool-overlay">
+                <div class="visit-icon">Visit Site</div>
+              </div>
+            </a>
+            <div class="tool-info">
+              <h3>Google Cloud Text-to-Speech</h3>
+              <p>High-quality text-to-speech service with WaveNet voices and support for multiple languages.</p>
+              <div class="tool-meta">
+                <span class="tool-category">Speech Synthesis</span>
+                <div class="tool-rating">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Microsoft Azure Speech Service -->
+          <div class="tool-card" data-category="speech-synthesis">
+            <a href="https://azure.microsoft.com/en-us/services/cognitive-services/text-to-speech/" target="_blank" class="tool-thumbnail">
+              <img src="https://storage.googleapis.com/pai-images/azure-tts.jpg" alt="Microsoft Azure Speech Service">
+              <div class="tool-overlay">
+                <div class="visit-icon">Visit Site</div>
+              </div>
+            </a>
+            <div class="tool-info">
+              <h3>Microsoft Azure Speech Service</h3>
+              <p>Comprehensive speech service with neural TTS voices and custom voice training capabilities.</p>
+              <div class="tool-meta">
+                <span class="tool-category">Speech Synthesis</span>
+                <div class="tool-rating">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span>☆</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Coqui TTS -->
+          <div class="tool-card" data-category="speech-synthesis">
+            <a href="https://coqui.ai/" target="_blank" class="tool-thumbnail">
+              <img src="https://storage.googleapis.com/pai-images/coqui.jpg" alt="Coqui TTS">
+              <div class="tool-overlay">
+                <div class="visit-icon">Visit Site</div>
+              </div>
+            </a>
+            <div class="tool-info">
+              <h3>Coqui TTS</h3>
+              <p>Open-source text-to-speech toolkit with advanced features and voice cloning capabilities.</p>
+              <div class="tool-meta">
+                <span class="tool-category">Speech Synthesis</span>
+                <div class="tool-rating">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span>☆</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Murf.ai -->
+          <div class="tool-card" data-category="speech-synthesis">
+            <a href="https://murf.ai/" target="_blank" class="tool-thumbnail">
+              <img src="https://storage.googleapis.com/pai-images/murf.jpg" alt="Murf.ai">
+              <div class="tool-overlay">
+                <div class="visit-icon">Visit Site</div>
+              </div>
+            </a>
+            <div class="tool-info">
+              <h3>Murf.ai</h3>
+              <p>AI voice generator with studio-quality voices and emotion control capabilities.</p>
+              <div class="tool-meta">
+                <span class="tool-category">Speech Synthesis</span>
+                <div class="tool-rating">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span>☆</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Resemble AI -->
+          <div class="tool-card" data-category="speech-synthesis">
+            <a href="https://www.resemble.ai/" target="_blank" class="tool-thumbnail">
+              <img src="https://storage.googleapis.com/pai-images/resemble.jpg" alt="Resemble AI">
+              <div class="tool-overlay">
+                <div class="visit-icon">Visit Site</div>
+              </div>
+            </a>
+            <div class="tool-info">
+              <h3>Resemble AI</h3>
+              <p>Custom voice AI platform for creating and cloning voices with real-time synthesis.</p>
+              <div class="tool-meta">
+                <span class="tool-category">Speech Synthesis</span>
+                <div class="tool-rating">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Speech Recognition Section -->
+      <section class="category-section" id="speech-recognition">
+        <h2 class="category-title">Speech Recognition</h2>
+        <p class="category-description">Convert speech to text with high accuracy and real-time capabilities.</p>
+        <div class="tools-grid">
+          <!-- Deepgram -->
+          <div class="tool-card" data-category="speech-recognition">
+            <a href="https://deepgram.com/" target="_blank" class="tool-thumbnail">
+              <img src="https://storage.googleapis.com/pai-images/deepgram.jpg" alt="Deepgram">
+              <div class="tool-overlay">
+                <div class="visit-icon">Visit Site</div>
+              </div>
+            </a>
+            <div class="tool-info">
+              <h3>Deepgram</h3>
+              <p>Industry-leading speech recognition technology with real-time capabilities and high accuracy.</p>
+              <div class="tool-meta">
+                <span class="tool-category">Speech Recognition</span>
+                <div class="tool-rating">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- IBM Watson Speech to Text -->
+          <div class="tool-card" data-category="speech-recognition">
+            <a href="https://www.ibm.com/cloud/watson-speech-to-text" target="_blank" class="tool-thumbnail">
+              <img src="https://storage.googleapis.com/pai-images/watson.jpg" alt="IBM Watson Speech to Text">
+              <div class="tool-overlay">
+                <div class="visit-icon">Visit Site</div>
+              </div>
+            </a>
+            <div class="tool-info">
+              <h3>IBM Watson Speech to Text</h3>
+              <p>Advanced service that converts audio and voice into written text with high accuracy.</p>
+              <div class="tool-meta">
+                <span class="tool-category">Speech Recognition</span>
+                <div class="tool-rating">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span>☆</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Google Cloud Speech-to-Text -->
+          <div class="tool-card" data-category="speech-recognition">
+            <a href="https://cloud.google.com/speech-to-text" target="_blank" class="tool-thumbnail">
+              <img src="https://storage.googleapis.com/pai-images/google-stt.jpg" alt="Google Cloud Speech-to-Text">
+              <div class="tool-overlay">
+                <div class="visit-icon">Visit Site</div>
+              </div>
+            </a>
+            <div class="tool-info">
+              <h3>Google Cloud Speech-to-Text</h3>
+              <p>Powerful API for converting speech to text with support for multiple languages.</p>
+              <div class="tool-meta">
+                <span class="tool-category">Speech Recognition</span>
+                <div class="tool-rating">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Microsoft Azure Speech Service -->
+          <div class="tool-card" data-category="speech-recognition">
+            <a href="https://azure.microsoft.com/en-us/services/cognitive-services/speech-services/" target="_blank" class="tool-thumbnail">
+              <img src="https://storage.googleapis.com/pai-images/azure-speech.jpg" alt="Microsoft Azure Speech Service">
+              <div class="tool-overlay">
+                <div class="visit-icon">Visit Site</div>
+              </div>
+            </a>
+            <div class="tool-info">
+              <h3>Microsoft Azure Speech Service</h3>
+              <p>Comprehensive speech service with support for multiple languages and custom speech models.</p>
+              <div class="tool-meta">
+                <span class="tool-category">Speech Recognition</span>
+                <div class="tool-rating">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span>☆</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- AssemblyAI -->
+          <div class="tool-card" data-category="speech-recognition">
+            <a href="https://www.assemblyai.com/" target="_blank" class="tool-thumbnail">
+              <img src="https://storage.googleapis.com/pai-images/assemblyai.jpg" alt="AssemblyAI">
+              <div class="tool-overlay">
+                <div class="visit-icon">Visit Site</div>
+              </div>
+            </a>
+            <div class="tool-info">
+              <h3>AssemblyAI</h3>
+              <p>Advanced API for speech recognition with support for multiple languages and specialized models.</p>
+              <div class="tool-meta">
+                <span class="tool-category">Speech Recognition</span>
+                <div class="tool-rating">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span>☆</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Rev.ai -->
+          <div class="tool-card" data-category="speech-recognition">
+            <a href="https://www.rev.ai/" target="_blank" class="tool-thumbnail">
+              <img src="https://storage.googleapis.com/pai-images/rev.jpg" alt="Rev.ai">
+              <div class="tool-overlay">
+                <div class="visit-icon">Visit Site</div>
+              </div>
+            </a>
+            <div class="tool-info">
+              <h3>Rev.ai</h3>
+              <p>Speech-to-text API with human-level accuracy and both automated and human transcription services.</p>
+              <div class="tool-meta">
+                <span class="tool-category">Speech Recognition</span>
+                <div class="tool-rating">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span>☆</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Otter.ai -->
+          <div class="tool-card" data-category="speech-recognition">
+            <a href="https://otter.ai/" target="_blank" class="tool-thumbnail">
+              <img src="https://storage.googleapis.com/pai-images/otter.jpg" alt="Otter.ai">
+              <div class="tool-overlay">
+                <div class="visit-icon">Visit Site</div>
+              </div>
+            </a>
+            <div class="tool-info">
+              <h3>Otter.ai</h3>
+              <p>AI-powered transcription service with real-time capabilities and speaker identification.</p>
+              <div class="tool-meta">
+                <span class="tool-category">Speech Recognition</span>
+                <div class="tool-rating">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span>☆</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Sonix -->
+          <div class="tool-card" data-category="speech-recognition">
+            <a href="https://sonix.ai/" target="_blank" class="tool-thumbnail">
+              <img src="https://storage.googleapis.com/pai-images/sonix.jpg" alt="Sonix">
+              <div class="tool-overlay">
+                <div class="visit-icon">Visit Site</div>
+              </div>
+            </a>
+            <div class="tool-info">
+              <h3>Sonix</h3>
+              <p>Advanced transcription service with support for multiple languages and automated subtitles.</p>
+              <div class="tool-meta">
+                <span class="tool-category">Speech Recognition</span>
+                <div class="tool-rating">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span>☆</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Audio Editing Section -->
       <section class="category-section" id="audio-editing">
         <h2 class="category-title">Audio Editing</h2>
-        <p class="category-description">Professional audio processing tools with features for noise reduction, mixing, and editing.</p>
+        <p class="category-description">Professional audio processing and editing tools for content creators.</p>
         <div class="tools-grid">
           <!-- Descript -->
           <div class="tool-card" data-category="audio-editing">
             <a href="https://www.descript.com/" target="_blank" class="tool-thumbnail">
-              <img src="https://storage.googleapis.com/pai-images/descript.jpg" alt="Descript">
+              <img src="https://storage.googleapis.com/pai-images/descript-clone.jpg" alt="Descript">
               <div class="tool-overlay">
                 <div class="visit-icon">Visit Site</div>
               </div>
             </a>
             <div class="tool-info">
               <h3>Descript</h3>
-              <p>AI-powered audio and video editing platform that lets you edit media like a document. Features transcription, audio removal, voice cloning, and content editing.</p>
+              <p>All-in-one audio and video editor with AI-powered transcription and voice cloning features.</p>
               <div class="tool-meta">
                 <span class="tool-category">Audio Editing</span>
                 <div class="tool-rating">
@@ -21,7 +694,7 @@
                   <span class="star">★</span>
                   <span class="star">★</span>
                   <span class="star">★</span>
-                  <span class="star">★</span>
+                  <span>☆</span>
                 </div>
               </div>
             </div>
@@ -37,7 +710,7 @@
             </a>
             <div class="tool-info">
               <h3>Adobe Audition</h3>
-              <p>Professional audio editing software with AI-powered noise reduction and audio enhancement features. Industry standard for audio professionals.</p>
+              <p>Professional audio editing software with advanced noise reduction and enhancement capabilities.</p>
               <div class="tool-meta">
                 <span class="tool-category">Audio Editing</span>
                 <div class="tool-rating">
@@ -45,7 +718,7 @@
                   <span class="star">★</span>
                   <span class="star">★</span>
                   <span class="star">★</span>
-                  <span class="star">★</span>
+                  <span>☆</span>
                 </div>
               </div>
             </div>
@@ -61,7 +734,7 @@
             </a>
             <div class="tool-info">
               <h3>iZotope RX</h3>
-              <p>Advanced audio repair and enhancement suite with AI-powered tools for noise reduction, audio restoration, and voice isolation.</p>
+              <p>Advanced suite for audio repair and enhancement with AI-powered tools.</p>
               <div class="tool-meta">
                 <span class="tool-category">Audio Editing</span>
                 <div class="tool-rating">
@@ -69,7 +742,7 @@
                   <span class="star">★</span>
                   <span class="star">★</span>
                   <span class="star">★</span>
-                  <span class="star">★</span>
+                  <span>☆</span>
                 </div>
               </div>
             </div>
@@ -85,7 +758,7 @@
             </a>
             <div class="tool-info">
               <h3>Audacity</h3>
-              <p>Free, open-source audio editor with a wide range of features for recording, editing, and processing audio files.</p>
+              <p>Free, open-source audio editor with extensive features for recording and processing audio.</p>
               <div class="tool-meta">
                 <span class="tool-category">Audio Editing</span>
                 <div class="tool-rating">
@@ -109,7 +782,7 @@
             </a>
             <div class="tool-info">
               <h3>Pro Tools</h3>
-              <p>Industry-standard digital audio workstation with advanced editing, mixing, and processing capabilities.</p>
+              <p>Industry-standard digital audio workstation with advanced editing and mixing capabilities.</p>
               <div class="tool-meta">
                 <span class="tool-category">Audio Editing</span>
                 <div class="tool-rating">
@@ -117,7 +790,7 @@
                   <span class="star">★</span>
                   <span class="star">★</span>
                   <span class="star">★</span>
-                  <span class="star">★</span>
+                  <span>☆</span>
                 </div>
               </div>
             </div>
@@ -126,14 +799,14 @@
           <!-- Logic Pro -->
           <div class="tool-card" data-category="audio-editing">
             <a href="https://www.apple.com/logic-pro/" target="_blank" class="tool-thumbnail">
-              <img src="https://storage.googleapis.com/pai-images/logicpro.jpg" alt="Logic Pro">
+              <img src="https://storage.googleapis.com/pai-images/logic.jpg" alt="Logic Pro">
               <div class="tool-overlay">
                 <div class="visit-icon">Visit Site</div>
               </div>
             </a>
             <div class="tool-info">
               <h3>Logic Pro</h3>
-              <p>Professional audio production suite for macOS with advanced editing, mixing, and processing tools.</p>
+              <p>Professional audio production suite for macOS with comprehensive editing tools.</p>
               <div class="tool-meta">
                 <span class="tool-category">Audio Editing</span>
                 <div class="tool-rating">
@@ -141,7 +814,7 @@
                   <span class="star">★</span>
                   <span class="star">★</span>
                   <span class="star">★</span>
-                  <span class="star">★</span>
+                  <span>☆</span>
                 </div>
               </div>
             </div>
@@ -149,7 +822,7 @@
 
           <!-- FL Studio -->
           <div class="tool-card" data-category="audio-editing">
-            <a href="https://www.image-line.com/fl-studio/" target="_blank" class="tool-thumbnail">
+            <a href="https://www.image-line.com/" target="_blank" class="tool-thumbnail">
               <img src="https://storage.googleapis.com/pai-images/flstudio.jpg" alt="FL Studio">
               <div class="tool-overlay">
                 <div class="visit-icon">Visit Site</div>
@@ -157,7 +830,7 @@
             </a>
             <div class="tool-info">
               <h3>FL Studio</h3>
-              <p>Complete music production environment with advanced audio editing, mixing, and processing capabilities.</p>
+              <p>Complete music production environment with advanced audio editing features.</p>
               <div class="tool-meta">
                 <span class="tool-category">Audio Editing</span>
                 <div class="tool-rating">
@@ -181,9 +854,40 @@
             </a>
             <div class="tool-info">
               <h3>Ableton Live</h3>
-              <p>Unique music production and performance software with innovative audio editing and processing features.</p>
+              <p>Unique software for music production and performance with innovative audio processing features.</p>
               <div class="tool-meta">
                 <span class="tool-category">Audio Editing</span>
+                <div class="tool-rating">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span>☆</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Music Generation Section -->
+      <section class="category-section" id="music-generation">
+        <h2 class="category-title">Music Generation</h2>
+        <p class="category-description">AI-powered music creation tools that generate original music based on mood and style.</p>
+        <div class="tools-grid">
+          <!-- AIVA -->
+          <div class="tool-card" data-category="music-generation">
+            <a href="https://www.aiva.ai/" target="_blank" class="tool-thumbnail">
+              <img src="https://storage.googleapis.com/pai-images/aiva.jpg" alt="AIVA">
+              <div class="tool-overlay">
+                <div class="visit-icon">Visit Site</div>
+              </div>
+            </a>
+            <div class="tool-info">
+              <h3>AIVA</h3>
+              <p>Emotion-driven AI music composition tool that creates original music in various styles.</p>
+              <div class="tool-meta">
+                <span class="tool-category">Music Generation</span>
                 <div class="tool-rating">
                   <span class="star">★</span>
                   <span class="star">★</span>
@@ -194,5 +898,457 @@
               </div>
             </div>
           </div>
+
+          <!-- Soundraw -->
+          <div class="tool-card" data-category="music-generation">
+            <a href="https://soundraw.io/" target="_blank" class="tool-thumbnail">
+              <img src="https://storage.googleapis.com/pai-images/soundraw.jpg" alt="Soundraw">
+              <div class="tool-overlay">
+                <div class="visit-icon">Visit Site</div>
+              </div>
+            </a>
+            <div class="tool-info">
+              <h3>Soundraw</h3>
+              <p>AI music generator that creates custom tracks based on mood and style preferences.</p>
+              <div class="tool-meta">
+                <span class="tool-category">Music Generation</span>
+                <div class="tool-rating">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span>☆</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Amper Music -->
+          <div class="tool-card" data-category="music-generation">
+            <a href="https://www.ampermusic.com/" target="_blank" class="tool-thumbnail">
+              <img src="https://storage.googleapis.com/pai-images/amper.jpg" alt="Amper Music">
+              <div class="tool-overlay">
+                <div class="visit-icon">Visit Site</div>
+              </div>
+            </a>
+            <div class="tool-info">
+              <h3>Amper Music</h3>
+              <p>Custom music creation platform that generates original tracks based on your preferences.</p>
+              <div class="tool-meta">
+                <span class="tool-category">Music Generation</span>
+                <div class="tool-rating">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span>☆</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Mubert -->
+          <div class="tool-card" data-category="music-generation">
+            <a href="https://mubert.com/" target="_blank" class="tool-thumbnail">
+              <img src="https://storage.googleapis.com/pai-images/mubert.jpg" alt="Mubert">
+              <div class="tool-overlay">
+                <div class="visit-icon">Visit Site</div>
+              </div>
+            </a>
+            <div class="tool-info">
+              <h3>Mubert</h3>
+              <p>AI-powered music generator that creates unique tracks based on mood and genre.</p>
+              <div class="tool-meta">
+                <span class="tool-category">Music Generation</span>
+                <div class="tool-rating">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span>☆</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- OpenAI MuseNet -->
+          <div class="tool-card" data-category="music-generation">
+            <a href="https://openai.com/blog/musenet/" target="_blank" class="tool-thumbnail">
+              <img src="https://storage.googleapis.com/pai-images/musenet.jpg" alt="OpenAI MuseNet">
+              <div class="tool-overlay">
+                <div class="visit-icon">Visit Site</div>
+              </div>
+            </a>
+            <div class="tool-info">
+              <h3>OpenAI MuseNet</h3>
+              <p>Deep learning model that can generate musical compositions in various styles.</p>
+              <div class="tool-meta">
+                <span class="tool-category">Music Generation</span>
+                <div class="tool-rating">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span>☆</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Google Magenta -->
+          <div class="tool-card" data-category="music-generation">
+            <a href="https://magenta.tensorflow.org/" target="_blank" class="tool-thumbnail">
+              <img src="https://storage.googleapis.com/pai-images/magenta.jpg" alt="Google Magenta">
+              <div class="tool-overlay">
+                <div class="visit-icon">Visit Site</div>
+              </div>
+            </a>
+            <div class="tool-info">
+              <h3>Google Magenta</h3>
+              <p>Research project exploring machine learning in music and art generation.</p>
+              <div class="tool-meta">
+                <span class="tool-category">Music Generation</span>
+                <div class="tool-rating">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span>☆</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Jukedeck -->
+          <div class="tool-card" data-category="music-generation">
+            <a href="https://www.jukedeck.com/" target="_blank" class="tool-thumbnail">
+              <img src="https://storage.googleapis.com/pai-images/jukedeck.jpg" alt="Jukedeck">
+              <div class="tool-overlay">
+                <div class="visit-icon">Visit Site</div>
+              </div>
+            </a>
+            <div class="tool-info">
+              <h3>Jukedeck</h3>
+              <p>AI music composition platform for creating custom tracks for videos and games.</p>
+              <div class="tool-meta">
+                <span class="tool-category">Music Generation</span>
+                <div class="tool-rating">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span>☆</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Melodrive -->
+          <div class="tool-card" data-category="music-generation">
+            <a href="https://www.melodrive.com/" target="_blank" class="tool-thumbnail">
+              <img src="https://storage.googleapis.com/pai-images/melodrive.jpg" alt="Melodrive">
+              <div class="tool-overlay">
+                <div class="visit-icon">Visit Site</div>
+              </div>
+            </a>
+            <div class="tool-info">
+              <h3>Melodrive</h3>
+              <p>Adaptive music generation for games and interactive media experiences.</p>
+              <div class="tool-meta">
+                <span class="tool-category">Music Generation</span>
+                <div class="tool-rating">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span>☆</span>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
+
+      <!-- Voice Cloning Section -->
+      <section class="category-section" id="voice-cloning">
+        <h2 class="category-title">Voice Cloning</h2>
+        <p class="category-description">Create and use AI voice clones, supporting celebrity voice imitation and custom voice models.</p>
+        <div class="tools-grid">
+          <!-- Voice.ai -->
+          <div class="tool-card" data-category="voice-cloning">
+            <a href="https://voice.ai/" target="_blank" class="tool-thumbnail">
+              <img src="https://storage.googleapis.com/pai-images/voiceai.jpg" alt="Voice.ai">
+              <div class="tool-overlay">
+                <div class="visit-icon">Visit Site</div>
+              </div>
+            </a>
+            <div class="tool-info">
+              <h3>Voice.ai</h3>
+              <p>Real-time voice conversion and cloning tool for live calls and streaming.</p>
+              <div class="tool-meta">
+                <span class="tool-category">Voice Cloning</span>
+                <div class="tool-rating">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Descript -->
+          <div class="tool-card" data-category="voice-cloning">
+            <a href="https://www.descript.com/" target="_blank" class="tool-thumbnail">
+              <img src="https://storage.googleapis.com/pai-images/descript-clone.jpg" alt="Descript">
+              <div class="tool-overlay">
+                <div class="visit-icon">Visit Site</div>
+              </div>
+            </a>
+            <div class="tool-info">
+              <h3>Descript</h3>
+              <p>All-in-one audio and video editor with AI-powered transcription and voice cloning features.</p>
+              <div class="tool-meta">
+                <span class="tool-category">Voice Cloning</span>
+                <div class="tool-rating">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span>☆</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Resemble AI -->
+          <div class="tool-card" data-category="voice-cloning">
+            <a href="https://www.resemble.ai/" target="_blank" class="tool-thumbnail">
+              <img src="https://storage.googleapis.com/pai-images/resemble-clone.jpg" alt="Resemble AI">
+              <div class="tool-overlay">
+                <div class="visit-icon">Visit Site</div>
+              </div>
+            </a>
+            <div class="tool-info">
+              <h3>Resemble AI</h3>
+              <p>Custom voice AI platform for creating and cloning voices with real-time synthesis.</p>
+              <div class="tool-meta">
+                <span class="tool-category">Voice Cloning</span>
+                <div class="tool-rating">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span>☆</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Coqui TTS -->
+          <div class="tool-card" data-category="voice-cloning">
+            <a href="https://coqui.ai/" target="_blank" class="tool-thumbnail">
+              <img src="https://storage.googleapis.com/pai-images/coqui-clone.jpg" alt="Coqui TTS">
+              <div class="tool-overlay">
+                <div class="visit-icon">Visit Site</div>
+              </div>
+            </a>
+            <div class="tool-info">
+              <h3>Coqui TTS</h3>
+              <p>Open-source text-to-speech toolkit with advanced features and voice cloning capabilities.</p>
+              <div class="tool-meta">
+                <span class="tool-category">Voice Cloning</span>
+                <div class="tool-rating">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span>☆</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Murf.ai -->
+          <div class="tool-card" data-category="voice-cloning">
+            <a href="https://murf.ai/" target="_blank" class="tool-thumbnail">
+              <img src="https://storage.googleapis.com/pai-images/murf-clone.jpg" alt="Murf.ai">
+              <div class="tool-overlay">
+                <div class="visit-icon">Visit Site</div>
+              </div>
+            </a>
+            <div class="tool-info">
+              <h3>Murf.ai</h3>
+              <p>AI voice generator with studio-quality voices and voice cloning capabilities.</p>
+              <div class="tool-meta">
+                <span class="tool-category">Voice Cloning</span>
+                <div class="tool-rating">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span>☆</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Play.ht -->
+          <div class="tool-card" data-category="voice-cloning">
+            <a href="https://play.ht/" target="_blank" class="tool-thumbnail">
+              <img src="https://storage.googleapis.com/pai-images/playht-clone.jpg" alt="Play.ht">
+              <div class="tool-overlay">
+                <div class="visit-icon">Visit Site</div>
+              </div>
+            </a>
+            <div class="tool-info">
+              <h3>Play.ht</h3>
+              <p>Create natural-sounding AI voices for your content with voice cloning features.</p>
+              <div class="tool-meta">
+                <span class="tool-category">Voice Cloning</span>
+                <div class="tool-rating">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span>☆</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ElevenLabs -->
+          <div class="tool-card" data-category="voice-cloning">
+            <a href="https://elevenlabs.io/" target="_blank" class="tool-thumbnail">
+              <img src="https://storage.googleapis.com/pai-images/elevenlabs-clone.jpg" alt="ElevenLabs">
+              <div class="tool-overlay">
+                <div class="visit-icon">Visit Site</div>
+              </div>
+            </a>
+            <div class="tool-info">
+              <h3>ElevenLabs</h3>
+              <p>Advanced AI voice synthesis with emotional expression and voice cloning capabilities.</p>
+              <div class="tool-meta">
+                <span class="tool-category">Voice Cloning</span>
+                <div class="tool-rating">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span>☆</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Microsoft Azure Custom Voice -->
+          <div class="tool-card" data-category="voice-cloning">
+            <a href="https://azure.microsoft.com/en-us/services/cognitive-services/custom-speech-service/" target="_blank" class="tool-thumbnail">
+              <img src="https://storage.googleapis.com/pai-images/azure-custom.jpg" alt="Microsoft Azure Custom Voice">
+              <div class="tool-overlay">
+                <div class="visit-icon">Visit Site</div>
+              </div>
+            </a>
+            <div class="tool-info">
+              <h3>Microsoft Azure Custom Voice</h3>
+              <p>Enterprise-grade custom voice training service for creating unique voice models.</p>
+              <div class="tool-meta">
+                <span class="tool-category">Voice Cloning</span>
+                <div class="tool-rating">
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span class="star">★</span>
+                  <span>☆</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>RecallLook</h3>
+        <p>Your comprehensive directory for AI voice tools and resources.</p>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="tools.html">All Tools</a></li>
+          <li><a href="about.html">About Us</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Categories</h3>
+        <ul>
+          <li><a href="#speech-synthesis">Speech Synthesis</a></li>
+          <li><a href="#speech-recognition">Speech Recognition</a></li>
+          <li><a href="#audio-editing">Audio Editing</a></li>
+          <li><a href="#music-generation">Music Generation</a></li>
+          <li><a href="#voice-cloning">Voice Cloning</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Connect With Us</h3>
+        <div class="social-links">
+          <a href="#" class="social-link">Twitter</a>
+          <a href="#" class="social-link">LinkedIn</a>
+          <a href="#" class="social-link">GitHub</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2024 RecallLook. All rights reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    // Tool filtering functionality
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const categorySections = document.querySelectorAll('.category-section');
+
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+
+        const category = button.dataset.category;
+        
+        categorySections.forEach(section => {
+          if (category === 'all' || section.id === category) {
+            section.style.display = 'block';
+          } else {
+            section.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Search functionality
+    const searchInput = document.querySelector('.search-box input');
+    searchInput.addEventListener('input', (e) => {
+      const searchTerm = e.target.value.toLowerCase();
+      
+      document.querySelectorAll('.tool-card').forEach(card => {
+        const title = card.querySelector('h3').textContent.toLowerCase();
+        const description = card.querySelector('p').textContent.toLowerCase();
+        const category = card.dataset.category;
+        
+        if (title.includes(searchTerm) || 
+            description.includes(searchTerm) || 
+            category.includes(searchTerm)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+</html> 
