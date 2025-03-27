@@ -1,174 +1,779 @@
 <!DOCTYPE html>
 <html lang="zh">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title data-i18n="heroTitle">发现最佳AI语音工具</title>
-    <link rel="stylesheet" href="css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title data-i18n="heroTitle">发现最佳AI语音工具</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+  <style>
+    .hero-section {
+      background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
+      color: white;
+      padding: 6rem 2rem;
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    
+    .hero-section h1 {
+      font-size: 3.5rem;
+      margin-bottom: 1.5rem;
+      font-weight: 800;
+      line-height: 1.2;
+    }
+    
+    .hero-section p {
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.6;
+      opacity: 0.9;
+    }
+    
+    .category-nav {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 4rem;
+    }
+    
+    .category-btn {
+      padding: 1rem 2rem;
+      border: 2px solid #1a237e;
+      border-radius: 50px;
+      background: white;
+      color: #1a237e;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-weight: 600;
+      font-size: 1rem;
+      text-decoration: none;
+    }
+    
+    .category-btn:hover {
+      background: #1a237e;
+      color: white;
+      transform: translateY(-2px);
+    }
+    
+    .featured-tools {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    .section-title {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .section-title h2 {
+      font-size: 2.5rem;
+      color: #1a237e;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    
+    .section-title p {
+      color: #666;
+      font-size: 1.1rem;
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+    
+    .tool-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s;
+      border: 1px solid rgba(0,0,0,0.1);
+    }
+    
+    .tool-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+    
+    .tool-thumbnail {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+    }
+    
+    .tool-thumbnail img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    
+    .tool-card:hover .tool-thumbnail img {
+      transform: scale(1.05);
+    }
+    
+    .tool-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(26, 35, 126, 0.3);
+      opacity: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 0.3s;
+    }
+    
+    .tool-thumbnail:hover .tool-overlay {
+      opacity: 1;
+    }
+    
+    .visit-icon {
+      color: white;
+      font-size: 1.5rem;
+      padding: 0.8rem 1.5rem;
+      background: rgba(26, 35, 126, 0.9);
+      border-radius: 8px;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+    
+    .visit-icon:hover {
+      background: rgba(26, 35, 126, 1);
+      transform: scale(1.05);
+    }
+    
+    .tool-info {
+      padding: 1.8rem;
+    }
+    
+    .tool-info h3 {
+      margin: 0 0 1rem;
+      font-size: 1.5rem;
+      color: #1a237e;
+      font-weight: 700;
+    }
+    
+    .tool-info p {
+      color: #666;
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 1.2rem;
+    }
+    
+    .tool-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.95rem;
+      color: #888;
+    }
+    
+    .tool-category {
+      background: #f5f5f5;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      color: #1a237e;
+      font-weight: 500;
+    }
+    
+    .tool-rating {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+    
+    .star {
+      color: #ffd700;
+      font-size: 1.1rem;
+    }
+    
+    .newsletter-section {
+      background: #f5f5f5;
+      padding: 4rem 2rem;
+      text-align: center;
+      margin-top: 4rem;
+    }
+    
+    .newsletter-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .newsletter-content h2 {
+      font-size: 2.2rem;
+      color: #1a237e;
+      margin-bottom: 1rem;
+      font-weight: 700;
+    }
+    
+    .newsletter-content p {
+      color: #666;
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+      line-height: 1.6;
+    }
+    
+    .newsletter-form {
+      display: flex;
+      gap: 1rem;
+      max-width: 500px;
+      margin: 0 auto;
+    }
+    
+    .newsletter-form input {
+      flex: 1;
+      padding: 1rem 1.5rem;
+      border: 2px solid #e0e0e0;
+      border-radius: 50px;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+    
+    .newsletter-form input:focus {
+      outline: none;
+      border-color: #1a237e;
+      box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.1);
+    }
+    
+    .newsletter-form button {
+      padding: 1rem 2rem;
+      background: #1a237e;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+    
+    .newsletter-form button:hover {
+      background: #0d47a1;
+      transform: translateY(-2px);
+    }
+
+    .nav-right {
+      display: flex;
+      align-items: center;
+      gap: 1.5rem;
+    }
+
+    .language-selector {
+      position: relative;
+    }
+
+    .lang-btn {
+      background: none;
+      border: 2px solid #1a237e;
+      color: #1a237e;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-weight: 600;
+      transition: all 0.3s;
+    }
+
+    .lang-btn:hover {
+      background: #1a237e;
+      color: white;
+    }
+
+    .lang-dropdown {
+      position: absolute;
+      top: 100%;
+      right: 0;
+      background: white;
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      padding: 0.5rem 0;
+      display: none;
+      min-width: 150px;
+      z-index: 1000;
+    }
+
+    .language-selector:hover .lang-dropdown {
+      display: block;
+    }
+
+    .lang-dropdown a {
+      display: block;
+      padding: 0.5rem 1rem;
+      color: #333;
+      text-decoration: none;
+      transition: all 0.3s;
+    }
+
+    .lang-dropdown a:hover {
+      background: #f5f5f5;
+      color: #1a237e;
+    }
+
+    .auth-buttons {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .login-btn, .signup-btn {
+      padding: 0.5rem 1.5rem;
+      border-radius: 20px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .login-btn {
+      background: none;
+      border: 2px solid #1a237e;
+      color: #1a237e;
+    }
+
+    .login-btn:hover {
+      background: #1a237e;
+      color: white;
+    }
+
+    .signup-btn {
+      background: #1a237e;
+      border: none;
+      color: white;
+    }
+
+    .signup-btn:hover {
+      background: #0d47a1;
+      transform: translateY(-2px);
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.5);
+      z-index: 1000;
+    }
+
+    .modal-content {
+      position: relative;
+      background: white;
+      width: 90%;
+      max-width: 500px;
+      margin: 50px auto;
+      padding: 2rem;
+      border-radius: 15px;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+    }
+
+    .close {
+      position: absolute;
+      right: 1.5rem;
+      top: 1rem;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: #666;
+    }
+
+    .close:hover {
+      color: #333;
+    }
+
+    .auth-form {
+      margin-top: 1.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 0.5rem;
+      color: #333;
+      font-weight: 500;
+    }
+
+    .form-group input {
+      width: 100%;
+      padding: 0.8rem;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+
+    .form-group input:focus {
+      outline: none;
+      border-color: #1a237e;
+      box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.1);
+    }
+
+    .form-options {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .forgot-password {
+      color: #1a237e;
+      text-decoration: none;
+      font-size: 0.9rem;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 1rem;
+      background: #1a237e;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .submit-btn:hover {
+      background: #0d47a1;
+      transform: translateY(-2px);
+    }
+
+    .social-login {
+      margin-top: 2rem;
+      text-align: center;
+    }
+
+    .social-login p {
+      color: #666;
+      margin-bottom: 1rem;
+    }
+
+    .social-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    .social-btn {
+      padding: 0.8rem 1.5rem;
+      border: 2px solid #e0e0e0;
+      border-radius: 8px;
+      background: white;
+      color: #333;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .social-btn:hover {
+      background: #f5f5f5;
+      border-color: #1a237e;
+      color: #1a237e;
+    }
+
+    .social-btn.google {
+      color: #db4437;
+    }
+
+    .social-btn.facebook {
+      color: #4267B2;
+    }
+
+    .search-settings {
+      background: #f8f9fa;
+      padding: 2rem 0;
+      margin-bottom: 3rem;
+    }
+
+    .search-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+
+    .search-box {
+      display: flex;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .search-box input {
+      flex: 1;
+      padding: 1rem 1.5rem;
+      border: 2px solid #e0e0e0;
+      border-radius: 50px;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+
+    .search-box input:focus {
+      outline: none;
+      border-color: #1a237e;
+      box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.1);
+    }
+
+    .search-btn {
+      padding: 0 2rem;
+      background: #1a237e;
+      color: white;
+      border: none;
+      border-radius: 50px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .search-btn:hover {
+      background: #0d47a1;
+      transform: translateY(-2px);
+    }
+
+    .search-filters {
+      display: flex;
+      gap: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-group {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .filter-group label {
+      color: #666;
+      font-weight: 500;
+    }
+
+    .filter-group select {
+      padding: 0.5rem 1rem;
+      border: 2px solid #e0e0e0;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      color: #333;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .filter-group select:focus {
+      outline: none;
+      border-color: #1a237e;
+      box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.1);
+    }
+  </style>
 </head>
 <body>
-    <!-- 导航栏占位符 -->
-    <div id="header-placeholder"></div>
+  <!-- 导航栏占位符 -->
+  <div id="header-placeholder"></div>
 
-    <!-- 主要内容 -->
-    <main>
-        <!-- 英雄区域 -->
-        <section class="hero">
-            <div class="hero-content">
-                <h1 data-i18n="heroTitle">发现最佳AI语音工具</h1>
-                <p data-i18n="heroDesc">查找和比较最新的AI语音技术工具,包括语音合成、识别等。</p>
-                <a href="tools.html" class="cta-button" data-i18n="allTools">浏览所有工具</a>
-            </div>
-        </section>
-
-        <!-- 分类区域 -->
-        <section class="categories">
-            <h2 data-i18n="categories">分类</h2>
-            <div class="category-grid">
-                <a href="tools.html#speech-synthesis" class="category-card">
-                    <i class="fas fa-microphone"></i>
-                    <h3 data-i18n="speechSynthesis">语音合成</h3>
-                </a>
-                <a href="tools.html#speech-recognition" class="category-card">
-                    <i class="fas fa-comments"></i>
-                    <h3 data-i18n="speechRecognition">语音识别</h3>
-                </a>
-                <a href="tools.html#audio-editing" class="category-card">
-                    <i class="fas fa-cut"></i>
-                    <h3 data-i18n="audioEditing">音频编辑</h3>
-                </a>
-                <a href="tools.html#music-generation" class="category-card">
-                    <i class="fas fa-music"></i>
-                    <h3 data-i18n="musicGeneration">音乐生成</h3>
-                </a>
-                <a href="tools.html#voice-cloning" class="category-card">
-                    <i class="fas fa-user-circle"></i>
-                    <h3 data-i18n="voiceCloning">语音克隆</h3>
-                </a>
-            </div>
-        </section>
-
-        <!-- 精选工具 -->
-        <section class="featured-tools">
-            <h2 data-i18n="featuredTools">精选工具</h2>
-            <div class="tools-grid" id="featuredToolsGrid">
-                <!-- 工具卡片将通过JavaScript动态加载 -->
-            </div>
-        </section>
-
-        <!-- 新闻通讯 -->
-        <section class="newsletter">
-            <div class="newsletter-content">
-                <h2 data-i18n="newsletterTitle">保持更新</h2>
-                <p data-i18n="newsletterDesc">订阅我们的新闻通讯,获取最新的AI语音工具和更新。</p>
-                <form class="newsletter-form">
-                    <input type="email" placeholder="输入您的邮箱" data-i18n="newsletterPlaceholder" required>
-                    <button type="submit" data-i18n="subscribe">订阅</button>
-                </form>
-            </div>
-        </section>
-    </main>
-
-    <!-- 页脚占位符 -->
-    <div id="footer-placeholder"></div>
-
-    <!-- 登录模态框 -->
-    <div id="loginModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2 data-i18n="login">登录</h2>
-            <form id="loginForm" class="auth-form">
-                <div class="form-group">
-                    <label for="loginEmail" data-i18n="email">邮箱</label>
-                    <input type="email" id="loginEmail" name="email" data-validate="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="loginPassword" data-i18n="password">密码</label>
-                    <input type="password" id="loginPassword" name="password" data-validate="password" required>
-                </div>
-                <div class="checkbox">
-                    <input type="checkbox" id="rememberMe" name="remember">
-                    <label for="rememberMe" data-i18n="rememberMe">记住我</label>
-                </div>
-                <button type="submit" data-i18n="login">登录</button>
-                <a href="#" class="forgot-password" data-i18n="forgotPassword">忘记密码?</a>
-                <div class="social-login">
-                    <p data-i18n="orLoginWith">或使用以下方式登录</p>
-                    <div class="social-buttons">
-                        <button type="button" class="social-btn google">
-                            <i class="fab fa-google"></i>
-                            <span>Google</span>
-                        </button>
-                        <button type="button" class="social-btn github">
-                            <i class="fab fa-github"></i>
-                            <span>GitHub</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="auth-switch">
-                    <p data-i18n="noAccount">还没有账号? <a href="#" class="switch-to-signup" data-i18n="signup">注册</a></p>
-                </div>
-            </form>
-        </div>
+  <!-- 搜索设置 -->
+  <section class="search-settings">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search AI voice tools...">
+      <button class="search-btn"><i class="fas fa-search"></i></button>
     </div>
-
-    <!-- 注册模态框 -->
-    <div id="signupModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2 data-i18n="signup">注册</h2>
-            <form id="signupForm" class="auth-form">
-                <div class="form-group">
-                    <label for="signupName" data-i18n="name">姓名</label>
-                    <input type="text" id="signupName" name="name" data-validate="name" required>
-                </div>
-                <div class="form-group">
-                    <label for="signupEmail" data-i18n="email">邮箱</label>
-                    <input type="email" id="signupEmail" name="email" data-validate="email" required>
-                </div>
-                <div class="form-group">
-                    <label for="signupPassword" data-i18n="password">密码</label>
-                    <input type="password" id="signupPassword" name="password" data-validate="password" required>
-                </div>
-                <div class="form-group">
-                    <label for="confirmPassword" data-i18n="password">确认密码</label>
-                    <input type="password" id="confirmPassword" name="confirmPassword" data-validate="password" required>
-                </div>
-                <div class="checkbox">
-                    <input type="checkbox" id="acceptTerms" name="acceptTerms" required>
-                    <label for="acceptTerms" data-i18n="acceptTerms">我同意服务条款和隐私政策</label>
-                </div>
-                <button type="submit" data-i18n="signup">注册</button>
-                <div class="social-login">
-                    <p data-i18n="orSignupWith">或使用以下方式注册</p>
-                    <div class="social-buttons">
-                        <button type="button" class="social-btn google">
-                            <i class="fab fa-google"></i>
-                            <span>Google</span>
-                        </button>
-                        <button type="button" class="social-btn github">
-                            <i class="fab fa-github"></i>
-                            <span>GitHub</span>
-                        </button>
-                    </div>
-                </div>
-                <div class="auth-switch">
-                    <p data-i18n="haveAccount">已有账号? <a href="#" class="switch-to-login" data-i18n="login">登录</a></p>
-                </div>
-            </form>
-        </div>
+    <div class="filters">
+      <select id="categoryFilter">
+        <option value="">All Categories</option>
+        <option value="speech-synthesis">Speech Synthesis</option>
+        <option value="speech-recognition">Speech Recognition</option>
+        <option value="audio-editing">Audio Editing</option>
+        <option value="music-generation">Music Generation</option>
+        <option value="voice-cloning">Voice Cloning</option>
+      </select>
+      <select id="priceFilter">
+        <option value="">All Prices</option>
+        <option value="free">Free</option>
+        <option value="low">Under $10</option>
+        <option value="medium">$10 - $50</option>
+        <option value="high">Over $50</option>
+      </select>
+      <select id="ratingFilter">
+        <option value="">All Ratings</option>
+        <option value="4">4+ Stars</option>
+        <option value="3">3+ Stars</option>
+        <option value="2">2+ Stars</option>
+      </select>
     </div>
+  </section>
 
-    <!-- JavaScript文件 -->
-    <script src="js/languages.js"></script>
-    <script src="js/components.js"></script>
-    <script src="js/utils/auth.js"></script>
-    <script src="js/utils/loading.js"></script>
-    <script src="js/utils/performance.js"></script>
-    <script src="js/utils/favorites.js"></script>
-    <script src="js/utils/search.js"></script>
-    <script src="js/utils/validation.js"></script>
-    <script src="js/main.js"></script>
+  <!-- 主要内容 -->
+  <main>
+    <!-- 英雄区域 -->
+    <section class="hero">
+      <div class="hero-content">
+        <h1 data-i18n="heroTitle">发现最佳AI语音工具</h1>
+        <p data-i18n="heroDesc">查找和比较最新的AI语音技术工具,包括语音合成、识别等。</p>
+        <a href="tools.html" class="cta-button" data-i18n="allTools">浏览所有工具</a>
+      </div>
+    </section>
+
+    <!-- 分类区域 -->
+    <section class="categories">
+      <h2 data-i18n="categories">分类</h2>
+      <div class="category-grid">
+        <a href="tools.html#speech-synthesis" class="category-card">
+          <i class="fas fa-microphone"></i>
+          <h3 data-i18n="speechSynthesis">语音合成</h3>
+        </a>
+        <a href="tools.html#speech-recognition" class="category-card">
+          <i class="fas fa-comments"></i>
+          <h3 data-i18n="speechRecognition">语音识别</h3>
+        </a>
+        <a href="tools.html#audio-editing" class="category-card">
+          <i class="fas fa-cut"></i>
+          <h3 data-i18n="audioEditing">音频编辑</h3>
+        </a>
+        <a href="tools.html#music-generation" class="category-card">
+          <i class="fas fa-music"></i>
+          <h3 data-i18n="musicGeneration">音乐生成</h3>
+        </a>
+        <a href="tools.html#voice-cloning" class="category-card">
+          <i class="fas fa-user-circle"></i>
+          <h3 data-i18n="voiceCloning">语音克隆</h3>
+        </a>
+      </div>
+    </section>
+
+    <!-- 精选工具 -->
+    <section class="featured-tools">
+      <h2 data-i18n="featuredTools">精选工具</h2>
+      <div class="tools-grid" id="featuredToolsGrid">
+        <!-- 工具卡片将通过JavaScript动态加载 -->
+      </div>
+    </section>
+
+    <!-- 新闻通讯 -->
+    <section class="newsletter">
+      <div class="newsletter-content">
+        <h2 data-i18n="newsletterTitle">保持更新</h2>
+        <p data-i18n="newsletterDesc">订阅我们的新闻通讯,获取最新的AI语音工具和更新。</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="输入您的邮箱" data-i18n="newsletterPlaceholder" required>
+          <button type="submit" data-i18n="subscribe">订阅</button>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <!-- 页脚占位符 -->
+  <div id="footer-placeholder"></div>
+
+  <!-- 登录模态框 -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 data-i18n="login">登录</h2>
+      <form id="loginForm" class="auth-form">
+        <div class="form-group">
+          <label for="loginEmail" data-i18n="email">邮箱</label>
+          <input type="email" id="loginEmail" name="email" data-validate="email" required>
+        </div>
+        <div class="form-group">
+          <label for="loginPassword" data-i18n="password">密码</label>
+          <input type="password" id="loginPassword" name="password" data-validate="password" required>
+        </div>
+        <div class="checkbox">
+          <input type="checkbox" id="rememberMe" name="remember">
+          <label for="rememberMe" data-i18n="rememberMe">记住我</label>
+        </div>
+        <button type="submit" data-i18n="login">登录</button>
+        <a href="#" class="forgot-password" data-i18n="forgotPassword">忘记密码?</a>
+        <div class="social-login">
+          <p data-i18n="orLoginWith">或使用以下方式登录</p>
+          <div class="social-buttons">
+            <button type="button" class="social-btn google">
+              <i class="fab fa-google"></i>
+              <span>Google</span>
+            </button>
+            <button type="button" class="social-btn github">
+              <i class="fab fa-github"></i>
+              <span>GitHub</span>
+            </button>
+          </div>
+        </div>
+        <div class="auth-switch">
+          <p data-i18n="noAccount">还没有账号? <a href="#" class="switch-to-signup" data-i18n="signup">注册</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- 注册模态框 -->
+  <div id="signupModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 data-i18n="signup">注册</h2>
+      <form id="signupForm" class="auth-form">
+        <div class="form-group">
+          <label for="signupName" data-i18n="name">姓名</label>
+          <input type="text" id="signupName" name="name" data-validate="name" required>
+        </div>
+        <div class="form-group">
+          <label for="signupEmail" data-i18n="email">邮箱</label>
+          <input type="email" id="signupEmail" name="email" data-validate="email" required>
+        </div>
+        <div class="form-group">
+          <label for="signupPassword" data-i18n="password">密码</label>
+          <input type="password" id="signupPassword" name="password" data-validate="password" required>
+        </div>
+        <div class="form-group">
+          <label for="confirmPassword" data-i18n="password">确认密码</label>
+          <input type="password" id="confirmPassword" name="confirmPassword" data-validate="password" required>
+        </div>
+        <div class="checkbox">
+          <input type="checkbox" id="acceptTerms" name="acceptTerms" required>
+          <label for="acceptTerms" data-i18n="acceptTerms">我同意服务条款和隐私政策</label>
+        </div>
+        <button type="submit" data-i18n="signup">注册</button>
+        <div class="social-login">
+          <p data-i18n="orSignupWith">或使用以下方式注册</p>
+          <div class="social-buttons">
+            <button type="button" class="social-btn google">
+              <i class="fab fa-google"></i>
+              <span>Google</span>
+            </button>
+            <button type="button" class="social-btn github">
+              <i class="fab fa-github"></i>
+              <span>GitHub</span>
+            </button>
+          </div>
+        </div>
+        <div class="auth-switch">
+          <p data-i18n="haveAccount">已有账号? <a href="#" class="switch-to-login" data-i18n="login">登录</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- JavaScript文件 -->
+  <script src="js/languages.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/utils/auth.js"></script>
+  <script src="js/utils/loading.js"></script>
+  <script src="js/utils/performance.js"></script>
+  <script src="js/utils/favorites.js"></script>
+  <script src="js/utils/search.js"></script>
+  <script src="js/utils/validation.js"></script>
+  <script src="js/main.js"></script>
 </body>
 </html>
