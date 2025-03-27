@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>RecallLook - AI Voice Tools Directory</title>
+  <title data-i18n="siteTitle">RecallLook - AI Voice Tools Directory</title>
   <link rel="stylesheet" href="css/style.css">
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
     .hero-section {
       background: linear-gradient(135deg, #1a237e 0%, #0d47a1 100%);
@@ -582,339 +582,231 @@
   </style>
 </head>
 <body>
-  <header>
-    <nav>
-      <div class="logo">RecallLook</div>
-      <ul class="nav-links">
-        <li><a href="index.html">Home</a></li>
-        <li><a href="tools.html">All Tools</a></li>
-        <li><a href="about.html">About</a></li>
-      </ul>
-      <div class="nav-right">
-        <div class="language-selector">
-          <button class="lang-btn">
-            <span class="current-lang">EN</span>
-            <i class="fas fa-chevron-down"></i>
-          </button>
-          <div class="lang-dropdown">
-            <a href="#" data-lang="en">English</a>
-            <a href="#" data-lang="zh">中文</a>
-            <a href="#" data-lang="es">Español</a>
-            <a href="#" data-lang="fr">Français</a>
-          </div>
-        </div>
-        <div class="auth-buttons">
-          <button class="login-btn">Login</button>
-          <button class="signup-btn">Sign Up</button>
-        </div>
-      </div>
-    </nav>
-  </header>
+  <!-- 导航栏 -->
+  <div id="header-container"></div>
 
+  <!-- 搜索设置 -->
+  <section class="search-settings">
+    <div class="search-box">
+      <input type="text" id="searchInput" placeholder="Search AI voice tools...">
+      <button class="search-btn"><i class="fas fa-search"></i></button>
+    </div>
+    <div class="filters">
+      <select id="categoryFilter">
+        <option value="">All Categories</option>
+        <option value="speech-synthesis">Speech Synthesis</option>
+        <option value="speech-recognition">Speech Recognition</option>
+        <option value="audio-editing">Audio Editing</option>
+        <option value="music-generation">Music Generation</option>
+        <option value="voice-cloning">Voice Cloning</option>
+      </select>
+      <select id="priceFilter">
+        <option value="">All Prices</option>
+        <option value="free">Free</option>
+        <option value="low">Under $10</option>
+        <option value="medium">$10 - $50</option>
+        <option value="high">Over $50</option>
+      </select>
+      <select id="ratingFilter">
+        <option value="">All Ratings</option>
+        <option value="4">4+ Stars</option>
+        <option value="3">3+ Stars</option>
+        <option value="2">2+ Stars</option>
+      </select>
+    </div>
+  </section>
+
+  <!-- 主要内容 -->
   <main>
-    <section class="hero-section">
-      <h1 data-i18n="heroTitle">Your AI Voice Tools Directory</h1>
-      <p data-i18n="heroDesc">Discover, compare, and choose the perfect voice tools for your needs</p>
+    <!-- Hero Section -->
+    <section class="hero">
+      <h1 data-i18n="heroTitle">Discover the Best AI Voice Tools</h1>
+      <p data-i18n="heroDesc">Find and compare the latest AI voice technology tools for speech synthesis, recognition, and more.</p>
     </section>
 
-    <div class="category-nav">
-      <a href="tools.html" class="category-btn" data-i18n="allTools">All Tools</a>
-      <a href="tools.html#speech-synthesis" class="category-btn">Speech Synthesis</a>
-      <a href="tools.html#speech-recognition" class="category-btn">Speech Recognition</a>
-      <a href="tools.html#audio-editing" class="category-btn">Audio Editing</a>
-      <a href="tools.html#music-generation" class="category-btn">Music Generation</a>
-      <a href="tools.html#voice-cloning" class="category-btn">Voice Cloning</a>
-    </div>
+    <!-- Categories Section -->
+    <section class="categories">
+      <h2 data-i18n="categories">Categories</h2>
+      <div class="category-grid">
+        <a href="tools.html#speech-synthesis" class="category-card">
+          <i class="fas fa-microphone"></i>
+          <h3 data-i18n="speechSynthesis">Speech Synthesis</h3>
+        </a>
+        <a href="tools.html#speech-recognition" class="category-card">
+          <i class="fas fa-comments"></i>
+          <h3 data-i18n="speechRecognition">Speech Recognition</h3>
+        </a>
+        <a href="tools.html#audio-editing" class="category-card">
+          <i class="fas fa-wave-square"></i>
+          <h3 data-i18n="audioEditing">Audio Editing</h3>
+        </a>
+        <a href="tools.html#music-generation" class="category-card">
+          <i class="fas fa-music"></i>
+          <h3 data-i18n="musicGeneration">Music Generation</h3>
+        </a>
+        <a href="tools.html#voice-cloning" class="category-card">
+          <i class="fas fa-user-circle"></i>
+          <h3 data-i18n="voiceCloning">Voice Cloning</h3>
+        </a>
+      </div>
+    </section>
 
+    <!-- Featured Tools Section -->
     <section class="featured-tools">
-      <div class="section-title">
-        <h2 data-i18n="featuredTools">Featured Tools</h2>
-        <p data-i18n="featuredDesc">Explore our handpicked selection of the best AI voice tools</p>
-      </div>
-
-      <div class="tools-grid">
-        <!-- ElevenLabs -->
-        <div class="tool-card">
-          <a href="https://elevenlabs.io/" target="_blank" class="tool-thumbnail">
-            <img src="https://storage.googleapis.com/pai-images/elevenlabs.jpg" alt="ElevenLabs">
-            <div class="tool-overlay">
-              <div class="visit-icon">Visit Site</div>
-            </div>
-          </a>
-          <div class="tool-info">
-            <h3>ElevenLabs</h3>
-            <p>Advanced AI voice synthesis with emotional expression and voice cloning capabilities. Supports multiple languages and fine-grained control.</p>
-            <div class="tool-meta">
-              <span class="tool-category">Speech Synthesis</span>
-              <div class="tool-rating">
-                <span class="star">★</span>
-                <span class="star">★</span>
-                <span class="star">★</span>
-                <span class="star">★</span>
-                <span class="star">★</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Deepgram -->
-        <div class="tool-card">
-          <a href="https://deepgram.com/" target="_blank" class="tool-thumbnail">
-            <img src="https://storage.googleapis.com/pai-images/deepgram.jpg" alt="Deepgram">
-            <div class="tool-overlay">
-              <div class="visit-icon">Visit Site</div>
-            </div>
-          </a>
-          <div class="tool-info">
-            <h3>Deepgram</h3>
-            <p>Industry-leading speech recognition technology with real-time capabilities and high accuracy. Perfect for transcription and voice analysis.</p>
-            <div class="tool-meta">
-              <span class="tool-category">Speech Recognition</span>
-              <div class="tool-rating">
-                <span class="star">★</span>
-                <span class="star">★</span>
-                <span class="star">★</span>
-                <span class="star">★</span>
-                <span class="star">★</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Descript -->
-        <div class="tool-card">
-          <a href="https://www.descript.com/" target="_blank" class="tool-thumbnail">
-            <img src="https://storage.googleapis.com/pai-images/descript.jpg" alt="Descript">
-            <div class="tool-overlay">
-              <div class="visit-icon">Visit Site</div>
-            </div>
-          </a>
-          <div class="tool-info">
-            <h3>Descript</h3>
-            <p>All-in-one audio and video editor with AI-powered transcription and voice cloning features. Perfect for content creators.</p>
-            <div class="tool-meta">
-              <span class="tool-category">Audio Editing</span>
-              <div class="tool-rating">
-                <span class="star">★</span>
-                <span class="star">★</span>
-                <span class="star">★</span>
-                <span class="star">★</span>
-                <span class="star">★</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- AIVA -->
-        <div class="tool-card">
-          <a href="https://www.aiva.ai/" target="_blank" class="tool-thumbnail">
-            <img src="https://storage.googleapis.com/pai-images/aiva.jpg" alt="AIVA">
-            <div class="tool-overlay">
-              <div class="visit-icon">Visit Site</div>
-            </div>
-          </a>
-          <div class="tool-info">
-            <h3>AIVA</h3>
-            <p>Emotion-driven AI music composition tool that creates original music in classical, film score, and modern styles.</p>
-            <div class="tool-meta">
-              <span class="tool-category">Music Generation</span>
-              <div class="tool-rating">
-                <span class="star">★</span>
-                <span class="star">★</span>
-                <span class="star">★</span>
-                <span class="star">★</span>
-                <span class="star">★</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Voice.ai -->
-        <div class="tool-card">
-          <a href="https://voice.ai/" target="_blank" class="tool-thumbnail">
-            <img src="https://storage.googleapis.com/pai-images/voiceai.jpg" alt="Voice.ai">
-            <div class="tool-overlay">
-              <div class="visit-icon">Visit Site</div>
-            </div>
-          </a>
-          <div class="tool-info">
-            <h3>Voice.ai</h3>
-            <p>Real-time voice conversion and cloning tool for live calls and streaming. Supports celebrity voice imitation and custom voice models.</p>
-            <div class="tool-meta">
-              <span class="tool-category">Voice Cloning</span>
-              <div class="tool-rating">
-                <span class="star">★</span>
-                <span class="star">★</span>
-                <span class="star">★</span>
-                <span class="star">★</span>
-                <span class="star">★</span>
-              </div>
-            </div>
-          </div>
-        </div>
+      <h2 data-i18n="featuredTools">Featured Tools</h2>
+      <p data-i18n="featuredDesc">Check out our handpicked selection of the best AI voice tools</p>
+      <div class="tools-grid" id="featuredToolsGrid">
+        <!-- 工具卡片将通过 JavaScript 动态加载 -->
       </div>
     </section>
 
-    <section class="newsletter-section">
-      <div class="newsletter-content">
-        <h2 data-i18n="newsletterTitle">Subscribe to AI Voice Tools Updates</h2>
-        <p data-i18n="newsletterDesc">Stay updated with the latest AI voice tools and industry news</p>
-        <form class="newsletter-form">
-          <input type="email" placeholder="Enter your email address" required data-i18n-placeholder="newsletterPlaceholder">
-          <button type="submit" data-i18n="subscribe">Subscribe</button>
-        </form>
-      </div>
+    <!-- Newsletter Section -->
+    <section class="newsletter">
+      <h2 data-i18n="newsletterTitle">Stay Updated</h2>
+      <p data-i18n="newsletterDesc">Subscribe to our newsletter for the latest AI voice tools and updates</p>
+      <form class="newsletter-form" id="newsletterForm">
+        <input type="email" placeholder="Enter your email" required>
+        <button type="submit" data-i18n="subscribe">Subscribe</button>
+      </form>
     </section>
-
-    <div class="search-settings">
-      <div class="search-container">
-        <div class="search-box">
-          <input type="text" placeholder="Search for AI voice tools..." id="searchInput" data-i18n-placeholder="searchPlaceholder">
-          <button type="button" class="search-btn">
-            <i class="fas fa-search"></i>
-          </button>
-        </div>
-        <div class="search-filters">
-          <div class="filter-group">
-            <label data-i18n="category">Category:</label>
-            <select id="categoryFilter">
-              <option value="all" data-i18n="allCategories">All Categories</option>
-              <option value="speech-synthesis">Speech Synthesis</option>
-              <option value="speech-recognition">Speech Recognition</option>
-              <option value="audio-editing">Audio Editing</option>
-              <option value="music-generation">Music Generation</option>
-              <option value="voice-cloning">Voice Cloning</option>
-            </select>
-          </div>
-          <div class="filter-group">
-            <label data-i18n="priceRange">Price Range:</label>
-            <select id="priceFilter">
-              <option value="all" data-i18n="allPrices">All Prices</option>
-              <option value="free">Free</option>
-              <option value="freemium">Freemium</option>
-              <option value="paid">Paid</option>
-            </select>
-          </div>
-          <div class="filter-group">
-            <label data-i18n="rating">Rating:</label>
-            <select id="ratingFilter">
-              <option value="all" data-i18n="allRatings">All Ratings</option>
-              <option value="5">5 Stars</option>
-              <option value="4">4+ Stars</option>
-              <option value="3">3+ Stars</option>
-            </select>
-          </div>
-        </div>
-      </div>
-    </div>
   </main>
 
-  <footer>
-    <p>&copy; 2024 RecallLook. All rights reserved.</p>
-  </footer>
+  <!-- 页脚 -->
+  <div id="footer-container"></div>
 
-  <!-- Login Modal -->
-  <div class="modal" id="loginModal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>Login</h2>
-      <form class="auth-form">
-        <div class="form-group">
-          <label for="loginEmail">Email</label>
-          <input type="email" id="loginEmail" required>
-        </div>
-        <div class="form-group">
-          <label for="loginPassword">Password</label>
-          <input type="password" id="loginPassword" required>
-        </div>
-        <div class="form-options">
-          <label>
-            <input type="checkbox"> Remember me
-          </label>
-          <a href="#" class="forgot-password">Forgot Password?</a>
-        </div>
-        <button type="submit" class="submit-btn">Login</button>
-      </form>
-      <div class="social-login">
-        <p>Or login with</p>
-        <div class="social-buttons">
-          <button class="social-btn google">
-            <i class="fab fa-google"></i> Google
-          </button>
-          <button class="social-btn facebook">
-            <i class="fab fa-facebook-f"></i> Facebook
-          </button>
-        </div>
-      </div>
-    </div>
-  </div>
+  <!-- 模态框 -->
+  <div id="modal-container"></div>
 
-  <!-- Signup Modal -->
-  <div class="modal" id="signupModal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>Create Account</h2>
-      <form class="auth-form">
-        <div class="form-group">
-          <label for="signupName">Full Name</label>
-          <input type="text" id="signupName" required>
-        </div>
-        <div class="form-group">
-          <label for="signupEmail">Email</label>
-          <input type="email" id="signupEmail" required>
-        </div>
-        <div class="form-group">
-          <label for="signupPassword">Password</label>
-          <input type="password" id="signupPassword" required>
-        </div>
-        <div class="form-group">
-          <label for="confirmPassword">Confirm Password</label>
-          <input type="password" id="confirmPassword" required>
-        </div>
-        <div class="form-options">
-          <label>
-            <input type="checkbox" required> I agree to the Terms of Service
-          </label>
-        </div>
-        <button type="submit" class="submit-btn">Create Account</button>
-      </form>
-    </div>
-  </div>
-
+  <!-- JavaScript -->
   <script src="js/languages.js"></script>
+  <script src="js/utils/loading.js"></script>
+  <script src="js/utils/performance.js"></script>
+  <script src="js/utils/auth.js"></script>
+  <script src="js/utils/favorites.js"></script>
+  <script src="js/utils/search.js"></script>
+  <script src="js/utils/validation.js"></script>
   <script src="js/components.js"></script>
   <script>
-    // 初始化组件
     document.addEventListener('DOMContentLoaded', () => {
-      new NavigationBar();
-      new Modal();
+      // 初始化组件
+      const navBar = new NavigationBar();
+      const modal = new Modal();
+      const footer = new Footer();
+
+      // 初始化工具
+      const loadingManager = new LoadingManager();
+      const performanceOptimizer = new PerformanceOptimizer();
+      const authManager = new AuthManager();
+      const favoritesManager = new FavoritesManager();
+      const search = new Search();
+      const formValidation = new FormValidation();
+
+      // 加载组件
+      navBar.init();
+      modal.init();
+      footer.init();
+
+      // 初始化工具
+      performanceOptimizer.init();
+      authManager.init();
+      favoritesManager.init();
+      search.init();
+      formValidation.init();
+
+      // 加载特色工具
+      loadFeaturedTools();
     });
 
-    // 搜索功能
-    const searchInput = document.getElementById('searchInput');
-    const categoryFilter = document.getElementById('categoryFilter');
-    const priceFilter = document.getElementById('priceFilter');
-    const ratingFilter = document.getElementById('ratingFilter');
-
-    function performSearch() {
-      const searchTerm = searchInput.value.toLowerCase();
-      const category = categoryFilter.value;
-      const price = priceFilter.value;
-      const rating = ratingFilter.value;
-
-      // 添加搜索逻辑
-      console.log('Searching with:', {
-        term: searchTerm,
-        category,
-        price,
-        rating
-      });
+    async function loadFeaturedTools() {
+      const loadingManager = new LoadingManager();
+      try {
+        loadingManager.showLoading();
+        // 这里添加实际的API调用
+        const tools = await mockFeaturedToolsAPI();
+        const grid = document.getElementById('featuredToolsGrid');
+        
+        tools.forEach(tool => {
+          const card = createToolCard(tool);
+          grid.appendChild(card);
+        });
+      } catch (error) {
+        loadingManager.showError('Failed to load featured tools');
+      } finally {
+        loadingManager.hideLoading();
+      }
     }
 
-    searchInput.addEventListener('input', performSearch);
-    categoryFilter.addEventListener('change', performSearch);
-    priceFilter.addEventListener('change', performSearch);
-    ratingFilter.addEventListener('change', performSearch);
+    function createToolCard(tool) {
+      const card = document.createElement('div');
+      card.className = 'tool-card';
+      card.dataset.id = tool.id;
+      card.dataset.category = tool.category;
+      card.dataset.price = tool.price;
+      card.dataset.rating = tool.rating;
+
+      card.innerHTML = `
+        <img src="${tool.image}" alt="${tool.title}">
+        <div class="tool-content">
+          <h3>${tool.title}</h3>
+          <p>${tool.description}</p>
+          <div class="tool-meta">
+            <span class="price">${tool.price === 0 ? 'Free' : `$${tool.price}`}</span>
+            <span class="rating">
+              ${createStarRating(tool.rating)}
+              <span>(${tool.rating})</span>
+            </span>
+          </div>
+          <button class="favorite-btn">
+            <i class="far fa-heart"></i>
+          </button>
+        </div>
+      `;
+
+      return card;
+    }
+
+    function createStarRating(rating) {
+      return Array(5).fill('').map((_, i) => `
+        <i class="fas fa-star ${i < rating ? 'active' : ''}"></i>
+      `).join('');
+    }
+
+    // 模拟API调用
+    function mockFeaturedToolsAPI() {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve([
+            {
+              id: 1,
+              title: 'VoiceFlow',
+              description: 'Create conversational AI experiences',
+              image: 'assets/images/tools/voiceflow.jpg',
+              category: 'speech-synthesis',
+              price: 0,
+              rating: 4.5
+            },
+            {
+              id: 2,
+              title: 'DeepSpeech',
+              description: 'Open source speech recognition engine',
+              image: 'assets/images/tools/deepspeech.jpg',
+              category: 'speech-recognition',
+              price: 0,
+              rating: 4.2
+            },
+            {
+              id: 3,
+              title: 'Audacity',
+              description: 'Professional audio editing software',
+              image: 'assets/images/tools/audacity.jpg',
+              category: 'audio-editing',
+              price: 0,
+              rating: 4.8
+            }
+          ]);
+        }, 1000);
+      });
+    }
   </script>
 </body>
 </html>
