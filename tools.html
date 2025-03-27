@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title data-i18n="allTools">All AI Voice Tools - RecallLook</title>
+  <title data-i18n="allTools">所有工具</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
   <style>
@@ -197,293 +197,182 @@
   </style>
 </head>
 <body>
-  <!-- 导航栏 -->
-  <div id="header-container"></div>
-
-  <!-- 搜索设置 -->
-  <section class="search-settings">
-    <div class="search-box">
-      <input type="text" id="searchInput" placeholder="Search AI voice tools...">
-      <button class="search-btn"><i class="fas fa-search"></i></button>
-    </div>
-    <div class="filters">
-      <select id="categoryFilter">
-        <option value="">All Categories</option>
-        <option value="speech-synthesis">Speech Synthesis</option>
-        <option value="speech-recognition">Speech Recognition</option>
-        <option value="audio-editing">Audio Editing</option>
-        <option value="music-generation">Music Generation</option>
-        <option value="voice-cloning">Voice Cloning</option>
-      </select>
-      <select id="priceFilter">
-        <option value="">All Prices</option>
-        <option value="free">Free</option>
-        <option value="low">Under $10</option>
-        <option value="medium">$10 - $50</option>
-        <option value="high">Over $50</option>
-      </select>
-      <select id="ratingFilter">
-        <option value="">All Ratings</option>
-        <option value="4">4+ Stars</option>
-        <option value="3">3+ Stars</option>
-        <option value="2">2+ Stars</option>
-      </select>
-    </div>
-  </section>
+  <!-- 导航栏占位符 -->
+  <div id="header-placeholder"></div>
 
   <!-- 主要内容 -->
   <main>
+    <!-- 搜索设置 -->
+    <section class="search-settings">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="搜索AI语音工具..." data-i18n="searchPlaceholder">
+        <button class="search-btn" data-i18n="search">搜索</button>
+      </div>
+      <div class="filters">
+        <select id="categoryFilter" class="category-select">
+          <option value="all" data-i18n="allCategories">所有分类</option>
+          <option value="speech-synthesis" data-i18n="speechSynthesis">语音合成</option>
+          <option value="speech-recognition" data-i18n="speechRecognition">语音识别</option>
+          <option value="audio-editing" data-i18n="audioEditing">音频编辑</option>
+          <option value="music-generation" data-i18n="musicGeneration">音乐生成</option>
+          <option value="voice-cloning" data-i18n="voiceCloning">语音克隆</option>
+        </select>
+        <select id="priceFilter" class="price-select">
+          <option value="all" data-i18n="allPrices">所有价格</option>
+          <option value="free" data-i18n="free">免费</option>
+          <option value="under10" data-i18n="under10">10美元以下</option>
+          <option value="between10and50" data-i18n="between10and50">10-50美元</option>
+          <option value="over50" data-i18n="over50">50美元以上</option>
+        </select>
+        <select id="ratingFilter" class="rating-select">
+          <option value="all" data-i18n="allRatings">所有评分</option>
+          <option value="4">4+ <i class="fas fa-star"></i></option>
+          <option value="3">3+ <i class="fas fa-star"></i></option>
+          <option value="2">2+ <i class="fas fa-star"></i></option>
+        </select>
+      </div>
+    </section>
+
     <!-- 语音合成工具 -->
-    <section id="speech-synthesis" class="tool-section">
-      <h2 data-i18n="speechSynthesis">Speech Synthesis Tools</h2>
-      <div class="tools-grid" id="speechSynthesisGrid">
+    <section id="speech-synthesis" class="tools-section">
+      <h2 data-i18n="speechSynthesis">语音合成</h2>
+      <div class="tools-grid">
         <!-- 工具卡片将通过JavaScript动态加载 -->
       </div>
     </section>
 
     <!-- 语音识别工具 -->
-    <section id="speech-recognition" class="tool-section">
-      <h2 data-i18n="speechRecognition">Speech Recognition Tools</h2>
-      <div class="tools-grid" id="speechRecognitionGrid">
+    <section id="speech-recognition" class="tools-section">
+      <h2 data-i18n="speechRecognition">语音识别</h2>
+      <div class="tools-grid">
         <!-- 工具卡片将通过JavaScript动态加载 -->
       </div>
     </section>
 
     <!-- 音频编辑工具 -->
-    <section id="audio-editing" class="tool-section">
-      <h2 data-i18n="audioEditing">Audio Editing Tools</h2>
-      <div class="tools-grid" id="audioEditingGrid">
+    <section id="audio-editing" class="tools-section">
+      <h2 data-i18n="audioEditing">音频编辑</h2>
+      <div class="tools-grid">
         <!-- 工具卡片将通过JavaScript动态加载 -->
       </div>
     </section>
 
     <!-- 音乐生成工具 -->
-    <section id="music-generation" class="tool-section">
-      <h2 data-i18n="musicGeneration">Music Generation Tools</h2>
-      <div class="tools-grid" id="musicGenerationGrid">
+    <section id="music-generation" class="tools-section">
+      <h2 data-i18n="musicGeneration">音乐生成</h2>
+      <div class="tools-grid">
         <!-- 工具卡片将通过JavaScript动态加载 -->
       </div>
     </section>
 
     <!-- 语音克隆工具 -->
-    <section id="voice-cloning" class="tool-section">
-      <h2 data-i18n="voiceCloning">Voice Cloning Tools</h2>
-      <div class="tools-grid" id="voiceCloningGrid">
+    <section id="voice-cloning" class="tools-section">
+      <h2 data-i18n="voiceCloning">语音克隆</h2>
+      <div class="tools-grid">
         <!-- 工具卡片将通过JavaScript动态加载 -->
       </div>
     </section>
   </main>
 
-  <!-- 页脚 -->
-  <div id="footer-container"></div>
+  <!-- 页脚占位符 -->
+  <div id="footer-placeholder"></div>
 
-  <!-- 模态框 -->
-  <div id="modal-container"></div>
+  <!-- 登录模态框 -->
+  <div id="loginModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 data-i18n="login">登录</h2>
+      <form id="loginForm" class="auth-form">
+        <div class="form-group">
+          <label for="loginEmail" data-i18n="email">邮箱</label>
+          <input type="email" id="loginEmail" name="email" data-validate="email" required>
+        </div>
+        <div class="form-group">
+          <label for="loginPassword" data-i18n="password">密码</label>
+          <input type="password" id="loginPassword" name="password" data-validate="password" required>
+        </div>
+        <div class="checkbox">
+          <input type="checkbox" id="rememberMe" name="remember">
+          <label for="rememberMe" data-i18n="rememberMe">记住我</label>
+        </div>
+        <button type="submit" data-i18n="login">登录</button>
+        <a href="#" class="forgot-password" data-i18n="forgotPassword">忘记密码?</a>
+        <div class="social-login">
+          <p data-i18n="orLoginWith">或使用以下方式登录</p>
+          <div class="social-buttons">
+            <button type="button" class="social-btn google">
+              <i class="fab fa-google"></i>
+              <span>Google</span>
+            </button>
+            <button type="button" class="social-btn github">
+              <i class="fab fa-github"></i>
+              <span>GitHub</span>
+            </button>
+          </div>
+        </div>
+        <div class="auth-switch">
+          <p data-i18n="noAccount">还没有账号? <a href="#" class="switch-to-signup" data-i18n="signup">注册</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
 
-  <!-- JavaScript -->
+  <!-- 注册模态框 -->
+  <div id="signupModal" class="modal">
+    <div class="modal-content">
+      <span class="close">&times;</span>
+      <h2 data-i18n="signup">注册</h2>
+      <form id="signupForm" class="auth-form">
+        <div class="form-group">
+          <label for="signupName" data-i18n="name">姓名</label>
+          <input type="text" id="signupName" name="name" data-validate="name" required>
+        </div>
+        <div class="form-group">
+          <label for="signupEmail" data-i18n="email">邮箱</label>
+          <input type="email" id="signupEmail" name="email" data-validate="email" required>
+        </div>
+        <div class="form-group">
+          <label for="signupPassword" data-i18n="password">密码</label>
+          <input type="password" id="signupPassword" name="password" data-validate="password" required>
+        </div>
+        <div class="form-group">
+          <label for="confirmPassword" data-i18n="password">确认密码</label>
+          <input type="password" id="confirmPassword" name="confirmPassword" data-validate="password" required>
+        </div>
+        <div class="checkbox">
+          <input type="checkbox" id="acceptTerms" name="acceptTerms" required>
+          <label for="acceptTerms" data-i18n="acceptTerms">我同意服务条款和隐私政策</label>
+        </div>
+        <button type="submit" data-i18n="signup">注册</button>
+        <div class="social-login">
+          <p data-i18n="orSignupWith">或使用以下方式注册</p>
+          <div class="social-buttons">
+            <button type="button" class="social-btn google">
+              <i class="fab fa-google"></i>
+              <span>Google</span>
+            </button>
+            <button type="button" class="social-btn github">
+              <i class="fab fa-github"></i>
+              <span>GitHub</span>
+            </button>
+          </div>
+        </div>
+        <div class="auth-switch">
+          <p data-i18n="haveAccount">已有账号? <a href="#" class="switch-to-login" data-i18n="login">登录</a></p>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- JavaScript文件 -->
   <script src="js/languages.js"></script>
+  <script src="js/components.js"></script>
+  <script src="js/utils/auth.js"></script>
   <script src="js/utils/loading.js"></script>
   <script src="js/utils/performance.js"></script>
-  <script src="js/utils/auth.js"></script>
   <script src="js/utils/favorites.js"></script>
   <script src="js/utils/search.js"></script>
   <script src="js/utils/validation.js"></script>
-  <script src="js/components.js"></script>
-  <script>
-    document.addEventListener('DOMContentLoaded', () => {
-      // 初始化组件
-      const navBar = new NavigationBar();
-      const modal = new Modal();
-      const footer = new Footer();
-
-      // 初始化工具
-      const loadingManager = new LoadingManager();
-      const performanceOptimizer = new PerformanceOptimizer();
-      const authManager = new AuthManager();
-      const favoritesManager = new FavoritesManager();
-      const search = new Search();
-      const formValidation = new FormValidation();
-
-      // 加载组件
-      navBar.init();
-      modal.init();
-      footer.init();
-
-      // 初始化工具
-      performanceOptimizer.init();
-      authManager.init();
-      favoritesManager.init();
-      search.init();
-      formValidation.init();
-
-      // 加载所有工具
-      loadAllTools();
-    });
-
-    async function loadAllTools() {
-      const loadingManager = new LoadingManager();
-      try {
-        loadingManager.showLoading();
-        // 这里添加实际的API调用
-        const tools = await mockToolsAPI();
-        
-        // 按分类加载工具
-        const categories = ['speechSynthesis', 'speechRecognition', 'audioEditing', 'musicGeneration', 'voiceCloning'];
-        categories.forEach(category => {
-          const grid = document.getElementById(`${category}Grid`);
-          const categoryTools = tools.filter(tool => tool.category === category);
-          
-          categoryTools.forEach(tool => {
-            const card = createToolCard(tool);
-            grid.appendChild(card);
-          });
-        });
-      } catch (error) {
-        loadingManager.showError('Failed to load tools');
-      } finally {
-        loadingManager.hideLoading();
-      }
-    }
-
-    function createToolCard(tool) {
-      const card = document.createElement('div');
-      card.className = 'tool-card';
-      card.dataset.id = tool.id;
-      card.dataset.category = tool.category;
-      card.dataset.price = tool.price;
-      card.dataset.rating = tool.rating;
-
-      card.innerHTML = `
-        <img src="${tool.image}" alt="${tool.title}">
-        <div class="tool-content">
-          <h3>${tool.title}</h3>
-          <p>${tool.description}</p>
-          <div class="tool-meta">
-            <span class="price">${tool.price === 0 ? 'Free' : `$${tool.price}`}</span>
-            <span class="rating">
-              ${createStarRating(tool.rating)}
-              <span>(${tool.rating})</span>
-            </span>
-          </div>
-          <button class="favorite-btn">
-            <i class="far fa-heart"></i>
-          </button>
-        </div>
-      `;
-
-      return card;
-    }
-
-    function createStarRating(rating) {
-      return Array(5).fill('').map((_, i) => `
-        <i class="fas fa-star ${i < rating ? 'active' : ''}"></i>
-      `).join('');
-    }
-
-    // 模拟API调用
-    function mockToolsAPI() {
-      return new Promise((resolve) => {
-        setTimeout(() => {
-          resolve([
-            // 语音合成工具
-            {
-              id: 1,
-              title: 'VoiceFlow',
-              description: 'Create conversational AI experiences',
-              image: 'assets/images/tools/voiceflow.jpg',
-              category: 'speechSynthesis',
-              price: 0,
-              rating: 4.5
-            },
-            {
-              id: 2,
-              title: 'Amazon Polly',
-              description: 'Text-to-speech service with natural voices',
-              image: 'assets/images/tools/polly.jpg',
-              category: 'speechSynthesis',
-              price: 0.016,
-              rating: 4.8
-            },
-            // 语音识别工具
-            {
-              id: 3,
-              title: 'DeepSpeech',
-              description: 'Open source speech recognition engine',
-              image: 'assets/images/tools/deepspeech.jpg',
-              category: 'speechRecognition',
-              price: 0,
-              rating: 4.2
-            },
-            {
-              id: 4,
-              title: 'Google Speech-to-Text',
-              description: 'Accurate speech recognition service',
-              image: 'assets/images/tools/google-speech.jpg',
-              category: 'speechRecognition',
-              price: 0.006,
-              rating: 4.9
-            },
-            // 音频编辑工具
-            {
-              id: 5,
-              title: 'Audacity',
-              description: 'Professional audio editing software',
-              image: 'assets/images/tools/audacity.jpg',
-              category: 'audioEditing',
-              price: 0,
-              rating: 4.8
-            },
-            {
-              id: 6,
-              title: 'Adobe Audition',
-              description: 'Industry-standard audio editing',
-              image: 'assets/images/tools/audition.jpg',
-              category: 'audioEditing',
-              price: 20.99,
-              rating: 4.7
-            },
-            // 音乐生成工具
-            {
-              id: 7,
-              title: 'OpenAI MuseNet',
-              description: 'AI-powered music generation',
-              image: 'assets/images/tools/musenet.jpg',
-              category: 'musicGeneration',
-              price: 0,
-              rating: 4.3
-            },
-            {
-              id: 8,
-              title: 'Amper Music',
-              description: 'Create custom music tracks',
-              image: 'assets/images/tools/amper.jpg',
-              category: 'musicGeneration',
-              price: 10,
-              rating: 4.4
-            },
-            // 语音克隆工具
-            {
-              id: 9,
-              title: 'Coqui TTS',
-              description: 'Open source voice cloning',
-              image: 'assets/images/tools/coqui.jpg',
-              category: 'voiceCloning',
-              price: 0,
-              rating: 4.1
-            },
-            {
-              id: 10,
-              title: 'Resemble AI',
-              description: 'Professional voice cloning service',
-              image: 'assets/images/tools/resemble.jpg',
-              category: 'voiceCloning',
-              price: 29.99,
-              rating: 4.6
-            }
-          ]);
-        }, 1000);
-      });
-    }
-  </script>
+  <script src="js/main.js"></script>
 </body>
 </html> 
