@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>All AI Voice Tools - RecallLook</title>
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .tools-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+    
+    .tools-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+    
+    .tools-header h1 {
+      font-size: 2.8rem;
+      color: #1a237e;
+      margin-bottom: 1rem;
+      font-weight: 800;
+    }
+    
+    .tools-header p {
+      color: #666;
+      font-size: 1.2rem;
+      max-width: 800px;
+      margin: 0 auto;
+      line-height: 1.6;
+    }
+    
+    .tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+    }
+    
+    .tool-card {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s;
+      border: 1px solid rgba(0,0,0,0.1);
+    }
+    
+    .tool-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+    }
+    
+    .tool-thumbnail {
+      position: relative;
+      height: 220px;
+      overflow: hidden;
+    }
+    
+    .tool-thumbnail img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.5s;
+    }
+    
+    .tool-card:hover .tool-thumbnail img {
+      transform: scale(1.05);
+    }
+    
+    .tool-overlay {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(26, 35, 126, 0.3);
+      opacity: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      transition: opacity 0.3s;
+    }
+    
+    .tool-thumbnail:hover .tool-overlay {
+      opacity: 1;
+    }
+    
+    .visit-icon {
+      color: white;
+      font-size: 1.5rem;
+      padding: 0.8rem 1.5rem;
+      background: rgba(26, 35, 126, 0.9);
+      border-radius: 8px;
+      font-weight: bold;
+      transition: all 0.3s;
+    }
+    
+    .visit-icon:hover {
+      background: rgba(26, 35, 126, 1);
+      transform: scale(1.05);
+    }
+    
+    .tool-info {
+      padding: 1.8rem;
+    }
+    
+    .tool-info h3 {
+      margin: 0 0 1rem;
+      font-size: 1.5rem;
+      color: #1a237e;
+      font-weight: 700;
+    }
+    
+    .tool-info p {
+      color: #666;
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 1.2rem;
+    }
+    
+    .tool-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.95rem;
+      color: #888;
+    }
+    
+    .tool-category {
+      background: #f5f5f5;
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      color: #1a237e;
+      font-weight: 500;
+    }
+    
+    .tool-rating {
+      display: flex;
+      align-items: center;
+      gap: 2px;
+    }
+    
+    .star {
+      color: #ffd700;
+      font-size: 1.1rem;
+    }
+    
+    .filter-section {
+      margin-bottom: 3rem;
+      text-align: center;
+    }
+    
+    .filter-buttons {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+    
+    .filter-btn {
+      padding: 1rem 2rem;
+      border: 2px solid #1a237e;
+      border-radius: 50px;
+      background: white;
+      color: #1a237e;
+      cursor: pointer;
+      transition: all 0.3s;
+      font-weight: 600;
+      font-size: 1rem;
+    }
+    
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: #1a237e;
+      color: white;
+      transform: translateY(-2px);
+    }
+    
+    .search-box {
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      position: relative;
+    }
+    
+    .search-box input {
+      width: 100%;
+      padding: 1rem 1.5rem;
+      padding-left: 3rem;
+      border: 2px solid #e0e0e0;
+      border-radius: 50px;
+      font-size: 1rem;
+      transition: all 0.3s;
+    }
+    
+    .search-box input:focus {
+      outline: none;
+      border-color: #1a237e;
+      box-shadow: 0 0 0 3px rgba(26, 35, 126, 0.1);
+    }
+    
+    .search-box::before {
+      content: '🔍';
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: #666;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
+      <div class="logo">RecallLook</div>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="tools.html">All Tools</a></li>
+        <li><a href="about.html">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="tools-container">
+      <div class="tools-header">
+        <h1>All AI Voice Tools</h1>
+        <p>Explore our comprehensive collection of AI voice tools, from text-to-speech to voice cloning and audio processing.</p>
+      </div>
+      
+      <div class="search-box">
+        <input type="text" placeholder="Search tools...">
+      </div>
+      
+      <div class="filter-section">
+        <div class="filter-buttons">
+          <button class="filter-btn active">All</button>
+          <button class="filter-btn">Text-to-Speech</button>
+          <button class="filter-btn">Voice Cloning</button>
+          <button class="filter-btn">Audio Processing</button>
+          <button class="filter-btn">Voice Recognition</button>
+        </div>
+      </div>
+      
+      <div class="tools-grid">
+        <!-- Text-to-Speech Tools -->
+        <div class="tool-card" data-category="text-to-speech">
+          <a href="https://elevenlabs.io" target="_blank" class="tool-thumbnail">
+            <img src="https://storage.googleapis.com/pai-images/elevenlabs.jpg" alt="ElevenLabs">
+            <div class="tool-overlay">
+              <div class="visit-icon">Visit Site</div>
+            </div>
+          </a>
+          <div class="tool-info">
+            <h3>ElevenLabs</h3>
+            <p>Advanced AI voice synthesis platform offering realistic text-to-speech and voice cloning capabilities. Perfect for content creators and developers.</p>
+            <div class="tool-meta">
+              <span class="tool-category">Text-to-Speech</span>
+              <div class="tool-rating">
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="tool-card" data-category="text-to-speech">
+          <a href="https://play.ht" target="_blank" class="tool-thumbnail">
+            <img src="https://storage.googleapis.com/pai-images/playht.jpg" alt="Play.ht">
+            <div class="tool-overlay">
+              <div class="visit-icon">Visit Site</div>
+            </div>
+          </a>
+          <div class="tool-info">
+            <h3>Play.ht</h3>
+            <p>Create natural-sounding AI voices for your content with a wide range of voices and languages. Ideal for audiobooks and podcasts.</p>
+            <div class="tool-meta">
+              <span class="tool-category">Text-to-Speech</span>
+              <div class="tool-rating">
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span>☆</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Voice Cloning Tools -->
+        <div class="tool-card" data-category="voice-cloning">
+          <a href="https://www.descript.com" target="_blank" class="tool-thumbnail">
+            <img src="https://storage.googleapis.com/pai-images/descript.jpg" alt="Descript">
+            <div class="tool-overlay">
+              <div class="visit-icon">Visit Site</div>
+            </div>
+          </a>
+          <div class="tool-info">
+            <h3>Descript</h3>
+            <p>All-in-one audio and video editor with AI-powered transcription and voice cloning features. Perfect for content creators and podcasters.</p>
+            <div class="tool-meta">
+              <span class="tool-category">Voice Cloning</span>
+              <div class="tool-rating">
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Audio Processing Tools -->
+        <div class="tool-card" data-category="audio-processing">
+          <a href="https://www.adobe.com/products/audition.html" target="_blank" class="tool-thumbnail">
+            <img src="https://storage.googleapis.com/pai-images/audition.jpg" alt="Adobe Audition">
+            <div class="tool-overlay">
+              <div class="visit-icon">Visit Site</div>
+            </div>
+          </a>
+          <div class="tool-info">
+            <h3>Adobe Audition</h3>
+            <p>Professional audio editing software with AI-powered noise reduction and audio enhancement features. Industry standard for audio professionals.</p>
+            <div class="tool-meta">
+              <span class="tool-category">Audio Processing</span>
+              <div class="tool-rating">
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Voice Recognition Tools -->
+        <div class="tool-card" data-category="voice-recognition">
+          <a href="https://www.ibm.com/watson/speech-to-text" target="_blank" class="tool-thumbnail">
+            <img src="https://storage.googleapis.com/pai-images/watson.jpg" alt="IBM Watson Speech to Text">
+            <div class="tool-overlay">
+              <div class="visit-icon">Visit Site</div>
+            </div>
+          </a>
+          <div class="tool-info">
+            <h3>IBM Watson Speech to Text</h3>
+            <p>Advanced speech recognition service that converts audio and voice into written text. Enterprise-grade solution with high accuracy.</p>
+            <div class="tool-meta">
+              <span class="tool-category">Voice Recognition</span>
+              <div class="tool-rating">
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span class="star">★</span>
+                <span>☆</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 RecallLook. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Tool filtering functionality
+    const filterButtons = document.querySelectorAll('.filter-btn');
+    const toolCards = document.querySelectorAll('.tool-card');
+    const searchInput = document.querySelector('.search-box input');
+
+    // Filter by category
+    filterButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        filterButtons.forEach(btn => btn.classList.remove('active'));
+        button.classList.add('active');
+
+        const category = button.textContent.toLowerCase();
+        
+        toolCards.forEach(card => {
+          if (category === 'all' || card.dataset.category === category) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+
+    // Search functionality
+    searchInput.addEventListener('input', (e) => {
+      const searchTerm = e.target.value.toLowerCase();
+      
+      toolCards.forEach(card => {
+        const title = card.querySelector('h3').textContent.toLowerCase();
+        const description = card.querySelector('p').textContent.toLowerCase();
+        const category = card.dataset.category;
+        
+        if (title.includes(searchTerm) || 
+            description.includes(searchTerm) || 
+            category.includes(searchTerm)) {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  </script>
+</body>
+</html>
