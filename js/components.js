@@ -3,8 +3,10 @@ class ComponentLoader {
   static async loadComponent(url) {
     try {
       const response = await fetch(url);
-      const html = await response.text();
-      return html;
+      if (!response.ok) {
+        throw new Error(`Failed to load component: ${url}`);
+      }
+      return await response.text();
     } catch (error) {
       console.error('Error loading component:', error);
       return '';
@@ -15,129 +17,105 @@ class ComponentLoader {
 // 导航栏组件
 class NavigationBar {
   constructor() {
-    this.currentLang = localStorage.getItem('language') || 'en';
-    this.init();
+    this.headerContainer = document.getElementById('header-container');
   }
 
   async init() {
     const headerHtml = await ComponentLoader.loadComponent('components/header.html');
-    document.body.insertAdjacentHTML('afterbegin', headerHtml);
-    this.createNav();
+    this.headerContainer.innerHTML = headerHtml;
     this.setupEventListeners();
-    this.updateLanguage();
-  }
-
-  createNav() {
-    const nav = document.createElement('nav');
-    nav.innerHTML = `
-      <div class="logo">RecallLook</div>
-      <ul class="nav-links">
-        <li><a href="index.html" data-i18n="home">Home</a></li>
-        <li><a href="tools.html" data-i18n="allTools">All Tools</a></li>
-        <li><a href="about.html" data-i18n="about">About</a></li>
-      </ul>
-      <div class="nav-right">
-        <div class="language-selector">
-          <button class="lang-btn">
-            <span class="current-lang">${this.currentLang.toUpperCase()}</span>
-            <i class="fas fa-chevron-down"></i>
-          </button>
-          <div class="lang-dropdown">
-            <a href="#" data-lang="en">English</a>
-            <a href="#" data-lang="zh">中文</a>
-            <a href="#" data-lang="es">Español</a>
-            <a href="#" data-lang="fr">Français</a>
-          </div>
-        </div>
-        <div class="auth-buttons">
-          <button class="login-btn" data-i18n="login">Login</button>
-          <button class="signup-btn" data-i18n="signup">Sign Up</button>
-        </div>
-      </div>
-    `;
-
-    const header = document.createElement('header');
-    header.appendChild(nav);
-    document.body.insertBefore(header, document.body.firstChild);
   }
 
   setupEventListeners() {
+    // 语言切换
+    const languageSelect = document.getElementById('languageSelect');
+    if (languageSelect) {
+      languageSelect.addEventListener('change', (e) => {
+        const lang = e.target.value;
+        localStorage.setItem('language', lang);
+        window.dispatchEvent(new CustomEvent('languageChanged', { detail: { lang } }));
+      });
+    }
+
+    // 登录/注册按钮
     const loginBtn = document.querySelector('.login-btn');
     const signupBtn = document.querySelector('.signup-btn');
 
     if (loginBtn) {
       loginBtn.addEventListener('click', () => {
-        document.getElementById('loginModal').style.display = 'block';
+        const modal = new Modal();
+        modal.show('loginModal');
       });
     }
 
     if (signupBtn) {
       signupBtn.addEventListener('click', () => {
-        document.getElementById('signupModal').style.display = 'block';
+        const modal = new Modal();
+        modal.show('signupModal');
       });
     }
-
-    // 语言切换
-    document.querySelectorAll('.lang-dropdown a').forEach(link => {
-      link.addEventListener('click', (e) => {
-        e.preventDefault();
-        const lang = e.target.dataset.lang;
-        this.currentLang = lang;
-        localStorage.setItem('language', lang);
-        this.updateLanguage();
-      });
-    });
-  }
-
-  updateLanguage() {
-    const lang = languages[this.currentLang];
-    document.querySelectorAll('[data-i18n]').forEach(element => {
-      const key = element.dataset.i18n;
-      if (lang[key]) {
-        element.textContent = lang[key];
-      }
-    });
   }
 }
 
 // 模态框组件
 class Modal {
   constructor() {
-    this.init();
+    this.modalContainer = document.getElementById('modal-container');
+    this.modals = {};
   }
 
   async init() {
     const modalHtml = await ComponentLoader.loadComponent('components/modal.html');
-    document.body.insertAdjacentHTML('beforeend', modalHtml);
+    this.modalContainer.innerHTML = modalHtml;
     this.setupEventListeners();
   }
 
   setupEventListeners() {
-    // 关闭按钮事件
-    const closeButtons = document.querySelectorAll('.close');
-    closeButtons.forEach(button => {
-      button.addEventListener('click', () => {
-        const modal = button.closest('.modal');
-        if (modal) {
-          modal.style.display = 'none';
-        }
+    // 关闭按钮
+    document.querySelectorAll('.close').forEach(closeBtn => {
+      closeBtn.addEventListener('click', () => {
+        this.hideAll();
       });
     });
 
     // 点击模态框外部关闭
     window.addEventListener('click', (e) => {
       if (e.target.classList.contains('modal')) {
-        e.target.style.display = 'none';
+        this.hideAll();
       }
     });
 
-    // 表单提交
-    document.querySelectorAll('.auth-form').forEach(form => {
-      form.addEventListener('submit', (e) => {
+    // 切换登录/注册模态框
+    document.querySelectorAll('.switch-btn').forEach(btn => {
+      btn.addEventListener('click', (e) => {
         e.preventDefault();
-        // 添加表单提交逻辑
-        console.log('Form submitted');
+        const currentModal = e.target.closest('.modal');
+        const targetModal = currentModal.id === 'loginModal' ? 'signupModal' : 'loginModal';
+        this.hideAll();
+        this.show(targetModal);
       });
+    });
+  }
+
+  show(modalId) {
+    const modal = document.getElementById(modalId);
+    if (modal) {
+      modal.style.display = 'block';
+      this.modals[modalId] = modal;
+    }
+  }
+
+  hide(modalId) {
+    const modal = this.modals[modalId];
+    if (modal) {
+      modal.style.display = 'none';
+      delete this.modals[modalId];
+    }
+  }
+
+  hideAll() {
+    Object.keys(this.modals).forEach(modalId => {
+      this.hide(modalId);
     });
   }
 }
@@ -145,11 +123,62 @@ class Modal {
 // 页脚组件
 class Footer {
   constructor() {
-    this.init();
+    this.footerContainer = document.getElementById('footer-container');
   }
 
   async init() {
     const footerHtml = await ComponentLoader.loadComponent('components/footer.html');
-    document.body.insertAdjacentHTML('beforeend', footerHtml);
+    this.footerContainer.innerHTML = footerHtml;
   }
-} 
+}
+
+// 工具卡片组件
+class ToolCard {
+  constructor(tool) {
+    this.tool = tool;
+  }
+
+  create() {
+    const card = document.createElement('div');
+    card.className = 'tool-card fade-in';
+    card.dataset.id = this.tool.id;
+    card.dataset.category = this.tool.category;
+    card.dataset.price = this.tool.price;
+    card.dataset.rating = this.tool.rating;
+
+    card.innerHTML = `
+      <img src="${this.tool.image}" alt="${this.tool.title}">
+      <div class="tool-content">
+        <h3>${this.tool.title}</h3>
+        <p>${this.tool.description}</p>
+        <div class="tool-meta">
+          <span class="price">${this.tool.price === 0 ? 'Free' : `$${this.tool.price}`}</span>
+          <span class="rating">
+            ${this.createStarRating(this.tool.rating)}
+            <span>(${this.tool.rating})</span>
+          </span>
+        </div>
+        <button class="favorite-btn">
+          <i class="far fa-heart"></i>
+        </button>
+      </div>
+    `;
+
+    return card;
+  }
+
+  createStarRating(rating) {
+    return Array(5).fill('').map((_, i) => `
+      <i class="fas fa-star ${i < rating ? 'active' : ''}"></i>
+    `).join('');
+  }
+}
+
+// 导出组件
+export {
+  ComponentLoader,
+  NavigationBar,
+  Modal,
+  Footer,
+  ToolCard
+};
