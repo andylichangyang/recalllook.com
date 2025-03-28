@@ -1,38 +1,86 @@
+<!-- 页脚 -->
 <footer class="footer">
-  <div class="footer-container">
-    <div class="footer-content">
-      <div class="footer-section">
-        <h3 data-i18n="aboutUs">关于我们</h3>
-        <p data-i18n="footerAbout">RecallLook致力于为用户提供最全面的AI语音工具目录,帮助您找到最适合的工具。</p>
-      </div>
-      <div class="footer-section">
-        <h3 data-i18n="quickLinks">快速链接</h3>
-        <ul>
-          <li><a href="index.html" data-i18n="home">首页</a></li>
-          <li><a href="tools.html" data-i18n="allTools">所有工具</a></li>
-          <li><a href="about.html" data-i18n="aboutUs">关于我们</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h3 data-i18n="categories">分类</h3>
-        <ul>
-          <li><a href="tools.html#speech-synthesis" data-i18n="speechSynthesis">语音合成</a></li>
-          <li><a href="tools.html#speech-recognition" data-i18n="speechRecognition">语音识别</a></li>
-          <li><a href="tools.html#audio-editing" data-i18n="audioEditing">音频编辑</a></li>
-          <li><a href="tools.html#music-generation" data-i18n="musicGeneration">音乐生成</a></li>
-          <li><a href="tools.html#voice-cloning" data-i18n="voiceCloning">语音克隆</a></li>
-        </ul>
-      </div>
-      <div class="footer-section">
-        <h3 data-i18n="contactUs">联系我们</h3>
-        <ul>
-          <li><a href="mailto:contact@recalllook.com">contact@recalllook.com</a></li>
-          <li><a href="https://twitter.com/recalllook" target="_blank">@recalllook</a></li>
-        </ul>
-      </div>
+    <div class="container">
+        <div class="footer-content">
+            <!-- 品牌信息 -->
+            <div class="footer-brand">
+                <a href="/" class="footer-logo">
+                    <img src="assets/images/logo.svg" alt="RecallLook Logo">
+                </a>
+                <p class="footer-description">
+                    发现和比较最佳AI语音工具，让您的音频创作更简单、更高效。
+                </p>
+                <div class="social-links">
+                    <a href="#" class="social-link" aria-label="Twitter">
+                        <i class="fab fa-twitter"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="LinkedIn">
+                        <i class="fab fa-linkedin"></i>
+                    </a>
+                    <a href="#" class="social-link" aria-label="GitHub">
+                        <i class="fab fa-github"></i>
+                    </a>
+                </div>
+            </div>
+
+            <!-- 快速链接 -->
+            <div class="footer-links">
+                <h3 class="footer-title">快速链接</h3>
+                <ul class="footer-list">
+                    <li><a href="/tools.html">所有工具</a></li>
+                    <li><a href="/about.html">关于我们</a></li>
+                    <li><a href="/contact.html">联系我们</a></li>
+                    <li><a href="/blog.html">博客</a></li>
+                </ul>
+            </div>
+
+            <!-- 工具分类 -->
+            <div class="footer-links">
+                <h3 class="footer-title">工具分类</h3>
+                <ul class="footer-list">
+                    <li><a href="/tools.html#speech-synthesis">语音合成</a></li>
+                    <li><a href="/tools.html#speech-recognition">语音识别</a></li>
+                    <li><a href="/tools.html#audio-editing">音频编辑</a></li>
+                    <li><a href="/tools.html#music-generation">音乐生成</a></li>
+                    <li><a href="/tools.html#voice-cloning">声音克隆</a></li>
+                </ul>
+            </div>
+
+            <!-- 资源 -->
+            <div class="footer-links">
+                <h3 class="footer-title">资源</h3>
+                <ul class="footer-list">
+                    <li><a href="/privacy.html">隐私政策</a></li>
+                    <li><a href="/terms.html">使用条款</a></li>
+                    <li><a href="/faq.html">常见问题</a></li>
+                    <li><a href="/sitemap.html">网站地图</a></li>
+                </ul>
+            </div>
+
+            <!-- 订阅 -->
+            <div class="footer-subscribe">
+                <h3 class="footer-title">订阅更新</h3>
+                <p class="subscribe-description">
+                    订阅我们的新闻通讯，获取最新AI语音工具和行业动态。
+                </p>
+                <form class="subscribe-form" id="footerSubscribeForm">
+                    <div class="form-group">
+                        <input type="email" class="form-control" placeholder="输入您的邮箱地址" required>
+                        <button type="submit" class="btn btn-primary">订阅</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <!-- 版权信息 -->
+        <div class="footer-bottom">
+            <div class="copyright">
+                <p>&copy; 2024 RecallLook. All rights reserved.</p>
+            </div>
+            <div class="footer-languages">
+                <a href="#" class="language-link active">English</a>
+                <a href="#" class="language-link">中文</a>
+            </div>
+        </div>
     </div>
-    <div class="footer-bottom">
-      <p>&copy; 2024 RecallLook. <span data-i18n="allRightsReserved">保留所有权利</span>.</p>
-    </div>
-  </div>
 </footer> 
