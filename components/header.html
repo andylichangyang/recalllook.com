@@ -1,28 +1,64 @@
+<!-- 导航栏 -->
 <header class="header">
-  <div class="header-container">
-    <div class="logo">
-      <a href="index.html">
-        <img src="assets/images/logo.png" alt="RecallLook Logo">
-      </a>
+    <div class="container">
+        <nav class="nav">
+            <!-- Logo -->
+            <a href="/" class="logo">
+                <img src="assets/images/logo.svg" alt="RecallLook Logo">
+            </a>
+
+            <!-- 主导航 -->
+            <ul class="nav-links">
+                <li><a href="/" class="nav-link">首页</a></li>
+                <li><a href="/tools.html" class="nav-link">工具</a></li>
+                <li><a href="/about.html" class="nav-link">关于我们</a></li>
+                <li><a href="/contact.html" class="nav-link">联系我们</a></li>
+            </ul>
+
+            <!-- 右侧功能区 -->
+            <div class="nav-right">
+                <!-- 语言选择 -->
+                <div class="language-selector">
+                    <select class="language-select">
+                        <option value="en">English</option>
+                        <option value="zh">中文</option>
+                    </select>
+                </div>
+
+                <!-- 用户操作 -->
+                <div class="user-actions">
+                    <button class="btn btn-outline" id="loginBtn">登录</button>
+                    <button class="btn btn-primary" id="signupBtn">注册</button>
+                </div>
+
+                <!-- 移动端菜单按钮 -->
+                <button class="mobile-menu-btn" id="mobileMenuBtn">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </button>
+            </div>
+        </nav>
     </div>
-    <nav class="nav">
-      <ul class="nav-links">
-        <li><a href="index.html" data-i18n="home">首页</a></li>
-        <li><a href="tools.html" data-i18n="allTools">所有工具</a></li>
-        <li><a href="about.html" data-i18n="aboutUs">关于我们</a></li>
-      </ul>
-      <div class="nav-right">
-        <div class="language-selector">
-          <select id="languageSelect">
-            <option value="en">English</option>
-            <option value="zh">中文</option>
-          </select>
-        </div>
-        <div class="auth-buttons">
-          <button class="login-btn" data-i18n="login">登录</button>
-          <button class="signup-btn" data-i18n="signup">注册</button>
-        </div>
-      </div>
-    </nav>
-  </div>
-</header> 
+</header>
+
+<!-- 移动端菜单 -->
+<div class="mobile-menu" id="mobileMenu">
+    <div class="mobile-menu-header">
+        <button class="close-menu" id="closeMobileMenu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+    <ul class="mobile-nav-links">
+        <li><a href="/" class="mobile-nav-link">首页</a></li>
+        <li><a href="/tools.html" class="mobile-nav-link">工具</a></li>
+        <li><a href="/about.html" class="mobile-nav-link">关于我们</a></li>
+        <li><a href="/contact.html" class="mobile-nav-link">联系我们</a></li>
+    </ul>
+    <div class="mobile-user-actions">
+        <button class="btn btn-outline btn-block" id="mobileLoginBtn">登录</button>
+        <button class="btn btn-primary btn-block" id="mobileSignupBtn">注册</button>
+    </div>
+</div> 
