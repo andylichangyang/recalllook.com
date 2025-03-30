@@ -59,13 +59,13 @@ export class ToolManager {
     }
 
     getFeaturedTools(limit = 6) {
-        return this.tools
+        return [...this.tools]
             .sort((a, b) => b.rating - a.rating)
             .slice(0, limit);
     }
 
     getLatestTools(limit = 6) {
-        return this.tools
+        return [...this.tools]
             .sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded))
             .slice(0, limit);
     }
