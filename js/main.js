@@ -54,9 +54,9 @@ document.addEventListener('DOMContentLoaded', () => {
         if (filter) {
             filter.addEventListener('change', () => {
                 const filters = {
-                    category: categoryFilter.value,
-                    price: priceFilter.value,
-                    rating: ratingFilter.value
+                    category: categoryFilter?.value || 'all',
+                    price: priceFilter?.value || 'all',
+                    rating: ratingFilter?.value || 'all'
                 };
                 const filteredTools = toolManager.filterTools(filters);
                 updateToolsDisplay(filteredTools);
@@ -66,18 +66,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Update tools display
     function updateToolsDisplay(tools) {
-        const containers = document.querySelectorAll('.tools-grid');
-        containers.forEach(container => {
-            if (container.id !== 'featuredTools' && container.id !== 'latestTools') {
-                const category = container.closest('.category-section')?.id;
-                if (category) {
-                    container.innerHTML = tools
-                        .filter(tool => tool.category === category)
-                        .map(tool => new ToolCard(tool).render())
-                        .join('');
-                }
-            }
-        });
+        const toolsContainer = document.querySelector('.tools-grid');
+        if (toolsContainer) {
+            toolsContainer.innerHTML = tools
+                .map(tool => new ToolCard(tool).render())
+                .join('');
+        }
     }
 
     // Language switching
