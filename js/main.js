@@ -4,7 +4,6 @@ import { ToolCard } from './components/ToolCard.js';
 // Initialize tools when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
     const toolManager = new ToolManager();
-    const toolCard = new ToolCard();
 
     // Initialize featured tools
     const featuredToolsContainer = document.getElementById('featuredTools');
@@ -70,10 +69,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const containers = document.querySelectorAll('.tools-grid');
         containers.forEach(container => {
             if (container.id !== 'featuredTools' && container.id !== 'latestTools') {
-                container.innerHTML = tools
-                    .filter(tool => tool.category === container.closest('.category-section').id)
-                    .map(tool => new ToolCard(tool).render())
-                    .join('');
+                const category = container.closest('.category-section')?.id;
+                if (category) {
+                    container.innerHTML = tools
+                        .filter(tool => tool.category === category)
+                        .map(tool => new ToolCard(tool).render())
+                        .join('');
+                }
             }
         });
     }
