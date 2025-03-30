@@ -1,7 +1,7 @@
-import toolsData from '../data/tools.js';
+import { toolsData } from '../data/tools.js';
 import { ToolCard } from '../components/ToolCard.js';
 
-class ToolManager {
+export class ToolManager {
     constructor() {
         this.tools = this.initializeTools();
         this.currentCategory = 'all';
@@ -12,14 +12,14 @@ class ToolManager {
 
     initializeTools() {
         const allTools = [];
-        for (const category in toolsData) {
-            toolsData[category].forEach(tool => {
+        Object.values(toolsData).forEach(category => {
+            category.forEach(tool => {
                 allTools.push({
                     ...tool,
                     id: this.generateToolId(tool.name)
                 });
             });
-        }
+        });
         return allTools;
     }
 
@@ -46,28 +46,36 @@ class ToolManager {
         return this.tools.filter(tool => 
             tool.name.toLowerCase().includes(searchQuery) ||
             tool.description.toLowerCase().includes(searchQuery) ||
-            tool.features.toLowerCase().includes(searchQuery)
+            tool.features.some(feature => feature.toLowerCase().includes(searchQuery))
         );
     }
 
     filterTools(filters) {
         return this.tools.filter(tool => {
-            if (filters.category && tool.category !== filters.category) return false;
-            if (filters.price && tool.price !== filters.price) return false;
-            if (filters.rating && tool.rating < filters.rating) return false;
+            if (filters.category && filters.category !== 'all' && tool.category !== filters.category) {
+                return false;
+            }
+            if (filters.price && filters.price !== 'all' && tool.price !== filters.price) {
+                return false;
+            }
+            if (filters.rating && filters.rating !== 'all' && tool.rating < parseFloat(filters.rating)) {
+                return false;
+            }
             return true;
         });
     }
 
     getFeaturedTools(limit = 6) {
         return this.tools
+            .filter(tool => tool.rating >= 4.5)
             .sort((a, b) => b.rating - a.rating)
             .slice(0, limit);
     }
 
     getLatestTools(limit = 6) {
         return this.tools
-            .sort((a, b) => b.id.localeCompare(a.id))
+            .filter(tool => tool.dateAdded)
+            .sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded))
             .slice(0, limit);
     }
 
@@ -118,6 +126,4 @@ class ToolManager {
             .sort((a, b) => b.id.localeCompare(a.id))
             .slice(0, 8);
     }
-}
-
-export default ToolManager; 
+} 
