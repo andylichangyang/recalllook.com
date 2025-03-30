@@ -1,16 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Voice Tools - RecallLook</title>
+    <title>AI声音工具导航 - RecallLook</title>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHE2E5K5GC"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-
         gtag('config', 'G-SHE2E5K5GC');
     </script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
@@ -19,177 +18,118 @@
     <link rel="stylesheet" href="css/components/footer.css">
 </head>
 <body>
-    <!-- 导航栏占位符 -->
-    <div id="header-placeholder"></div>
-
-    <!-- 工具页面头部 -->
-    <section class="tools-header">
-        <div class="container">
-            <h1>AI Voice Tools</h1>
-            <p>Find and compare the best AI voice tools for your needs</p>
-        </div>
-    </section>
-
-    <!-- 搜索和筛选区域 -->
-    <section class="search-filters">
-        <div class="container">
-            <!-- 搜索框 -->
-            <div class="search-box">
-                <input type="text" id="toolSearch" placeholder="Search AI voice tools..." class="search-input">
-                <button class="search-btn">
-                    <i class="fas fa-search"></i>
-                </button>
+    <header class="header">
+        <nav class="nav-container">
+            <div class="logo">
+                <a href="index.html">RecallLook</a>
             </div>
-
-            <!-- 筛选器 -->
-            <div class="filters">
-                <!-- 分类筛选 -->
-                <div class="filter-group">
-                    <label for="categoryFilter">Category</label>
-                    <select id="categoryFilter" class="filter-select">
-                        <option value="all">All Categories</option>
-                        <option value="speech-synthesis">Speech Synthesis</option>
-                        <option value="speech-recognition">Speech Recognition</option>
-                        <option value="audio-editing">Audio Editing</option>
-                        <option value="music-generation">Music Generation</option>
-                        <option value="voice-cloning">Voice Cloning</option>
-                    </select>
-                </div>
-
-                <!-- 价格筛选 -->
-                <div class="filter-group">
-                    <label for="priceFilter">Price</label>
-                    <select id="priceFilter" class="filter-select">
-                        <option value="all">All Prices</option>
-                        <option value="free">Free</option>
-                        <option value="paid">Paid</option>
-                        <option value="subscription">Subscription</option>
-                    </select>
-                </div>
-
-                <!-- 评分筛选 -->
-                <div class="filter-group">
-                    <label for="ratingFilter">Rating</label>
-                    <select id="ratingFilter" class="filter-select">
-                        <option value="all">All Ratings</option>
-                        <option value="4">4+ Stars</option>
-                        <option value="3">3+ Stars</option>
-                        <option value="2">2+ Stars</option>
-                    </select>
-                </div>
+            <div class="nav-links">
+                <a href="index.html">首页</a>
+                <a href="tools.html" class="active">工具导航</a>
+                <a href="about.html">关于我们</a>
+                <a href="contact.html">联系我们</a>
             </div>
-        </div>
-    </section>
-
-    <!-- 工具分类区域 -->
-    <section class="tools-categories">
-        <div class="container">
-            <!-- 语音合成 -->
-            <div id="speech-synthesis" class="category-section">
-                <div class="category-header">
-                    <h2>Speech Synthesis</h2>
-                    <p>Convert text to natural-sounding speech</p>
-                </div>
-                <div class="tools-grid">
-                    <!-- 工具卡片将通过JavaScript动态加载 -->
-                </div>
+            <div class="language-selector">
+                <select class="language-select">
+                    <option value="zh">中文</option>
+                    <option value="en">English</option>
+                </select>
             </div>
+        </nav>
+    </header>
 
-            <!-- 语音识别 -->
-            <div id="speech-recognition" class="category-section">
-                <div class="category-header">
-                    <h2>Speech Recognition</h2>
-                    <p>Convert speech to accurate text</p>
-                </div>
-                <div class="tools-grid">
-                    <!-- 工具卡片将通过JavaScript动态加载 -->
-                </div>
+    <main class="main-content">
+        <section class="hero-section">
+            <h1>AI声音工具导航</h1>
+            <p>发现最优质的AI声音工具，提升您的内容创作效率</p>
+        </section>
+
+        <section class="search-section">
+            <div class="search-container">
+                <input type="text" id="toolSearch" placeholder="搜索AI声音工具...">
+                <button class="search-btn"><i class="fas fa-search"></i></button>
             </div>
-
-            <!-- 音频编辑 -->
-            <div id="audio-editing" class="category-section">
-                <div class="category-header">
-                    <h2>Audio Editing</h2>
-                    <p>Edit and enhance audio files</p>
-                </div>
-                <div class="tools-grid">
-                    <!-- 工具卡片将通过JavaScript动态加载 -->
-                </div>
+            <div class="filter-container">
+                <select id="categoryFilter">
+                    <option value="all">所有类别</option>
+                    <option value="speech-synthesis">语音合成</option>
+                    <option value="speech-recognition">语音识别</option>
+                    <option value="audio-editing">音频编辑</option>
+                    <option value="music-generation">音乐生成</option>
+                    <option value="voice-cloning">声音克隆</option>
+                </select>
+                <select id="priceFilter">
+                    <option value="all">所有价格</option>
+                    <option value="free">免费</option>
+                    <option value="paid">付费</option>
+                    <option value="subscription">订阅</option>
+                </select>
+                <select id="ratingFilter">
+                    <option value="all">所有评分</option>
+                    <option value="4.5">4.5星以上</option>
+                    <option value="4.0">4.0星以上</option>
+                    <option value="3.5">3.5星以上</option>
+                </select>
             </div>
+        </section>
 
-            <!-- 音乐生成 -->
-            <div id="music-generation" class="category-section">
-                <div class="category-header">
-                    <h2>Music Generation</h2>
-                    <p>Create original music with AI</p>
-                </div>
-                <div class="tools-grid">
-                    <!-- 工具卡片将通过JavaScript动态加载 -->
-                </div>
+        <section class="featured-tools">
+            <h2>特色工具</h2>
+            <div class="tools-grid" id="featuredTools"></div>
+        </section>
+
+        <section class="category-section" id="speech-synthesis">
+            <h2>语音合成</h2>
+            <div class="tools-grid"></div>
+        </section>
+
+        <section class="category-section" id="speech-recognition">
+            <h2>语音识别</h2>
+            <div class="tools-grid"></div>
+        </section>
+
+        <section class="category-section" id="audio-editing">
+            <h2>音频编辑</h2>
+            <div class="tools-grid"></div>
+        </section>
+
+        <section class="category-section" id="music-generation">
+            <h2>音乐生成</h2>
+            <div class="tools-grid"></div>
+        </section>
+
+        <section class="category-section" id="voice-cloning">
+            <h2>声音克隆</h2>
+            <div class="tools-grid"></div>
+        </section>
+    </main>
+
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-section">
+                <h3>关于我们</h3>
+                <p>RecallLook致力于为用户提供最优质的AI工具导航服务</p>
             </div>
-
-            <!-- 声音克隆 -->
-            <div id="voice-cloning" class="category-section">
-                <div class="category-header">
-                    <h2>Voice Cloning</h2>
-                    <p>Clone and customize voices</p>
-                </div>
-                <div class="tools-grid">
-                    <!-- 工具卡片将通过JavaScript动态加载 -->
-                </div>
+            <div class="footer-section">
+                <h3>快速链接</h3>
+                <ul>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="tools.html">工具导航</a></li>
+                    <li><a href="about.html">关于我们</a></li>
+                    <li><a href="contact.html">联系我们</a></li>
+                </ul>
+            </div>
+            <div class="footer-section">
+                <h3>联系方式</h3>
+                <p>邮箱：contact@recalllook.com</p>
+                <p>微信：RecallLook</p>
             </div>
         </div>
-    </section>
-
-    <!-- 页脚占位符 -->
-    <div id="footer-placeholder"></div>
-
-    <!-- 登录模态框 -->
-    <div id="loginModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Login</h2>
-            <form id="loginForm">
-                <div class="form-group">
-                    <label for="loginEmail">Email</label>
-                    <input type="email" id="loginEmail" required>
-                </div>
-                <div class="form-group">
-                    <label for="loginPassword">Password</label>
-                    <input type="password" id="loginPassword" required>
-                </div>
-                <button type="submit" class="btn btn-primary btn-block">Login</button>
-                <p class="modal-switch">Don't have an account? <a href="#" class="switch-to-signup">Sign up</a></p>
-            </form>
+        <div class="footer-bottom">
+            <p>&copy; 2024 RecallLook. All rights reserved.</p>
         </div>
-    </div>
+    </footer>
 
-    <!-- 注册模态框 -->
-    <div id="signupModal" class="modal">
-        <div class="modal-content">
-            <span class="close">&times;</span>
-            <h2>Sign Up</h2>
-            <form id="signupForm">
-                <div class="form-group">
-                    <label for="signupName">Name</label>
-                    <input type="text" id="signupName" required>
-                </div>
-                <div class="form-group">
-                    <label for="signupEmail">Email</label>
-                    <input type="email" id="signupEmail" required>
-                </div>
-                <div class="form-group">
-                    <label for="signupPassword">Password</label>
-                    <input type="password" id="signupPassword" required>
-                </div>
-                <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
-                <p class="modal-switch">Already have an account? <a href="#" class="switch-to-login">Login</a></p>
-            </form>
-        </div>
-    </div>
-
-    <script src="js/utils/ToolManager.js"></script>
-    <script src="js/components/ToolCard.js"></script>
-    <script src="js/tools.js"></script>
+    <script type="module" src="js/main.js"></script>
 </body>
 </html> 
