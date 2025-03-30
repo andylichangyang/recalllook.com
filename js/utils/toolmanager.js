@@ -101,20 +101,4 @@ export class ToolManager {
     setSearchQuery(query) {
         this.searchQuery = query;
     }
-
-    getFeaturedTools() {
-        // 获取评分最高的工具
-        const allTools = Object.values(this.tools).flat();
-        return allTools
-            .sort((a, b) => b.rating - a.rating)
-            .slice(0, 8);
-    }
-
-    getLatestTools() {
-        // 获取最新添加的工具
-        const allTools = Object.values(this.tools).flat();
-        return allTools
-            .sort((a, b) => b.id.localeCompare(a.id))
-            .slice(0, 8);
-    }
 } 
