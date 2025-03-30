@@ -1,31 +1,12 @@
-import { toolsData } from '../data/tools.js';
+import { tools } from '../data/tools.js';
 
 export class ToolManager {
     constructor() {
-        this.tools = this.initializeTools();
+        this.tools = tools;
         this.currentCategory = 'all';
         this.currentPrice = 'all';
         this.currentRating = 'all';
         this.searchQuery = '';
-    }
-
-    initializeTools() {
-        const allTools = [];
-        Object.values(toolsData).forEach(category => {
-            category.forEach(tool => {
-                allTools.push({
-                    ...tool,
-                    id: this.generateToolId(tool.name)
-                });
-            });
-        });
-        return allTools;
-    }
-
-    generateToolId(name) {
-        return name.toLowerCase()
-            .replace(/[^a-z0-9]+/g, '-')
-            .replace(/(^-|-$)/g, '');
     }
 
     getAllTools() {
@@ -33,6 +14,9 @@ export class ToolManager {
     }
 
     getToolsByCategory(category) {
+        if (category === 'all') {
+            return this.tools;
+        }
         return this.tools.filter(tool => tool.category === category);
     }
 
@@ -41,6 +25,8 @@ export class ToolManager {
     }
 
     searchTools(query) {
+        if (!query) return this.tools;
+        
         const searchQuery = query.toLowerCase();
         return this.tools.filter(tool => 
             tool.name.toLowerCase().includes(searchQuery) ||
@@ -49,31 +35,37 @@ export class ToolManager {
         );
     }
 
-    filterTools(filters) {
-        return this.tools.filter(tool => {
-            if (filters.category && filters.category !== 'all' && tool.category !== filters.category) {
-                return false;
-            }
-            if (filters.price && filters.price !== 'all' && tool.price !== filters.price) {
-                return false;
-            }
-            if (filters.rating && filters.rating !== 'all' && tool.rating < parseFloat(filters.rating)) {
-                return false;
-            }
-            return true;
-        });
+    filterTools(filters = {}) {
+        let filteredTools = this.tools;
+
+        if (filters.category && filters.category !== 'all') {
+            filteredTools = filteredTools.filter(tool => tool.category === filters.category);
+        }
+
+        if (filters.price && filters.price !== 'all') {
+            filteredTools = filteredTools.filter(tool => tool.price === filters.price);
+        }
+
+        if (filters.rating && filters.rating !== 'all') {
+            const minRating = parseFloat(filters.rating);
+            filteredTools = filteredTools.filter(tool => tool.rating >= minRating);
+        }
+
+        if (this.searchQuery) {
+            filteredTools = this.searchTools(this.searchQuery);
+        }
+
+        return filteredTools;
     }
 
     getFeaturedTools(limit = 6) {
         return this.tools
-            .filter(tool => tool.rating >= 4.5)
             .sort((a, b) => b.rating - a.rating)
             .slice(0, limit);
     }
 
     getLatestTools(limit = 6) {
         return this.tools
-            .filter(tool => tool.dateAdded)
             .sort((a, b) => new Date(b.dateAdded) - new Date(a.dateAdded))
             .slice(0, limit);
     }
