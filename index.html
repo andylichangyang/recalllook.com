@@ -593,210 +593,157 @@
   </style>
 </head>
 <body>
-  <!-- 导航栏占位符 -->
-  <div id="header-placeholder"></div>
-
-  <!-- 英雄区域 -->
-  <section class="hero">
-    <div class="container">
-      <h1 class="hero-title">Discover the Best AI Voice Tools</h1>
-      <p class="hero-description">
-        Explore, compare, and choose the perfect AI voice tools for your needs. 
-        We provide comprehensive tool directories and detailed reviews.
-      </p>
-      <div class="hero-buttons">
-        <a href="/tools.html" class="btn btn-primary btn-lg">Explore Tools</a>
-        <a href="#categories" class="btn btn-outline btn-lg">View Categories</a>
+  <header class="header">
+    <nav class="nav-container">
+      <div class="logo">
+        <a href="index.html">RecallLook</a>
       </div>
-    </div>
-  </section>
-
-  <!-- 搜索区域 -->
-  <section class="search-section">
-    <div class="container">
-      <div class="search-box">
-        <input type="text" placeholder="Search AI voice tools..." class="search-input">
-        <button class="search-btn">
-          <i class="fas fa-search"></i>
-        </button>
+      <div class="nav-links">
+        <a href="index.html" class="active">Home</a>
+        <a href="tools.html">Tools</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
       </div>
-      <div class="quick-filters">
-        <button class="filter-btn active">All</button>
-        <button class="filter-btn">Speech Synthesis</button>
-        <button class="filter-btn">Speech Recognition</button>
-        <button class="filter-btn">Audio Editing</button>
-        <button class="filter-btn">Music Generation</button>
+      <div class="language-selector">
+        <select class="language-select">
+          <option value="en">English</option>
+          <option value="zh">中文</option>
+        </select>
       </div>
-    </div>
-  </section>
+    </nav>
+  </header>
 
-  <!-- 分类区域 -->
-  <section id="categories" class="categories">
-    <div class="container">
-      <h2 class="section-title">Popular Categories</h2>
-      <div class="categories-grid">
-        <div class="category-card">
-          <div class="category-icon">
+  <main class="main-content">
+    <section class="hero-section">
+      <div class="container">
+        <h1>Discover the Best AI Voice Tools</h1>
+        <p>Your comprehensive directory for AI-powered voice synthesis, recognition, and audio processing tools</p>
+        <div class="hero-buttons">
+          <a href="tools.html" class="btn btn-primary">Browse Tools</a>
+          <a href="#categories" class="btn btn-secondary">Learn More</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="categories" class="categories-section">
+      <div class="container">
+        <h2>AI Voice Tool Categories</h2>
+        <div class="category-grid">
+          <div class="category-card">
             <i class="fas fa-microphone"></i>
+            <h3>Speech Synthesis</h3>
+            <p>Convert text to natural-sounding speech with AI</p>
+            <a href="tools.html#speech-synthesis" class="btn btn-outline">View Tools</a>
           </div>
-          <h3>Speech Synthesis</h3>
-          <p>Convert text to natural-sounding speech</p>
-          <a href="/tools.html#speech-synthesis" class="category-link">View Tools</a>
-        </div>
-        <div class="category-card">
-          <div class="category-icon">
-            <i class="fas fa-headphones"></i>
+          <div class="category-card">
+            <i class="fas fa-comments"></i>
+            <h3>Speech Recognition</h3>
+            <p>Transform speech into text with high accuracy</p>
+            <a href="tools.html#speech-recognition" class="btn btn-outline">View Tools</a>
           </div>
-          <h3>Speech Recognition</h3>
-          <p>Convert speech to accurate text</p>
-          <a href="/tools.html#speech-recognition" class="category-link">View Tools</a>
-        </div>
-        <div class="category-card">
-          <div class="category-icon">
-            <i class="fas fa-sliders-h"></i>
+          <div class="category-card">
+            <i class="fas fa-wave-square"></i>
+            <h3>Audio Editing</h3>
+            <p>Edit and enhance audio with AI technology</p>
+            <a href="tools.html#audio-editing" class="btn btn-outline">View Tools</a>
           </div>
-          <h3>Audio Editing</h3>
-          <p>Edit and enhance audio files</p>
-          <a href="/tools.html#audio-editing" class="category-link">View Tools</a>
-        </div>
-        <div class="category-card">
-          <div class="category-icon">
+          <div class="category-card">
             <i class="fas fa-music"></i>
+            <h3>Music Generation</h3>
+            <p>Create original music with AI assistance</p>
+            <a href="tools.html#music-generation" class="btn btn-outline">View Tools</a>
           </div>
-          <h3>Music Generation</h3>
-          <p>Create original music with AI</p>
-          <a href="/tools.html#music-generation" class="category-link">View Tools</a>
-        </div>
-        <div class="category-card">
-          <div class="category-icon">
+          <div class="category-card">
             <i class="fas fa-clone"></i>
+            <h3>Voice Cloning</h3>
+            <p>Clone and customize voices with AI</p>
+            <a href="tools.html#voice-cloning" class="btn btn-outline">View Tools</a>
           </div>
-          <h3>Voice Cloning</h3>
-          <p>Clone and customize voices</p>
-          <a href="/tools.html#voice-cloning" class="category-link">View Tools</a>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- 特色工具 -->
-  <section class="featured-tools">
-    <div class="container">
-      <h2 class="section-title">Featured Tools</h2>
-      <div class="tools-grid" id="featuredTools">
-        <!-- 工具卡片将通过JavaScript动态加载 -->
+    <section class="featured-tools">
+      <div class="container">
+        <h2>Featured Tools</h2>
+        <div class="tools-grid" id="featuredTools">
+          <!-- Tools will be loaded dynamically -->
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- 最新工具 -->
-  <section class="latest-tools">
-    <div class="container">
-      <h2 class="section-title">Latest Tools</h2>
-      <div class="tools-grid" id="latestTools">
-        <!-- 工具卡片将通过JavaScript动态加载 -->
-      </div>
-    </div>
-  </section>
-
-  <!-- 用户评价 -->
-  <section class="testimonials">
-    <div class="container">
-      <h2 class="section-title">What Users Say</h2>
-      <div class="testimonials-grid">
-        <div class="testimonial-card">
-          <div class="testimonial-content">
-            <p>"RecallLook helped me find the perfect text-to-speech tool for my podcast. Highly recommended!"</p>
-          </div>
-          <div class="testimonial-author">
-            <img src="assets/images/user1.jpg" alt="User">
-            <div class="author-info">
-              <h4>John Smith</h4>
-              <p>Podcast Producer</p>
+    <section class="testimonials">
+      <div class="container">
+        <h2>What Our Users Say</h2>
+        <div class="testimonials-grid">
+          <div class="testimonial-card">
+            <div class="testimonial-content">
+              <i class="fas fa-quote-left"></i>
+              <p>"RecallLook has been invaluable in finding the right AI voice tools for our projects. The comprehensive reviews and comparisons make decision-making much easier."</p>
+            </div>
+            <div class="testimonial-author">
+              <img src="images/testimonials/user1.jpg" alt="John Doe">
+              <div>
+                <h4>John Doe</h4>
+                <p>Content Creator</p>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="testimonial-card">
-          <div class="testimonial-content">
-            <p>"Great platform for comparing different AI voice tools. Saved me hours of research."</p>
-          </div>
-          <div class="testimonial-author">
-            <img src="assets/images/user2.jpg" alt="User">
-            <div class="author-info">
-              <h4>Sarah Johnson</h4>
-              <p>Content Creator</p>
+          <div class="testimonial-card">
+            <div class="testimonial-content">
+              <i class="fas fa-quote-left"></i>
+              <p>"The platform's organization and search functionality are excellent. I can quickly find the tools I need based on my specific requirements."</p>
+            </div>
+            <div class="testimonial-author">
+              <img src="images/testimonials/user2.jpg" alt="Jane Smith">
+              <div>
+                <h4>Jane Smith</h4>
+                <p>Podcast Producer</p>
+              </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- 订阅区域 -->
-  <section class="newsletter">
-    <div class="container">
-      <div class="newsletter-content">
+    <section class="newsletter">
+      <div class="container">
         <h2>Stay Updated</h2>
-        <p>Subscribe to our newsletter for the latest AI voice tools and industry updates.</p>
-        <form class="newsletter-form" id="newsletterForm">
-          <div class="form-group">
-            <input type="email" placeholder="Enter your email" required>
-            <button type="submit" class="btn btn-primary">Subscribe</button>
-          </div>
+        <p>Subscribe to our newsletter for the latest AI voice tools and industry updates</p>
+        <form class="newsletter-form">
+          <input type="email" placeholder="Enter your email" required>
+          <button type="submit" class="btn btn-primary">Subscribe</button>
         </form>
       </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-section">
+        <h3>About Us</h3>
+        <p>RecallLook is dedicated to providing the best AI voice tool navigation service</p>
+      </div>
+      <div class="footer-section">
+        <h3>Quick Links</h3>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="tools.html">Tools</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-section">
+        <h3>Contact</h3>
+        <p>Email: contact@recalllook.com</p>
+        <p>WeChat: RecallLook</p>
+      </div>
     </div>
-  </section>
-
-  <!-- 页脚占位符 -->
-  <div id="footer-placeholder"></div>
-
-  <!-- 登录模态框 -->
-  <div id="loginModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>Login</h2>
-      <form id="loginForm">
-        <div class="form-group">
-          <label for="loginEmail">Email</label>
-          <input type="email" id="loginEmail" required>
-        </div>
-        <div class="form-group">
-          <label for="loginPassword">Password</label>
-          <input type="password" id="loginPassword" required>
-        </div>
-        <button type="submit" class="btn btn-primary btn-block">Login</button>
-        <p class="modal-switch">Don't have an account? <a href="#" class="switch-to-signup">Sign up</a></p>
-      </form>
+    <div class="footer-bottom">
+      <p>&copy; 2024 RecallLook. All rights reserved.</p>
     </div>
-  </div>
+  </footer>
 
-  <!-- 注册模态框 -->
-  <div id="signupModal" class="modal">
-    <div class="modal-content">
-      <span class="close">&times;</span>
-      <h2>Sign Up</h2>
-      <form id="signupForm">
-        <div class="form-group">
-          <label for="signupName">Name</label>
-          <input type="text" id="signupName" required>
-        </div>
-        <div class="form-group">
-          <label for="signupEmail">Email</label>
-          <input type="email" id="signupEmail" required>
-        </div>
-        <div class="form-group">
-          <label for="signupPassword">Password</label>
-          <input type="password" id="signupPassword" required>
-        </div>
-        <button type="submit" class="btn btn-primary btn-block">Sign Up</button>
-        <p class="modal-switch">Already have an account? <a href="#" class="switch-to-login">Login</a></p>
-      </form>
-    </div>
-  </div>
-
-  <script src="js/utils/ToolManager.js"></script>
-  <script src="js/components/ToolCard.js"></script>
-  <script src="js/main.js"></script>
+  <script type="module" src="js/main.js"></script>
 </body>
 </html>
