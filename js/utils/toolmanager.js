@@ -1,5 +1,4 @@
 import { toolsData } from '../data/tools.js';
-import { ToolCard } from '../components/ToolCard.js';
 
 export class ToolManager {
     constructor() {
