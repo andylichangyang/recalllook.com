@@ -1,3 +1,6 @@
+import ToolManager from './utils/ToolManager.js';
+import { ToolCard } from './components/ToolCard.js';
+
 // 初始化所有组件和工具
 document.addEventListener('DOMContentLoaded', () => {
   // 初始化组件
@@ -12,6 +15,9 @@ document.addEventListener('DOMContentLoaded', () => {
   const favoritesManager = new FavoritesManager();
   const searchManager = new SearchManager();
   const formValidation = new FormValidation();
+
+  const toolManager = new ToolManager();
+  const toolCard = new ToolCard();
 
   // 初始化国际化
   const currentLang = localStorage.getItem('language') || 'zh';
@@ -33,6 +39,79 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // 预加载关键资源
   performanceManager.preloadResources();
+
+  // 初始化特色工具
+  const featuredToolsContainer = document.getElementById('featuredTools');
+  if (featuredToolsContainer) {
+    const featuredTools = toolManager.getFeaturedTools();
+    featuredTools.forEach(tool => {
+      featuredToolsContainer.appendChild(toolCard.render(tool));
+    });
+  }
+
+  // 初始化最新工具
+  const latestToolsContainer = document.getElementById('latestTools');
+  if (latestToolsContainer) {
+    const latestTools = toolManager.getLatestTools();
+    latestTools.forEach(tool => {
+      latestToolsContainer.appendChild(toolCard.render(tool));
+    });
+  }
+
+  // 初始化分类工具
+  const categorySections = document.querySelectorAll('.category-section');
+  categorySections.forEach(section => {
+    const category = section.id;
+    const toolsGrid = section.querySelector('.tools-grid');
+    if (toolsGrid) {
+      const tools = toolManager.getToolsByCategory(category);
+      tools.forEach(tool => {
+        toolsGrid.appendChild(toolCard.render(tool));
+      });
+    }
+  });
+
+  // 搜索功能
+  const searchInput = document.getElementById('toolSearch');
+  if (searchInput) {
+    searchInput.addEventListener('input', (e) => {
+      const query = e.target.value;
+      const searchResults = toolManager.searchTools(query);
+      const toolsGrid = document.querySelector('.tools-grid');
+      if (toolsGrid) {
+        toolsGrid.innerHTML = '';
+        searchResults.forEach(tool => {
+          toolsGrid.appendChild(toolCard.render(tool));
+        });
+      }
+    });
+  }
+
+  // 筛选功能
+  const categoryFilter = document.getElementById('categoryFilter');
+  const priceFilter = document.getElementById('priceFilter');
+  const ratingFilter = document.getElementById('ratingFilter');
+
+  function updateFilters() {
+    const filters = {
+      category: categoryFilter?.value || 'all',
+      price: priceFilter?.value || 'all',
+      rating: ratingFilter?.value || 'all'
+    };
+
+    const filteredTools = toolManager.filterTools(filters);
+    const toolsGrid = document.querySelector('.tools-grid');
+    if (toolsGrid) {
+      toolsGrid.innerHTML = '';
+      filteredTools.forEach(tool => {
+        toolsGrid.appendChild(toolCard.render(tool));
+      });
+    }
+  }
+
+  categoryFilter?.addEventListener('change', updateFilters);
+  priceFilter?.addEventListener('change', updateFilters);
+  ratingFilter?.addEventListener('change', updateFilters);
 });
 
 // 处理表单提交
