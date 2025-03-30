@@ -3,6 +3,22 @@ export class ToolCard {
         this.tool = tool;
     }
 
+    // Get thumbnail image
+    getThumbnail() {
+        const { thumbnail, category } = this.tool;
+        if (thumbnail && this.imageExists(thumbnail)) {
+            return thumbnail;
+        }
+        return 'images/placeholders/default.svg';
+    }
+
+    // Check if image exists
+    imageExists(url) {
+        const img = new Image();
+        img.src = url;
+        return img.complete;
+    }
+
     // Generate star rating HTML
     generateStars(rating) {
         const fullStars = Math.floor(rating);
@@ -40,14 +56,13 @@ export class ToolCard {
             features,
             rating,
             price,
-            thumbnail,
             category
         } = this.tool;
 
         return `
             <div class="tool-card">
                 <div class="tool-thumbnail">
-                    <img src="${thumbnail || `images/placeholders/${category}.jpg`}" alt="${name}">
+                    <img src="${this.getThumbnail()}" alt="${name}" loading="lazy">
                     <div class="tool-overlay">
                         <a href="${url}" target="_blank" class="visit-icon">Visit</a>
                     </div>
@@ -70,5 +85,4 @@ export class ToolCard {
             </div>
         `;
     }
-} 
 } 
