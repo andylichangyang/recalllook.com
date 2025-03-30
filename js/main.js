@@ -3,24 +3,37 @@ import { ToolCard } from './components/ToolCard.js';
 
 // Initialize tools when DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
+    console.log('DOM loaded, initializing tools...');
     const toolManager = new ToolManager();
 
     // Initialize featured tools
     const featuredToolsContainer = document.getElementById('featuredTools');
     if (featuredToolsContainer) {
+        console.log('Loading featured tools...');
         const featuredTools = toolManager.getFeaturedTools(6);
-        featuredToolsContainer.innerHTML = featuredTools
+        console.log('Featured tools:', featuredTools);
+        const featuredHtml = featuredTools
             .map(tool => new ToolCard(tool).render())
             .join('');
+        console.log('Featured HTML:', featuredHtml);
+        featuredToolsContainer.innerHTML = featuredHtml;
+    } else {
+        console.log('Featured tools container not found');
     }
 
     // Initialize latest tools
     const latestToolsContainer = document.getElementById('latestTools');
     if (latestToolsContainer) {
+        console.log('Loading latest tools...');
         const latestTools = toolManager.getLatestTools(6);
-        latestToolsContainer.innerHTML = latestTools
+        console.log('Latest tools:', latestTools);
+        const latestHtml = latestTools
             .map(tool => new ToolCard(tool).render())
             .join('');
+        console.log('Latest HTML:', latestHtml);
+        latestToolsContainer.innerHTML = latestHtml;
+    } else {
+        console.log('Latest tools container not found');
     }
 
     // Initialize category tools
@@ -28,7 +41,9 @@ document.addEventListener('DOMContentLoaded', () => {
     categories.forEach(category => {
         const container = document.querySelector(`#${category} .tools-grid`);
         if (container) {
+            console.log(`Loading tools for category: ${category}`);
             const tools = toolManager.getToolsByCategory(category);
+            console.log(`${category} tools:`, tools);
             container.innerHTML = tools
                 .map(tool => new ToolCard(tool).render())
                 .join('');
@@ -40,7 +55,9 @@ document.addEventListener('DOMContentLoaded', () => {
     if (searchInput) {
         searchInput.addEventListener('input', (e) => {
             const query = e.target.value.trim();
+            console.log('Search query:', query);
             const filteredTools = toolManager.searchTools(query);
+            console.log('Filtered tools:', filteredTools);
             updateToolsDisplay(filteredTools);
         });
     }
@@ -58,7 +75,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     price: priceFilter?.value || 'all',
                     rating: ratingFilter?.value || 'all'
                 };
+                console.log('Applied filters:', filters);
                 const filteredTools = toolManager.filterTools(filters);
+                console.log('Filtered tools:', filteredTools);
                 updateToolsDisplay(filteredTools);
             });
         }
