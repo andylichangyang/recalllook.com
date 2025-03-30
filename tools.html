@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI声音工具导航 - RecallLook</title>
+    <title>AI Voice Tools - RecallLook</title>
     <!-- Google tag (gtag.js) -->
     <script async src="https://www.googletagmanager.com/gtag/js?id=G-SHE2E5K5GC"></script>
     <script>
@@ -24,15 +24,15 @@
                 <a href="index.html">RecallLook</a>
             </div>
             <div class="nav-links">
-                <a href="index.html">首页</a>
-                <a href="tools.html" class="active">工具导航</a>
-                <a href="about.html">关于我们</a>
-                <a href="contact.html">联系我们</a>
+                <a href="index.html">Home</a>
+                <a href="tools.html" class="active">Tools</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
             </div>
             <div class="language-selector">
                 <select class="language-select">
-                    <option value="zh">中文</option>
                     <option value="en">English</option>
+                    <option value="zh">中文</option>
                 </select>
             </div>
         </nav>
@@ -40,89 +40,128 @@
 
     <main class="main-content">
         <section class="hero-section">
-            <h1>AI声音工具导航</h1>
-            <p>发现最优质的AI声音工具，提升您的内容创作效率</p>
+            <div class="container">
+                <h1>AI Voice Tools Directory</h1>
+                <p>Explore our comprehensive collection of AI-powered voice tools</p>
+            </div>
         </section>
 
         <section class="search-section">
-            <div class="search-container">
-                <input type="text" id="toolSearch" placeholder="搜索AI声音工具...">
-                <button class="search-btn"><i class="fas fa-search"></i></button>
-            </div>
-            <div class="filter-container">
-                <select id="categoryFilter">
-                    <option value="all">所有类别</option>
-                    <option value="speech-synthesis">语音合成</option>
-                    <option value="speech-recognition">语音识别</option>
-                    <option value="audio-editing">音频编辑</option>
-                    <option value="music-generation">音乐生成</option>
-                    <option value="voice-cloning">声音克隆</option>
-                </select>
-                <select id="priceFilter">
-                    <option value="all">所有价格</option>
-                    <option value="free">免费</option>
-                    <option value="paid">付费</option>
-                    <option value="subscription">订阅</option>
-                </select>
-                <select id="ratingFilter">
-                    <option value="all">所有评分</option>
-                    <option value="4.5">4.5星以上</option>
-                    <option value="4.0">4.0星以上</option>
-                    <option value="3.5">3.5星以上</option>
-                </select>
+            <div class="container">
+                <div class="search-box">
+                    <input type="text" id="searchInput" placeholder="Search tools...">
+                    <button class="search-btn">
+                        <i class="fas fa-search"></i>
+                    </button>
+                </div>
+                <div class="filter-options">
+                    <select id="categoryFilter">
+                        <option value="all">All Categories</option>
+                        <option value="speech-synthesis">Speech Synthesis</option>
+                        <option value="speech-recognition">Speech Recognition</option>
+                        <option value="audio-editing">Audio Editing</option>
+                        <option value="music-generation">Music Generation</option>
+                        <option value="voice-cloning">Voice Cloning</option>
+                    </select>
+                    <select id="priceFilter">
+                        <option value="all">All Prices</option>
+                        <option value="free">Free</option>
+                        <option value="subscription">Subscription</option>
+                        <option value="paid">Paid</option>
+                    </select>
+                    <select id="ratingFilter">
+                        <option value="all">All Ratings</option>
+                        <option value="4.5">4.5+ Stars</option>
+                        <option value="4.0">4.0+ Stars</option>
+                        <option value="3.5">3.5+ Stars</option>
+                    </select>
+                </div>
             </div>
         </section>
 
         <section class="featured-tools">
-            <h2>特色工具</h2>
-            <div class="tools-grid" id="featuredTools"></div>
+            <div class="container">
+                <h2>Featured Tools</h2>
+                <div class="tools-grid" id="featuredTools">
+                    <!-- Tools will be loaded dynamically -->
+                </div>
+            </div>
+        </section>
+
+        <section class="latest-tools">
+            <div class="container">
+                <h2>Latest Tools</h2>
+                <div class="tools-grid" id="latestTools">
+                    <!-- Tools will be loaded dynamically -->
+                </div>
+            </div>
         </section>
 
         <section class="category-section" id="speech-synthesis">
-            <h2>语音合成</h2>
-            <div class="tools-grid"></div>
+            <div class="container">
+                <h2>Speech Synthesis Tools</h2>
+                <div class="tools-grid" id="speechSynthesisTools">
+                    <!-- Tools will be loaded dynamically -->
+                </div>
+            </div>
         </section>
 
         <section class="category-section" id="speech-recognition">
-            <h2>语音识别</h2>
-            <div class="tools-grid"></div>
+            <div class="container">
+                <h2>Speech Recognition Tools</h2>
+                <div class="tools-grid" id="speechRecognitionTools">
+                    <!-- Tools will be loaded dynamically -->
+                </div>
+            </div>
         </section>
 
         <section class="category-section" id="audio-editing">
-            <h2>音频编辑</h2>
-            <div class="tools-grid"></div>
+            <div class="container">
+                <h2>Audio Editing Tools</h2>
+                <div class="tools-grid" id="audioEditingTools">
+                    <!-- Tools will be loaded dynamically -->
+                </div>
+            </div>
         </section>
 
         <section class="category-section" id="music-generation">
-            <h2>音乐生成</h2>
-            <div class="tools-grid"></div>
+            <div class="container">
+                <h2>Music Generation Tools</h2>
+                <div class="tools-grid" id="musicGenerationTools">
+                    <!-- Tools will be loaded dynamically -->
+                </div>
+            </div>
         </section>
 
         <section class="category-section" id="voice-cloning">
-            <h2>声音克隆</h2>
-            <div class="tools-grid"></div>
+            <div class="container">
+                <h2>Voice Cloning Tools</h2>
+                <div class="tools-grid" id="voiceCloningTools">
+                    <!-- Tools will be loaded dynamically -->
+                </div>
+            </div>
         </section>
     </main>
 
     <footer class="footer">
         <div class="footer-content">
             <div class="footer-section">
-                <h3>关于我们</h3>
-                <p>RecallLook致力于为用户提供最优质的AI工具导航服务</p>
+                <h3>About Us</h3>
+                <p>RecallLook is dedicated to providing the best AI voice tool navigation service</p>
             </div>
             <div class="footer-section">
-                <h3>快速链接</h3>
+                <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="index.html">首页</a></li>
-                    <li><a href="tools.html">工具导航</a></li>
-                    <li><a href="about.html">关于我们</a></li>
-                    <li><a href="contact.html">联系我们</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="tools.html">Tools</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-section">
-                <h3>联系方式</h3>
-                <p>邮箱：contact@recalllook.com</p>
-                <p>微信：RecallLook</p>
+                <h3>Contact</h3>
+                <p>Email: contact@recalllook.com</p>
+                <p>WeChat: RecallLook</p>
             </div>
         </div>
         <div class="footer-bottom">
