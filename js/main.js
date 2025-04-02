@@ -2,8 +2,8 @@
 const loadModules = async () => {
     try {
         console.log('Starting to load modules...');
-        const { default: toolManager } = await import('../js/utils/ToolManager.js');
-        const { default: ToolCard } = await import('../js/components/ToolCard.js');
+        const { default: toolManager } = await import('./utils/ToolManager.js');
+        const { default: ToolCard } = await import('./components/ToolCard.js');
         console.log('Modules loaded successfully:', { toolManager, ToolCard });
         
         // Initialize the page
