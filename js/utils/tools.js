@@ -8,8 +8,8 @@ const tools = {
             features: ["29+ languages", "Industry-leading naturalness", "API integration"],
             category: "Text to Speech",
             rating: 4.9,
-            price: "Paid",
-            dateAdded: "2024-01-01"
+            price: "Free tier available",
+            dateAdded: "2024-01-15"
         },
         {
             id: "tts-2",
@@ -484,4 +484,4 @@ const tools = {
     ]
 };
 
-export default tools; 
+module.exports = tools; 
