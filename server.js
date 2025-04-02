@@ -25,24 +25,39 @@ app.use((req, res, next) => {
 
 // 路由
 app.get('/', (req, res) => {
-    res.render('index', { title: 'Home - RecallLook' });
+    res.render('index', { 
+        title: 'Home - RecallLook',
+        layout: 'base'
+    });
 });
 
 app.get('/tools', (req, res) => {
-    res.render('tools', { title: 'All Tools - RecallLook' });
+    res.render('tools', { 
+        title: 'All Tools - RecallLook',
+        layout: 'base'
+    });
 });
 
 app.get('/about', (req, res) => {
-    res.render('about', { title: 'About - RecallLook' });
+    res.render('about', { 
+        title: 'About - RecallLook',
+        layout: 'base'
+    });
 });
 
 app.get('/contact', (req, res) => {
-    res.render('contact', { title: 'Contact - RecallLook' });
+    res.render('contact', { 
+        title: 'Contact - RecallLook',
+        layout: 'base'
+    });
 });
 
 // 404处理
 app.use((req, res) => {
-    res.status(404).render('404', { title: '404 - Page Not Found' });
+    res.status(404).render('404', { 
+        title: '404 - Page Not Found',
+        layout: 'base'
+    });
 });
 
 app.listen(port, () => {
