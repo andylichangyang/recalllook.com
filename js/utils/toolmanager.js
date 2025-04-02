@@ -1,4 +1,4 @@
-import tools from './tools.js';
+import tools from '../utils/tools.js';
 
 class ToolManager {
     constructor() {
