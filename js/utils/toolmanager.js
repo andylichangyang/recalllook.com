@@ -1,9 +1,9 @@
 import tools from './tools.js';
 
 class ToolManager {
-    constructor() {
+    constructor(tools) {
         this.tools = tools;
-        console.log('ToolManager initialized with tools:', this.tools);
+        console.log('ToolManager initialized with tools:', tools);
     }
 
     // Get all tools from a specific category
@@ -93,5 +93,6 @@ class ToolManager {
     }
 }
 
-const toolManager = new ToolManager();
+// 创建全局实例
+const toolManager = new ToolManager(tools);
 export default toolManager; 
