@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html lang="zh">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI语音工具 - RecallLook</title>
+    <title>All Tools - RecallLook</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/components/header.css">
     <link rel="stylesheet" href="css/components/footer.css">
-    <link rel="stylesheet" href="css/pages/tools.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
@@ -18,48 +17,55 @@
                 <h1>RecallLook</h1>
             </div>
             <div class="nav-links">
-                <a href="index.html">首页</a>
-                <a href="tools.html" class="active">工具</a>
-                <a href="about.html">关于</a>
-                <a href="contact.html">联系我们</a>
+                <a href="index.html">Home</a>
+                <a href="tools.html" class="active">Tools</a>
+                <a href="about.html">About</a>
+                <a href="contact.html">Contact</a>
             </div>
             <div class="auth-buttons">
-                <button class="login-btn">登录</button>
-                <button class="signup-btn">注册</button>
+                <button class="login-btn">Login</button>
+                <button class="signup-btn">Sign Up</button>
             </div>
         </nav>
     </header>
 
     <!-- Main Content -->
     <main>
-        <!-- Search Section -->
-        <section class="search-section">
-            <div class="search-container">
-                <input type="text" id="searchInput" placeholder="搜索AI语音工具...">
-                <button id="searchButton">
-                    <i class="fas fa-search"></i>
+        <!-- Tools Header -->
+        <section class="tools-header">
+            <h1>All AI Voice Tools</h1>
+            <p>Browse our comprehensive collection of AI voice tools</p>
+        </section>
+
+        <!-- Category Tabs -->
+        <section class="category-tabs">
+            <div class="tabs-container">
+                <button class="category-tab active" data-category="Text to Speech">
+                    <i class="fas fa-microphone"></i>
+                    Text to Speech
                 </button>
-            </div>
-            <div class="filter-container">
-                <select id="categoryFilter">
-                    <option value="">所有分类</option>
-                    <option value="Text to Speech">文字转语音</option>
-                    <option value="Speech to Text">语音转文字</option>
-                    <option value="Audio Editing">音频编辑</option>
-                    <option value="Music Generation">音乐生成</option>
-                    <option value="Voice Cloning">声音克隆</option>
-                </select>
-                <select id="priceFilter">
-                    <option value="">所有价格</option>
-                    <option value="Free">免费</option>
-                    <option value="Paid">付费</option>
-                </select>
+                <button class="category-tab" data-category="Speech to Text">
+                    <i class="fas fa-keyboard"></i>
+                    Speech to Text
+                </button>
+                <button class="category-tab" data-category="Audio Editing">
+                    <i class="fas fa-cut"></i>
+                    Audio Editing
+                </button>
+                <button class="category-tab" data-category="Music Generation">
+                    <i class="fas fa-music"></i>
+                    Music Generation
+                </button>
+                <button class="category-tab" data-category="Voice Cloning">
+                    <i class="fas fa-user-voice"></i>
+                    Voice Cloning
+                </button>
             </div>
         </section>
 
-        <!-- Tools Grid -->
-        <section class="tools-section">
-            <div id="toolsGrid" class="tools-grid">
+        <!-- All Tools Section -->
+        <section class="all-tools">
+            <div id="allTools" class="tools-container">
                 <!-- Tools will be dynamically loaded here -->
             </div>
         </section>
@@ -69,23 +75,23 @@
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h3>关于 RecallLook</h3>
-                <p>RecallLook 是一个专注于AI语音工具导航的平台，帮助用户发现和选择最适合他们需求的AI语音工具。</p>
+                <h3>About RecallLook</h3>
+                <p>RecallLook is a platform dedicated to AI voice tools navigation, helping users discover and choose the most suitable AI voice tools for their needs.</p>
             </div>
             <div class="footer-section">
-                <h3>快速链接</h3>
+                <h3>Quick Links</h3>
                 <ul>
-                    <li><a href="index.html">首页</a></li>
-                    <li><a href="tools.html">工具</a></li>
-                    <li><a href="about.html">关于</a></li>
-                    <li><a href="contact.html">联系我们</a></li>
+                    <li><a href="index.html">Home</a></li>
+                    <li><a href="tools.html">Tools</a></li>
+                    <li><a href="about.html">About</a></li>
+                    <li><a href="contact.html">Contact</a></li>
                 </ul>
             </div>
             <div class="footer-section">
-                <h3>联系我们</h3>
+                <h3>Contact Us</h3>
                 <ul>
                     <li><a href="mailto:contact@recalllook.com">contact@recalllook.com</a></li>
-                    <li><a href="#">微信: RecallLook</a></li>
+                    <li><a href="#">WeChat: RecallLook</a></li>
                 </ul>
             </div>
         </div>
@@ -98,12 +104,12 @@
     <div id="loginModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2>登录</h2>
+            <h2>Login</h2>
             <form id="loginForm">
-                <input type="email" placeholder="邮箱" required>
-                <input type="password" placeholder="密码" required>
-                <button type="submit">登录</button>
-                <p>还没有账号？<a href="#" id="showSignup">立即注册</a></p>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <button type="submit">Login</button>
+                <p>Don't have an account? <a href="#" id="showSignup">Sign Up</a></p>
             </form>
         </div>
     </div>
@@ -112,84 +118,18 @@
     <div id="signupModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2>注册</h2>
+            <h2>Sign Up</h2>
             <form id="signupForm">
-                <input type="text" placeholder="用户名" required>
-                <input type="email" placeholder="邮箱" required>
-                <input type="password" placeholder="密码" required>
-                <input type="password" placeholder="确认密码" required>
-                <button type="submit">注册</button>
-                <p>已有账号？<a href="#" id="showLogin">立即登录</a></p>
+                <input type="text" placeholder="Username" required>
+                <input type="email" placeholder="Email" required>
+                <input type="password" placeholder="Password" required>
+                <input type="password" placeholder="Confirm Password" required>
+                <button type="submit">Sign Up</button>
+                <p>Already have an account? <a href="#" id="showLogin">Login</a></p>
             </form>
         </div>
     </div>
 
     <script type="module" src="js/main.js"></script>
-    <script type="module">
-        import ToolManager from './js/utils/ToolManager.js';
-        import ToolCard from './js/components/ToolCard.js';
-
-        // Initialize tools page
-        document.addEventListener('DOMContentLoaded', () => {
-            const toolsGrid = document.getElementById('toolsGrid');
-            const searchInput = document.getElementById('searchInput');
-            const searchButton = document.getElementById('searchButton');
-            const categoryFilter = document.getElementById('categoryFilter');
-            const priceFilter = document.getElementById('priceFilter');
-
-            // Load all tools initially
-            function loadTools(tools) {
-                toolsGrid.innerHTML = '';
-                tools.forEach(tool => {
-                    const toolCard = new ToolCard(tool);
-                    toolsGrid.appendChild(toolCard.render());
-                });
-            }
-
-            // Filter tools based on search and filters
-            function filterTools() {
-                const searchQuery = searchInput.value.toLowerCase();
-                const selectedCategory = categoryFilter.value;
-                const selectedPrice = priceFilter.value;
-
-                let filteredTools = [];
-
-                // Get tools from selected category or all categories
-                if (selectedCategory) {
-                    filteredTools = ToolManager.getToolsByCategory(selectedCategory);
-                } else {
-                    filteredTools = Object.values(ToolManager.tools).flat();
-                }
-
-                // Apply search filter
-                if (searchQuery) {
-                    filteredTools = filteredTools.filter(tool => 
-                        tool.name.toLowerCase().includes(searchQuery) ||
-                        tool.description.toLowerCase().includes(searchQuery)
-                    );
-                }
-
-                // Apply price filter
-                if (selectedPrice) {
-                    filteredTools = filteredTools.filter(tool => 
-                        tool.price === selectedPrice
-                    );
-                }
-
-                loadTools(filteredTools);
-            }
-
-            // Event listeners
-            searchButton.addEventListener('click', filterTools);
-            searchInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') filterTools();
-            });
-            categoryFilter.addEventListener('change', filterTools);
-            priceFilter.addEventListener('change', filterTools);
-
-            // Initial load
-            loadTools(Object.values(ToolManager.tools).flat());
-        });
-    </script>
 </body>
 </html> 
