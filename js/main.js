@@ -1,11 +1,14 @@
 // 使用动态导入
 const loadModules = async () => {
     try {
+        console.log('Starting to load modules...');
         const { default: toolManager } = await import('./utils/ToolManager.js');
         const { default: ToolCard } = await import('./components/ToolCard.js');
+        console.log('Modules loaded successfully:', { toolManager, ToolCard });
         
         // Initialize the page
         document.addEventListener('DOMContentLoaded', () => {
+            console.log('DOM Content Loaded');
             // Get DOM elements
             const loginBtn = document.querySelector('.login-btn');
             const signupBtn = document.querySelector('.signup-btn');
@@ -21,7 +24,7 @@ const loadModules = async () => {
             const categoryTabs = document.querySelectorAll('.category-tab');
 
             // Debug log
-            console.log('DOM loaded, elements:', {
+            console.log('DOM elements:', {
                 loginBtn,
                 signupBtn,
                 loginModal,
@@ -113,7 +116,9 @@ const loadModules = async () => {
 
             // Load featured tools
             if (featuredToolsContainer) {
+                console.log('Loading featured tools...');
                 const featuredTools = toolManager.getFeaturedTools();
+                console.log('Featured tools:', featuredTools);
                 featuredTools.forEach(tool => {
                     const toolCard = new ToolCard(tool);
                     featuredToolsContainer.appendChild(toolCard.render());
@@ -122,9 +127,11 @@ const loadModules = async () => {
 
             // Handle category tab clicks
             if (categoryTabs && allToolsContainer) {
+                console.log('Setting up category tabs...');
                 categoryTabs.forEach(tab => {
                     tab.addEventListener('click', () => {
-                        console.log('Category tab clicked:', tab.dataset.category);
+                        const category = tab.dataset.category;
+                        console.log('Category tab clicked:', category);
                         
                         // Remove active class from all tabs
                         categoryTabs.forEach(t => t.classList.remove('active'));
@@ -132,8 +139,8 @@ const loadModules = async () => {
                         tab.classList.add('active');
 
                         // Get tools for selected category
-                        const category = tab.dataset.category;
                         const tools = toolManager.getToolsByCategory(category);
+                        console.log('Tools for category:', category, tools);
                         
                         // Clear container
                         allToolsContainer.innerHTML = '';
@@ -148,6 +155,7 @@ const loadModules = async () => {
 
                 // Set first category as active by default
                 if (categoryTabs.length > 0) {
+                    console.log('Setting first category as active...');
                     categoryTabs[0].click();
                 }
             }
@@ -158,4 +166,5 @@ const loadModules = async () => {
 };
 
 // Start loading modules
+console.log('Starting application...');
 loadModules(); 
