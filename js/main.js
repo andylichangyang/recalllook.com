@@ -23,35 +23,45 @@ document.addEventListener('DOMContentLoaded', () => {
     const showLoginLink = document.getElementById('showLogin');
 
     // Show login modal
-    loginBtn.addEventListener('click', () => {
-        loginModal.style.display = 'block';
-    });
+    if (loginBtn && loginModal) {
+        loginBtn.addEventListener('click', () => {
+            loginModal.style.display = 'block';
+        });
+    }
 
     // Show signup modal
-    signupBtn.addEventListener('click', () => {
-        signupModal.style.display = 'block';
-    });
+    if (signupBtn && signupModal) {
+        signupBtn.addEventListener('click', () => {
+            signupModal.style.display = 'block';
+        });
+    }
 
     // Close modals
-    closeButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            loginModal.style.display = 'none';
-            signupModal.style.display = 'none';
+    if (closeButtons) {
+        closeButtons.forEach(button => {
+            button.addEventListener('click', () => {
+                if (loginModal) loginModal.style.display = 'none';
+                if (signupModal) signupModal.style.display = 'none';
+            });
         });
-    });
+    }
 
     // Switch between modals
-    showSignupLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        loginModal.style.display = 'none';
-        signupModal.style.display = 'block';
-    });
+    if (showSignupLink && loginModal && signupModal) {
+        showSignupLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            loginModal.style.display = 'none';
+            signupModal.style.display = 'block';
+        });
+    }
 
-    showLoginLink.addEventListener('click', (e) => {
-        e.preventDefault();
-        signupModal.style.display = 'none';
-        loginModal.style.display = 'block';
-    });
+    if (showLoginLink && loginModal && signupModal) {
+        showLoginLink.addEventListener('click', (e) => {
+            e.preventDefault();
+            signupModal.style.display = 'none';
+            loginModal.style.display = 'block';
+        });
+    }
 
     // Close modals when clicking outside
     window.addEventListener('click', (e) => {
@@ -67,17 +77,21 @@ document.addEventListener('DOMContentLoaded', () => {
     const loginForm = document.getElementById('loginForm');
     const signupForm = document.getElementById('signupForm');
 
-    loginForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        // Add login logic here
-        console.log('Login submitted');
-        loginModal.style.display = 'none';
-    });
+    if (loginForm) {
+        loginForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Add login logic here
+            console.log('Login submitted');
+            if (loginModal) loginModal.style.display = 'none';
+        });
+    }
 
-    signupForm.addEventListener('submit', (e) => {
-        e.preventDefault();
-        // Add signup logic here
-        console.log('Signup submitted');
-        signupModal.style.display = 'none';
-    });
+    if (signupForm) {
+        signupForm.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Add signup logic here
+            console.log('Signup submitted');
+            if (signupModal) signupModal.style.display = 'none';
+        });
+    }
 }); 
