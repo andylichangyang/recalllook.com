@@ -3,54 +3,64 @@ import tools from './tools.js';
 class ToolManager {
     constructor() {
         this.tools = tools;
+        console.log('ToolManager initialized with tools:', this.tools);
     }
 
     // Get all tools from a specific category
     getToolsByCategory(category) {
         const categoryKey = this.getCategoryKey(category);
         console.log('Getting tools for category:', category, 'Key:', categoryKey);
-        console.log('Available tools:', this.tools);
-        return this.tools[categoryKey] || [];
+        const tools = this.tools[categoryKey] || [];
+        console.log('Found tools:', tools);
+        return tools;
     }
 
     // Get featured tools (highest rated from each category)
     getFeaturedTools() {
+        console.log('Getting featured tools...');
         const featured = [];
         for (const category in this.tools) {
             const categoryTools = this.tools[category];
-            if (categoryTools.length > 0) {
+            if (categoryTools && categoryTools.length > 0) {
                 const highestRated = categoryTools.reduce((prev, current) => 
                     (prev.rating > current.rating) ? prev : current
                 );
                 featured.push(highestRated);
             }
         }
+        console.log('Featured tools:', featured);
         return featured;
     }
 
     // Get all categories
     getAllCategories() {
-        return Object.keys(this.tools).map(key => this.getCategoryName(key));
+        const categories = Object.keys(this.tools).map(key => this.getCategoryName(key));
+        console.log('All categories:', categories);
+        return categories;
     }
 
     // Search tools across all categories
     searchTools(query) {
+        console.log('Searching for:', query);
         const results = [];
         const lowercaseQuery = query.toLowerCase();
 
         for (const category in this.tools) {
             const categoryTools = this.tools[category];
-            categoryTools.forEach(tool => {
-                if (
-                    tool.name.toLowerCase().includes(lowercaseQuery) ||
-                    tool.description.toLowerCase().includes(lowercaseQuery) ||
-                    tool.category.toLowerCase().includes(lowercaseQuery)
-                ) {
-                    results.push(tool);
-                }
-            });
+            if (categoryTools) {
+                categoryTools.forEach(tool => {
+                    if (
+                        tool.name.toLowerCase().includes(lowercaseQuery) ||
+                        tool.description.toLowerCase().includes(lowercaseQuery) ||
+                        tool.category.toLowerCase().includes(lowercaseQuery)
+                    ) {
+                        results.push(tool);
+                    }
+                });
+            }
         }
 
+        console.log('Search results:', results);
         return results;
     }
 
@@ -63,7 +73,9 @@ class ToolManager {
             'Music Generation': 'musicGeneration',
             'Voice Cloning': 'voiceCloning'
         };
-        return keyMap[category] || category;
+        const key = keyMap[category] || category;
+        console.log('Category key mapping:', category, '->', key);
+        return key;
     }
 
     // Helper method to convert category key to name
@@ -75,7 +87,9 @@ class ToolManager {
             'musicGeneration': 'Music Generation',
             'voiceCloning': 'Voice Cloning'
         };
-        return nameMap[key] || key;
+        const name = nameMap[key] || key;
+        console.log('Category name mapping:', key, '->', name);
+        return name;
     }
 }
 
