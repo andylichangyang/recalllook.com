@@ -44,6 +44,36 @@ app.get('/tools', (req, res) => {
     });
 });
 
+// 分类路由
+app.get('/tools/:category', (req, res) => {
+    console.log('Rendering category page:', req.params.category);
+    const tools = require('./js/utils/tools.js');
+    const category = req.params.category;
+    const categoryMap = {
+        'text-to-speech': 'Text to Speech',
+        'speech-to-text': 'Speech to Text',
+        'audio-editing': 'Audio Editing',
+        'music-generation': 'Music Generation',
+        'voice-cloning': 'Voice Cloning'
+    };
+    
+    const categoryKey = category.replace(/-/g, '');
+    const categoryName = categoryMap[category];
+    
+    if (!categoryName || !tools[categoryKey]) {
+        console.log('Category not found:', category);
+        return res.status(404).render('404', { 
+            title: '404 - Category Not Found'
+        });
+    }
+
+    res.render('category', { 
+        title: `${categoryName} Tools - RecallLook`,
+        categoryName: categoryName,
+        tools: tools[categoryKey]
+    });
+});
+
 app.get('/about', (req, res) => {
     console.log('Rendering about page');
     res.render('about', { 
