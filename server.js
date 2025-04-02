@@ -45,7 +45,7 @@ app.get('/tools', (req, res) => {
 });
 
 // 分类路由
-app.get('/tools/:category', (req, res) => {
+app.get('/tools/category/:category', (req, res) => {
     console.log('Rendering category page:', req.params.category);
     const tools = require('./js/utils/tools.js');
     const category = req.params.category;
