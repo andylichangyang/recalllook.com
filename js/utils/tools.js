@@ -99,10 +99,21 @@ const tools = {
             category: "Speech to Text",
             rating: 4.8,
             price: "Paid",
-            dateAdded: "2024-01-09"
+            dateAdded: "2024-01-01"
         },
         {
             id: "stt-2",
+            name: "Whisper",
+            url: "https://openai.com/research/whisper",
+            description: "Open-source speech recognition system with multilingual capabilities.",
+            features: ["Multilingual support", "Open source", "Robust performance"],
+            category: "Speech to Text",
+            rating: 4.7,
+            price: "Free",
+            dateAdded: "2024-01-02"
+        },
+        {
+            id: "stt-3",
             name: "AssemblyAI",
             url: "https://www.assemblyai.com/",
             description: "Provides advanced audio intelligence APIs including speech-to-text, content summarization, and sentiment analysis.",
@@ -110,10 +121,10 @@ const tools = {
             category: "Speech to Text",
             rating: 4.7,
             price: "Paid",
-            dateAdded: "2024-01-10"
+            dateAdded: "2024-01-03"
         },
         {
-            id: "stt-3",
+            id: "stt-4",
             name: "Google Cloud Speech-to-Text",
             url: "https://cloud.google.com/speech-to-text",
             description: "Advanced speech recognition service with support for multiple languages and custom models.",
@@ -121,10 +132,10 @@ const tools = {
             category: "Speech to Text",
             rating: 4.8,
             price: "Paid",
-            dateAdded: "2024-01-11"
+            dateAdded: "2024-01-04"
         },
         {
-            id: "stt-4",
+            id: "stt-5",
             name: "Microsoft Azure Speech Service",
             url: "https://azure.microsoft.com/en-us/services/cognitive-services/speech-to-text/",
             description: "Enterprise-grade speech recognition service with custom models and real-time transcription.",
@@ -132,10 +143,10 @@ const tools = {
             category: "Speech to Text",
             rating: 4.7,
             price: "Paid",
-            dateAdded: "2024-01-12"
+            dateAdded: "2024-01-05"
         },
         {
-            id: "stt-5",
+            id: "stt-6",
             name: "Rev.ai",
             url: "https://www.rev.ai/",
             description: "Professional speech-to-text service with human-level accuracy and custom vocabulary support.",
@@ -143,10 +154,10 @@ const tools = {
             category: "Speech to Text",
             rating: 4.6,
             price: "Paid",
-            dateAdded: "2024-01-13"
+            dateAdded: "2024-01-06"
         },
         {
-            id: "stt-6",
+            id: "stt-7",
             name: "Otter.ai",
             url: "https://otter.ai/",
             description: "AI-powered meeting assistant with real-time transcription and speaker identification.",
@@ -154,10 +165,10 @@ const tools = {
             category: "Speech to Text",
             rating: 4.7,
             price: "Paid",
-            dateAdded: "2024-01-14"
+            dateAdded: "2024-01-07"
         },
         {
-            id: "stt-7",
+            id: "stt-8",
             name: "Sonix",
             url: "https://sonix.ai/",
             description: "Automated transcription service with support for multiple languages and custom vocabulary.",
@@ -165,23 +176,34 @@ const tools = {
             category: "Speech to Text",
             rating: 4.6,
             price: "Paid",
-            dateAdded: "2024-01-15"
-        },
-        {
-            id: "stt-8",
-            name: "Whisper AI",
-            url: "https://openai.com/research/whisper",
-            description: "Open-source speech recognition model with support for multiple languages.",
-            features: ["Open source", "Multiple languages", "High accuracy"],
-            category: "Speech to Text",
-            rating: 4.5,
-            price: "Free",
-            dateAdded: "2024-01-16"
+            dateAdded: "2024-01-08"
         }
     ],
     audioEditing: [
         {
             id: "ae-1",
+            name: "Adobe Audition",
+            url: "https://www.adobe.com/products/audition.html",
+            description: "Professional audio workstation for mixing, editing, and creating audio content.",
+            features: ["Professional tools", "Noise reduction", "Multi-track editing"],
+            category: "Audio Editing",
+            rating: 4.8,
+            price: "Paid",
+            dateAdded: "2024-01-01"
+        },
+        {
+            id: "ae-2",
+            name: "Audacity",
+            url: "https://www.audacityteam.org/",
+            description: "Free, open-source audio software for multi-track recording and editing.",
+            features: ["Free & open source", "Cross-platform", "Plugin support"],
+            category: "Audio Editing",
+            rating: 4.6,
+            price: "Free",
+            dateAdded: "2024-01-02"
+        },
+        {
+            id: "ae-3",
             name: "Descript",
             url: "https://www.descript.com/",
             description: "AI-powered audio and video editing platform that allows editing media like a document.",
@@ -189,10 +211,10 @@ const tools = {
             category: "Audio Editing",
             rating: 4.8,
             price: "Paid",
-            dateAdded: "2024-01-17"
+            dateAdded: "2024-01-03"
         },
         {
-            id: "ae-2",
+            id: "ae-4",
             name: "Adobe Podcast",
             url: "https://podcast.adobe.com/",
             description: "AI audio recording and editing tool with enhanced features from Adobe.",
@@ -200,21 +222,10 @@ const tools = {
             category: "Audio Editing",
             rating: 4.6,
             price: "Paid",
-            dateAdded: "2024-01-18"
+            dateAdded: "2024-01-04"
         },
         {
-            id: "ae-3",
-            name: "Audacity",
-            url: "https://www.audacityteam.org/",
-            description: "Free, open-source audio editor with professional-grade features.",
-            features: ["Open source", "Multiple effects", "Multi-track editing"],
-            category: "Audio Editing",
-            rating: 4.5,
-            price: "Free",
-            dateAdded: "2024-01-19"
-        },
-        {
-            id: "ae-4",
+            id: "ae-5",
             name: "Pro Tools",
             url: "https://www.avid.com/pro-tools",
             description: "Industry-standard digital audio workstation for professional audio production.",
@@ -222,10 +233,10 @@ const tools = {
             category: "Audio Editing",
             rating: 4.9,
             price: "Paid",
-            dateAdded: "2024-01-20"
+            dateAdded: "2024-01-05"
         },
         {
-            id: "ae-5",
+            id: "ae-6",
             name: "Logic Pro",
             url: "https://www.apple.com/logic-pro/",
             description: "Professional audio production software for Mac with advanced features.",
@@ -233,10 +244,10 @@ const tools = {
             category: "Audio Editing",
             rating: 4.8,
             price: "Paid",
-            dateAdded: "2024-01-21"
+            dateAdded: "2024-01-06"
         },
         {
-            id: "ae-6",
+            id: "ae-7",
             name: "FL Studio",
             url: "https://www.image-line.com/",
             description: "Popular digital audio workstation with comprehensive production tools.",
@@ -244,10 +255,10 @@ const tools = {
             category: "Audio Editing",
             rating: 4.7,
             price: "Paid",
-            dateAdded: "2024-01-22"
+            dateAdded: "2024-01-07"
         },
         {
-            id: "ae-7",
+            id: "ae-8",
             name: "Ableton Live",
             url: "https://www.ableton.com/",
             description: "Real-time music production and performance software.",
@@ -255,10 +266,10 @@ const tools = {
             category: "Audio Editing",
             rating: 4.8,
             price: "Paid",
-            dateAdded: "2024-01-23"
+            dateAdded: "2024-01-08"
         },
         {
-            id: "ae-8",
+            id: "ae-9",
             name: "Reaper",
             url: "https://www.reaper.fm/",
             description: "Affordable digital audio workstation with professional features.",
@@ -266,12 +277,34 @@ const tools = {
             category: "Audio Editing",
             rating: 4.6,
             price: "Paid",
-            dateAdded: "2024-01-24"
+            dateAdded: "2024-01-09"
         }
     ],
     musicGeneration: [
         {
             id: "mg-1",
+            name: "Amper Music",
+            url: "https://www.ampermusic.com/",
+            description: "AI-powered music composition platform for creating custom soundtracks.",
+            features: ["Custom composition", "Royalty-free", "Professional quality"],
+            category: "Music Generation",
+            rating: 4.7,
+            price: "Paid",
+            dateAdded: "2024-01-01"
+        },
+        {
+            id: "mg-2",
+            name: "OpenAI MuseNet",
+            url: "https://openai.com/research/musenet",
+            description: "Deep neural network that generates 4-minute musical compositions.",
+            features: ["Multiple styles", "10 instruments", "Deep learning"],
+            category: "Music Generation",
+            rating: 4.5,
+            price: "Free",
+            dateAdded: "2024-01-02"
+        },
+        {
+            id: "mg-3",
             name: "AIVA",
             url: "https://www.aiva.ai/",
             description: "Focuses on emotion-driven AI music creation for classical, film scoring, and modern styles.",
@@ -279,10 +312,10 @@ const tools = {
             category: "Music Generation",
             rating: 4.7,
             price: "Paid",
-            dateAdded: "2024-01-25"
+            dateAdded: "2024-01-03"
         },
         {
-            id: "mg-2",
+            id: "mg-4",
             name: "Soundful",
             url: "https://soundful.com/",
             description: "Professional-quality AI music generation platform with various styles and genres.",
@@ -290,29 +323,7 @@ const tools = {
             category: "Music Generation",
             rating: 4.6,
             price: "Paid",
-            dateAdded: "2024-01-26"
-        },
-        {
-            id: "mg-3",
-            name: "OpenAI MuseNet",
-            url: "https://openai.com/research/musenet",
-            description: "AI model that can generate 4-minute musical compositions with 10 different instruments.",
-            features: ["Multiple instruments", "Style transfer", "Long compositions"],
-            category: "Music Generation",
-            rating: 4.5,
-            price: "Free",
-            dateAdded: "2024-01-27"
-        },
-        {
-            id: "mg-4",
-            name: "Amper Music",
-            url: "https://www.ampermusic.com/",
-            description: "AI music composition platform for creating custom music tracks.",
-            features: ["Custom tracks", "Style control", "Commercial license"],
-            category: "Music Generation",
-            rating: 4.6,
-            price: "Paid",
-            dateAdded: "2024-01-28"
+            dateAdded: "2024-01-04"
         },
         {
             id: "mg-5",
@@ -323,7 +334,7 @@ const tools = {
             category: "Music Generation",
             rating: 4.5,
             price: "Paid",
-            dateAdded: "2024-01-29"
+            dateAdded: "2024-01-05"
         },
         {
             id: "mg-6",
@@ -334,7 +345,7 @@ const tools = {
             category: "Music Generation",
             rating: 4.4,
             price: "Free",
-            dateAdded: "2024-01-30"
+            dateAdded: "2024-01-06"
         },
         {
             id: "mg-7",
@@ -345,7 +356,7 @@ const tools = {
             category: "Music Generation",
             rating: 4.7,
             price: "Paid",
-            dateAdded: "2024-01-31"
+            dateAdded: "2024-01-07"
         },
         {
             id: "mg-8",
@@ -356,12 +367,34 @@ const tools = {
             category: "Music Generation",
             rating: 4.6,
             price: "Free",
-            dateAdded: "2024-02-01"
+            dateAdded: "2024-01-08"
         }
     ],
     voiceCloning: [
         {
             id: "vc-1",
+            name: "Descript",
+            url: "https://www.descript.com/overdub",
+            description: "Create a synthetic voice that sounds like you for audio content creation.",
+            features: ["Voice cloning", "Text editing", "Audio workflow"],
+            category: "Voice Cloning",
+            rating: 4.8,
+            price: "Paid",
+            dateAdded: "2024-01-01"
+        },
+        {
+            id: "vc-2",
+            name: "Replica Studios",
+            url: "https://replicastudios.com/",
+            description: "AI voice cloning platform for creating synthetic voices.",
+            features: ["Voice synthesis", "Real-time generation", "API access"],
+            category: "Voice Cloning",
+            rating: 4.6,
+            price: "Paid",
+            dateAdded: "2024-01-02"
+        },
+        {
+            id: "vc-3",
             name: "Voice.ai",
             url: "https://voice.ai/",
             description: "Real-time voice conversion and cloning tool for calls and streaming.",
@@ -369,10 +402,10 @@ const tools = {
             category: "Voice Cloning",
             rating: 4.7,
             price: "Paid",
-            dateAdded: "2024-02-02"
+            dateAdded: "2024-01-03"
         },
         {
-            id: "vc-2",
+            id: "vc-4",
             name: "Respeecher",
             url: "https://www.respeecher.com/",
             description: "Professional-grade voice cloning technology used by Hollywood and major production companies.",
@@ -380,10 +413,10 @@ const tools = {
             category: "Voice Cloning",
             rating: 4.8,
             price: "Paid",
-            dateAdded: "2024-02-03"
+            dateAdded: "2024-01-04"
         },
         {
-            id: "vc-3",
+            id: "vc-5",
             name: "Coqui TTS",
             url: "https://coqui.ai/",
             description: "Open-source voice cloning toolkit with state-of-the-art models.",
@@ -391,10 +424,10 @@ const tools = {
             category: "Voice Cloning",
             rating: 4.5,
             price: "Free",
-            dateAdded: "2024-02-04"
+            dateAdded: "2024-01-05"
         },
         {
-            id: "vc-4",
+            id: "vc-6",
             name: "Play.ht Voice Cloning",
             url: "https://play.ht/voice-cloning/",
             description: "Voice cloning feature within the Play.ht platform.",
@@ -402,10 +435,10 @@ const tools = {
             category: "Voice Cloning",
             rating: 4.6,
             price: "Paid",
-            dateAdded: "2024-02-05"
+            dateAdded: "2024-01-06"
         },
         {
-            id: "vc-5",
+            id: "vc-7",
             name: "Murf.ai Voice Cloning",
             url: "https://murf.ai/voice-cloning",
             description: "Voice cloning feature within the Murf.ai platform.",
@@ -413,10 +446,10 @@ const tools = {
             category: "Voice Cloning",
             rating: 4.7,
             price: "Paid",
-            dateAdded: "2024-02-06"
+            dateAdded: "2024-01-07"
         },
         {
-            id: "vc-6",
+            id: "vc-8",
             name: "ElevenLabs Voice Cloning",
             url: "https://elevenlabs.io/voice-cloning",
             description: "Voice cloning feature within the ElevenLabs platform.",
@@ -424,10 +457,10 @@ const tools = {
             category: "Voice Cloning",
             rating: 4.8,
             price: "Paid",
-            dateAdded: "2024-02-07"
+            dateAdded: "2024-01-08"
         },
         {
-            id: "vc-7",
+            id: "vc-9",
             name: "Voice.ai Studio",
             url: "https://voice.ai/studio",
             description: "Professional voice cloning studio with advanced features.",
@@ -435,10 +468,10 @@ const tools = {
             category: "Voice Cloning",
             rating: 4.6,
             price: "Paid",
-            dateAdded: "2024-02-08"
+            dateAdded: "2024-01-09"
         },
         {
-            id: "vc-8",
+            id: "vc-10",
             name: "Resemble AI",
             url: "https://www.resemble.ai/",
             description: "AI voice cloning platform with custom voice creation.",
@@ -446,7 +479,7 @@ const tools = {
             category: "Voice Cloning",
             rating: 4.7,
             price: "Paid",
-            dateAdded: "2024-02-09"
+            dateAdded: "2024-01-10"
         }
     ]
 };
