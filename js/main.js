@@ -145,6 +145,14 @@ document.addEventListener('DOMContentLoaded', () => {
             categorySection.appendChild(toolsGrid);
             allToolsContainer.appendChild(categorySection);
         });
+
+        // Set first category as active by default
+        const firstCategory = categories[0];
+        const firstCategoryKey = toolManager.getCategoryKey(firstCategory);
+        const firstCategorySection = document.getElementById(`category-${firstCategoryKey}`);
+        if (firstCategorySection) {
+            firstCategorySection.style.display = 'block';
+        }
     }
 
     // Handle category tab clicks
@@ -155,6 +163,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 const category = tab.dataset.category;
                 const categoryKey = toolManager.getCategoryKey(category);
                 
+                console.log('Category tab clicked:', category, categoryKey);
+                
                 // Update active tab
                 categoryTabs.forEach(t => t.classList.remove('active'));
                 tab.classList.add('active');
@@ -162,7 +172,13 @@ document.addEventListener('DOMContentLoaded', () => {
                 // Show selected category section
                 const sections = document.querySelectorAll('.category-section');
                 sections.forEach(section => {
-                    section.style.display = section.id === `category-${categoryKey}` ? 'block' : 'none';
+                    if (section.id === `category-${categoryKey}`) {
+                        section.style.display = 'block';
+                        console.log('Showing section:', section.id);
+                    } else {
+                        section.style.display = 'none';
+                        console.log('Hiding section:', section.id);
+                    }
                 });
             });
         });
