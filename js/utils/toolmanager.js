@@ -1,5 +1,3 @@
-import tools from './tools.js';
-
 class ToolManager {
     constructor(tools) {
         this.tools = tools;
@@ -91,8 +89,4 @@ class ToolManager {
         console.log('Category name mapping:', key, '->', name);
         return name;
     }
-}
-
-// 创建全局实例
-const toolManager = new ToolManager(tools);
-export default toolManager; 
+} 
