@@ -94,8 +94,12 @@
     </div>
 
     <script src="/js/utils/tools.js"></script>
-    <script src="/js/components/ToolCard.js"></script>
     <script src="/js/utils/ToolManager.js"></script>
+    <script>
+        // 创建全局实例
+        const toolManager = new ToolManager(tools);
+    </script>
+    <script src="/js/components/ToolCard.js"></script>
     <script src="/js/main.js"></script>
 </body>
 </html> 
