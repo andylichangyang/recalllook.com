@@ -13,6 +13,7 @@ app.use(expressLayouts);
 app.set('layout', 'base');
 app.set("layout extractScripts", true);
 app.set("layout extractStyles", true);
+app.set("layout extractMetas", true);
 
 // 静态文件服务
 app.use(express.static(path.join(__dirname)));
@@ -26,37 +27,32 @@ app.use((req, res, next) => {
 // 路由
 app.get('/', (req, res) => {
     res.render('index', { 
-        title: 'Home - RecallLook',
-        layout: 'base'
+        title: 'Home - RecallLook'
     });
 });
 
 app.get('/tools', (req, res) => {
     res.render('tools', { 
-        title: 'All Tools - RecallLook',
-        layout: 'base'
+        title: 'All Tools - RecallLook'
     });
 });
 
 app.get('/about', (req, res) => {
     res.render('about', { 
-        title: 'About - RecallLook',
-        layout: 'base'
+        title: 'About - RecallLook'
     });
 });
 
 app.get('/contact', (req, res) => {
     res.render('contact', { 
-        title: 'Contact - RecallLook',
-        layout: 'base'
+        title: 'Contact - RecallLook'
     });
 });
 
 // 404处理
 app.use((req, res) => {
     res.status(404).render('404', { 
-        title: '404 - Page Not Found',
-        layout: 'base'
+        title: '404 - Page Not Found'
     });
 });
 
