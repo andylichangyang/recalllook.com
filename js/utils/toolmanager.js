@@ -8,6 +8,8 @@ class ToolManager {
     // Get all tools from a specific category
     getToolsByCategory(category) {
         const categoryKey = this.getCategoryKey(category);
+        console.log('Getting tools for category:', category, 'Key:', categoryKey);
+        console.log('Available tools:', this.tools);
         return this.tools[categoryKey] || [];
     }
 
