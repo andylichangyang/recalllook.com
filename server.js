@@ -20,37 +20,49 @@ app.use(express.static(path.join(__dirname)));
 
 // 中间件：添加当前路径到所有视图
 app.use((req, res, next) => {
+    console.log('Request URL:', req.url);
     res.locals.path = req.path;
     next();
 });
 
 // 路由
 app.get('/', (req, res) => {
+    console.log('Rendering index page');
     res.render('index', { 
         title: 'Home - RecallLook'
     });
 });
 
 app.get('/tools', (req, res) => {
+    console.log('Rendering tools page');
     res.render('tools', { 
         title: 'All Tools - RecallLook'
     });
 });
 
 app.get('/about', (req, res) => {
+    console.log('Rendering about page');
     res.render('about', { 
         title: 'About - RecallLook'
     });
 });
 
 app.get('/contact', (req, res) => {
+    console.log('Rendering contact page');
     res.render('contact', { 
         title: 'Contact - RecallLook'
     });
 });
 
+// 重定向 /tools.html 到 /tools
+app.get('/tools.html', (req, res) => {
+    console.log('Redirecting from /tools.html to /tools');
+    res.redirect('/tools');
+});
+
 // 404处理
 app.use((req, res) => {
+    console.log('404 error for URL:', req.url);
     res.status(404).render('404', { 
         title: '404 - Page Not Found'
     });
@@ -58,4 +70,5 @@ app.use((req, res) => {
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
+    console.log(`Please visit: http://localhost:${port}`);
 }); 
