@@ -5,6 +5,32 @@
         <p>Browse our collection of <%= categoryName.toLowerCase() %> tools</p>
     </section>
 
+    <!-- Category Tabs -->
+    <section class="category-tabs">
+        <div class="tabs-container">
+            <a href="/tools/category/text-to-speech" class="category-tab <%= categoryName === 'Text to Speech' ? 'active' : '' %>">
+                <i class="fas fa-microphone"></i>
+                Text to Speech
+            </a>
+            <a href="/tools/category/speech-to-text" class="category-tab <%= categoryName === 'Speech to Text' ? 'active' : '' %>">
+                <i class="fas fa-keyboard"></i>
+                Speech to Text
+            </a>
+            <a href="/tools/category/audio-editing" class="category-tab <%= categoryName === 'Audio Editing' ? 'active' : '' %>">
+                <i class="fas fa-cut"></i>
+                Audio Editing
+            </a>
+            <a href="/tools/category/music-generation" class="category-tab <%= categoryName === 'Music Generation' ? 'active' : '' %>">
+                <i class="fas fa-music"></i>
+                Music Generation
+            </a>
+            <a href="/tools/category/voice-cloning" class="category-tab <%= categoryName === 'Voice Cloning' ? 'active' : '' %>">
+                <i class="fas fa-user-voice"></i>
+                Voice Cloning
+            </a>
+        </div>
+    </section>
+
     <section class="all-tools">
         <div class="tools-container">
             <% tools.forEach(tool => { %>
