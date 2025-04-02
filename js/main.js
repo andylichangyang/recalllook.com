@@ -137,6 +137,7 @@ document.addEventListener('DOMContentLoaded', () => {
             toolsGrid.className = 'tools-grid';
             
             const tools = toolManager.getToolsByCategory(category);
+            console.log(`Loading tools for category ${category}:`, tools);
             tools.forEach(tool => {
                 const toolCard = new ToolCard(tool);
                 toolsGrid.appendChild(toolCard.render());
@@ -152,11 +153,13 @@ document.addEventListener('DOMContentLoaded', () => {
         const firstCategorySection = document.getElementById(`category-${firstCategoryKey}`);
         if (firstCategorySection) {
             firstCategorySection.style.display = 'block';
+            console.log('Setting first category as active:', firstCategoryKey);
         }
     }
 
     // Handle category tab clicks
     if (categoryTabs) {
+        console.log('Found category tabs:', categoryTabs.length);
         categoryTabs.forEach(tab => {
             tab.addEventListener('click', (e) => {
                 e.preventDefault();
