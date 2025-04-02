@@ -77,4 +77,5 @@ class ToolManager {
     }
 }
 
-export default new ToolManager(); 
+const toolManager = new ToolManager();
+export default toolManager; 
