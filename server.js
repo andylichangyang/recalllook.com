@@ -16,7 +16,9 @@ app.set("layout extractStyles", true);
 app.set("layout extractMetas", true);
 
 // 静态文件服务
-app.use(express.static(path.join(__dirname)));
+app.use(express.static(path.join(__dirname, 'public')));
+app.use('/js', express.static(path.join(__dirname, 'js')));
+app.use('/css', express.static(path.join(__dirname, 'css')));
 
 // 中间件：添加当前路径到所有视图
 app.use((req, res, next) => {
