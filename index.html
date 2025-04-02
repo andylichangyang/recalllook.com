@@ -1,95 +1,106 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="zh">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>RecallLook - AI Voice Tools Directory</title>
+    <title>RecallLook - AI语音工具导航</title>
     <link rel="stylesheet" href="css/style.css">
     <link rel="stylesheet" href="css/components/header.css">
     <link rel="stylesheet" href="css/components/footer.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
+    <!-- Header -->
     <header>
         <nav>
             <div class="logo">
                 <h1>RecallLook</h1>
             </div>
             <div class="nav-links">
-                <a href="index.html" class="active">Home</a>
-                <a href="tools.html">Tools</a>
-                <a href="about.html">About</a>
-                <div class="auth-buttons">
-                    <button class="login-btn">Login</button>
-                    <button class="signup-btn">Sign Up</button>
-                </div>
+                <a href="index.html" class="active">首页</a>
+                <a href="tools.html">工具</a>
+                <a href="about.html">关于</a>
+                <a href="contact.html">联系我们</a>
+            </div>
+            <div class="auth-buttons">
+                <button class="login-btn">登录</button>
+                <button class="signup-btn">注册</button>
             </div>
         </nav>
     </header>
 
+    <!-- Main Content -->
     <main>
+        <!-- Hero Section -->
         <section class="hero">
-            <h2>Discover the Best AI Voice Tools</h2>
-            <p>Your comprehensive directory for AI voice technology solutions</p>
+            <h2>发现最佳AI语音工具</h2>
+            <p>探索、比较和选择最适合您需求的AI语音工具</p>
+            <a href="tools.html" class="cta-button">浏览工具</a>
         </section>
 
+        <!-- Featured Tools Section -->
         <section class="featured-tools">
-            <h2>Featured Tools</h2>
-            <div class="tools-grid" id="featuredTools">
-                <!-- Featured tools will be loaded dynamically -->
+            <h2>精选工具</h2>
+            <div id="featuredTools" class="tools-grid">
+                <!-- Tools will be dynamically loaded here -->
             </div>
         </section>
 
+        <!-- Categories Section -->
         <section class="categories">
-            <h2>Browse by Category</h2>
+            <h2>工具分类</h2>
             <div class="category-grid">
-                <a href="tools.html#text-to-speech" class="category-card">
+                <a href="tools.html?category=Text to Speech" class="category-card">
                     <i class="fas fa-microphone"></i>
-                    <h3>Text to Speech</h3>
-                    <p>AI-powered voice synthesis tools</p>
+                    <h3>文字转语音</h3>
+                    <p>将文字转换为自然流畅的语音</p>
                 </a>
-                <a href="tools.html#speech-to-text" class="category-card">
+                <a href="tools.html?category=Speech to Text" class="category-card">
                     <i class="fas fa-keyboard"></i>
-                    <h3>Speech to Text</h3>
-                    <p>Advanced speech recognition solutions</p>
+                    <h3>语音转文字</h3>
+                    <p>将语音准确转换为文字</p>
                 </a>
-                <a href="tools.html#audio-editing" class="category-card">
+                <a href="tools.html?category=Audio Editing" class="category-card">
                     <i class="fas fa-cut"></i>
-                    <h3>Audio Editing</h3>
-                    <p>Professional audio processing tools</p>
+                    <h3>音频编辑</h3>
+                    <p>专业的音频处理和编辑工具</p>
                 </a>
-                <a href="tools.html#music-generation" class="category-card">
+                <a href="tools.html?category=Music Generation" class="category-card">
                     <i class="fas fa-music"></i>
-                    <h3>Music Generation</h3>
-                    <p>AI-powered music creation platforms</p>
+                    <h3>音乐生成</h3>
+                    <p>AI驱动的音乐创作工具</p>
                 </a>
-                <a href="tools.html#voice-cloning" class="category-card">
+                <a href="tools.html?category=Voice Cloning" class="category-card">
                     <i class="fas fa-user-voice"></i>
-                    <h3>Voice Cloning</h3>
-                    <p>Advanced voice replication technology</p>
+                    <h3>声音克隆</h3>
+                    <p>复制和模仿任何声音</p>
                 </a>
             </div>
         </section>
     </main>
 
+    <!-- Footer -->
     <footer>
         <div class="footer-content">
             <div class="footer-section">
-                <h3>About RecallLook</h3>
-                <p>Your trusted directory for AI voice technology solutions</p>
+                <h3>关于 RecallLook</h3>
+                <p>RecallLook 是一个专注于AI语音工具导航的平台，帮助用户发现和选择最适合他们需求的AI语音工具。</p>
             </div>
             <div class="footer-section">
-                <h3>Quick Links</h3>
+                <h3>快速链接</h3>
                 <ul>
-                    <li><a href="tools.html">All Tools</a></li>
-                    <li><a href="about.html">About Us</a></li>
-                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="index.html">首页</a></li>
+                    <li><a href="tools.html">工具</a></li>
+                    <li><a href="about.html">关于</a></li>
+                    <li><a href="contact.html">联系我们</a></li>
                 </ul>
             </div>
             <div class="footer-section">
-                <h3>Contact</h3>
-                <p>Email: contact@recalllook.com</p>
-                <p>WeChat: RecallLook</p>
+                <h3>联系我们</h3>
+                <ul>
+                    <li><a href="mailto:contact@recalllook.com">contact@recalllook.com</a></li>
+                    <li><a href="#">微信: RecallLook</a></li>
+                </ul>
             </div>
         </div>
         <div class="footer-bottom">
@@ -101,13 +112,13 @@
     <div id="loginModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2>Login</h2>
+            <h2>登录</h2>
             <form id="loginForm">
-                <input type="email" placeholder="Email" required>
-                <input type="password" placeholder="Password" required>
-                <button type="submit">Login</button>
+                <input type="email" placeholder="邮箱" required>
+                <input type="password" placeholder="密码" required>
+                <button type="submit">登录</button>
+                <p>还没有账号？<a href="#" id="showSignup">立即注册</a></p>
             </form>
-            <p>Don't have an account? <a href="#" id="showSignup">Sign up</a></p>
         </div>
     </div>
 
@@ -115,21 +126,18 @@
     <div id="signupModal" class="modal">
         <div class="modal-content">
             <span class="close">&times;</span>
-            <h2>Sign Up</h2>
+            <h2>注册</h2>
             <form id="signupForm">
-                <input type="text" placeholder="Username" required>
-                <input type="email" placeholder="Email" required>
-                <input type="password" placeholder="Password" required>
-                <input type="password" placeholder="Confirm Password" required>
-                <button type="submit">Sign Up</button>
+                <input type="text" placeholder="用户名" required>
+                <input type="email" placeholder="邮箱" required>
+                <input type="password" placeholder="密码" required>
+                <input type="password" placeholder="确认密码" required>
+                <button type="submit">注册</button>
+                <p>已有账号？<a href="#" id="showLogin">立即登录</a></p>
             </form>
-            <p>Already have an account? <a href="#" id="showLogin">Login</a></p>
         </div>
     </div>
 
-    <script src="js/utils/tools.js"></script>
-    <script src="js/utils/ToolManager.js"></script>
-    <script src="js/components/ToolCard.js"></script>
-    <script src="js/main.js"></script>
+    <script type="module" src="js/main.js"></script>
 </body>
-</html>
+</html> 
