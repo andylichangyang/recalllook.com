@@ -7,8 +7,8 @@ const loadModules = async () => {
         console.log('Modules loaded successfully:', { toolManager, ToolCard });
         
         // Initialize the page
-        document.addEventListener('DOMContentLoaded', () => {
-            console.log('DOM Content Loaded');
+        const initializePage = () => {
+            console.log('Initializing page...');
             // Get DOM elements
             const loginBtn = document.querySelector('.login-btn');
             const signupBtn = document.querySelector('.signup-btn');
@@ -159,7 +159,14 @@ const loadModules = async () => {
                     categoryTabs[0].click();
                 }
             }
-        });
+        };
+
+        // Wait for DOM to be ready
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initializePage);
+        } else {
+            initializePage();
+        }
     } catch (error) {
         console.error('Error loading modules:', error);
     }
