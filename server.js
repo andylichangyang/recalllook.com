@@ -37,8 +37,10 @@ app.get('/', (req, res) => {
 
 app.get('/tools', (req, res) => {
     console.log('Rendering tools page');
+    const tools = require('./js/utils/tools.js');
     res.render('tools', { 
-        title: 'All Tools - RecallLook'
+        title: 'All Tools - RecallLook',
+        tools: tools
     });
 });
 
