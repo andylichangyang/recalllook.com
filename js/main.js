@@ -13,6 +13,9 @@ document.addEventListener('DOMContentLoaded', () => {
     const showLoginLink = document.getElementById('showLogin');
     const loginForm = document.getElementById('loginForm');
     const signupForm = document.getElementById('signupForm');
+    const featuredToolsContainer = document.getElementById('featuredTools');
+    const allToolsContainer = document.getElementById('allTools');
+    const categoryTabs = document.querySelectorAll('.category-tab');
 
     // Debug log
     console.log('DOM loaded, elements:', {
@@ -24,7 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
         showSignupLink,
         showLoginLink,
         loginForm,
-        signupForm
+        signupForm,
+        featuredToolsContainer,
+        allToolsContainer,
+        categoryTabs
     });
 
     // Show login modal
@@ -103,13 +109,62 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Load featured tools if on homepage
-    const featuredToolsContainer = document.getElementById('featuredTools');
     if (featuredToolsContainer) {
         console.log('Loading featured tools');
         const featuredTools = toolManager.getFeaturedTools();
         featuredTools.forEach(tool => {
             const toolCard = new ToolCard(tool);
             featuredToolsContainer.appendChild(toolCard.render());
+        });
+    }
+
+    // Load all tools by category
+    if (allToolsContainer) {
+        console.log('Loading all tools by category');
+        const categories = toolManager.getAllCategories();
+        
+        // Create category sections
+        categories.forEach(category => {
+            const categorySection = document.createElement('div');
+            categorySection.className = 'category-section';
+            categorySection.id = `category-${toolManager.getCategoryKey(category)}`;
+            
+            const categoryTitle = document.createElement('h2');
+            categoryTitle.textContent = category;
+            categorySection.appendChild(categoryTitle);
+            
+            const toolsGrid = document.createElement('div');
+            toolsGrid.className = 'tools-grid';
+            
+            const tools = toolManager.getToolsByCategory(category);
+            tools.forEach(tool => {
+                const toolCard = new ToolCard(tool);
+                toolsGrid.appendChild(toolCard.render());
+            });
+            
+            categorySection.appendChild(toolsGrid);
+            allToolsContainer.appendChild(categorySection);
+        });
+    }
+
+    // Handle category tab clicks
+    if (categoryTabs) {
+        categoryTabs.forEach(tab => {
+            tab.addEventListener('click', (e) => {
+                e.preventDefault();
+                const category = tab.dataset.category;
+                const categoryKey = toolManager.getCategoryKey(category);
+                
+                // Update active tab
+                categoryTabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                // Show selected category section
+                const sections = document.querySelectorAll('.category-section');
+                sections.forEach(section => {
+                    section.style.display = section.id === `category-${categoryKey}` ? 'block' : 'none';
+                });
+            });
         });
     }
 }); 
