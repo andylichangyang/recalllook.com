@@ -1,8 +1,8 @@
 // 使用动态导入
 const loadModules = async () => {
     try {
-        const toolManager = await import('./utils/ToolManager.js');
-        const ToolCard = await import('./components/ToolCard.js');
+        const toolManager = await import('/recalllook/js/utils/ToolManager.js');
+        const ToolCard = await import('/recalllook/js/components/ToolCard.js');
         
         // Initialize the page
         document.addEventListener('DOMContentLoaded', () => {
