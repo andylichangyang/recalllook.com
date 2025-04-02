@@ -1,8 +1,8 @@
 // 使用动态导入
 const loadModules = async () => {
     try {
-        const toolManager = await import('/recalllook/js/utils/ToolManager.js');
-        const ToolCard = await import('/recalllook/js/components/ToolCard.js');
+        const { default: toolManager } = await import('./utils/ToolManager.js');
+        const { default: ToolCard } = await import('./components/ToolCard.js');
         
         // Initialize the page
         document.addEventListener('DOMContentLoaded', () => {
@@ -99,7 +99,7 @@ const loadModules = async () => {
                 loginForm.addEventListener('submit', (e) => {
                     e.preventDefault();
                     console.log('Login form submitted');
-                    if (loginModal) loginModal.style.display = 'none';
+                    // Add login logic here
                 });
             }
 
@@ -107,87 +107,49 @@ const loadModules = async () => {
                 signupForm.addEventListener('submit', (e) => {
                     e.preventDefault();
                     console.log('Signup form submitted');
-                    if (signupModal) signupModal.style.display = 'none';
+                    // Add signup logic here
                 });
             }
 
-            // Load featured tools if on homepage
+            // Load featured tools
             if (featuredToolsContainer) {
-                console.log('Loading featured tools');
-                const featuredTools = toolManager.default.getFeaturedTools();
+                const featuredTools = toolManager.getFeaturedTools();
                 featuredTools.forEach(tool => {
-                    const toolCard = new ToolCard.default(tool);
+                    const toolCard = new ToolCard(tool);
                     featuredToolsContainer.appendChild(toolCard.render());
                 });
             }
 
-            // Load all tools by category
-            if (allToolsContainer) {
-                console.log('Loading all tools by category');
-                const categories = toolManager.default.getAllCategories();
-                
-                // Create category sections
-                categories.forEach(category => {
-                    const categorySection = document.createElement('div');
-                    categorySection.className = 'category-section';
-                    categorySection.id = `category-${toolManager.default.getCategoryKey(category)}`;
-                    
-                    const categoryTitle = document.createElement('h2');
-                    categoryTitle.textContent = category;
-                    categorySection.appendChild(categoryTitle);
-                    
-                    const toolsGrid = document.createElement('div');
-                    toolsGrid.className = 'tools-grid';
-                    
-                    const tools = toolManager.default.getToolsByCategory(category);
-                    console.log(`Loading tools for category ${category}:`, tools);
-                    tools.forEach(tool => {
-                        const toolCard = new ToolCard.default(tool);
-                        toolsGrid.appendChild(toolCard.render());
-                    });
-                    
-                    categorySection.appendChild(toolsGrid);
-                    allToolsContainer.appendChild(categorySection);
-                });
-
-                // Set first category as active by default
-                const firstCategory = categories[0];
-                const firstCategoryKey = toolManager.default.getCategoryKey(firstCategory);
-                const firstCategorySection = document.getElementById(`category-${firstCategoryKey}`);
-                if (firstCategorySection) {
-                    firstCategorySection.style.display = 'block';
-                    console.log('Setting first category as active:', firstCategoryKey);
-                }
-            }
-
             // Handle category tab clicks
-            if (categoryTabs) {
-                console.log('Found category tabs:', categoryTabs.length);
+            if (categoryTabs && allToolsContainer) {
                 categoryTabs.forEach(tab => {
-                    tab.addEventListener('click', (e) => {
-                        e.preventDefault();
-                        const category = tab.dataset.category;
-                        const categoryKey = toolManager.default.getCategoryKey(category);
+                    tab.addEventListener('click', () => {
+                        console.log('Category tab clicked:', tab.dataset.category);
                         
-                        console.log('Category tab clicked:', category, categoryKey);
-                        
-                        // Update active tab
+                        // Remove active class from all tabs
                         categoryTabs.forEach(t => t.classList.remove('active'));
+                        // Add active class to clicked tab
                         tab.classList.add('active');
+
+                        // Get tools for selected category
+                        const category = tab.dataset.category;
+                        const tools = toolManager.getToolsByCategory(category);
                         
-                        // Show selected category section
-                        const sections = document.querySelectorAll('.category-section');
-                        sections.forEach(section => {
-                            if (section.id === `category-${categoryKey}`) {
-                                section.style.display = 'block';
-                                console.log('Showing section:', section.id);
-                            } else {
-                                section.style.display = 'none';
-                                console.log('Hiding section:', section.id);
-                            }
+                        // Clear container
+                        allToolsContainer.innerHTML = '';
+                        
+                        // Render tools
+                        tools.forEach(tool => {
+                            const toolCard = new ToolCard(tool);
+                            allToolsContainer.appendChild(toolCard.render());
                         });
                     });
                 });
+
+                // Set first category as active by default
+                if (categoryTabs.length > 0) {
+                    categoryTabs[0].click();
+                }
             }
         });
     } catch (error) {
@@ -195,5 +157,5 @@ const loadModules = async () => {
     }
 };
 
-// 启动模块加载
+// Start loading modules
 loadModules(); 
