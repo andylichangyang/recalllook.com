@@ -19,11 +19,27 @@ class ToolCard {
                 </ul>
             </div>
             <div class="tool-footer">
-                <span class="category">${this.tool.category}</span>
-                <span class="price">${this.tool.price}</span>
-                <a href="${this.tool.url}" target="_blank" class="visit-button">Visit Website</a>
+                <div class="tool-meta">
+                    <span class="category">${this.tool.category}</span>
+                    <span class="price">${this.tool.price}</span>
+                </div>
+                <a href="${this.tool.url}" target="_blank" class="visit-button">
+                    <i class="fas fa-external-link-alt"></i>
+                    Visit Website
+                </a>
             </div>
         `;
+
+        // Add hover effect
+        card.addEventListener('mouseenter', () => {
+            card.style.transform = 'translateY(-5px)';
+            card.style.boxShadow = '0 5px 15px rgba(0,0,0,0.1)';
+        });
+
+        card.addEventListener('mouseleave', () => {
+            card.style.transform = 'translateY(0)';
+            card.style.boxShadow = '0 2px 5px rgba(0,0,0,0.05)';
+        });
 
         return card;
     }
