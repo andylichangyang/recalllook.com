@@ -128,12 +128,13 @@ main {
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5);
     z-index: 1000;
+    overflow-y: auto;
 }
 
 .modal-content {
     position: relative;
     background-color: var(--white);
-    margin: 15% auto;
+    margin: 5% auto;
     padding: 2rem;
     width: 90%;
     max-width: 500px;
@@ -141,13 +142,23 @@ main {
     box-shadow: var(--shadow);
 }
 
+.modal-content h2 {
+    margin-bottom: 1.5rem;
+    color: var(--text-color);
+}
+
 .close {
     position: absolute;
-    right: 1rem;
-    top: 1rem;
+    right: 1.5rem;
+    top: 1.5rem;
     font-size: 1.5rem;
     cursor: pointer;
     color: var(--text-color);
+    transition: var(--transition);
+}
+
+.close:hover {
+    color: var(--primary-color);
 }
 
 /* Form Styles */
@@ -162,6 +173,13 @@ input {
     border: 1px solid #ddd;
     border-radius: var(--border-radius);
     font-size: 1rem;
+    transition: var(--transition);
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
 }
 
 button {
@@ -177,6 +195,21 @@ button {
 
 button:hover {
     background-color: var(--secondary-color);
+}
+
+form p {
+    text-align: center;
+    margin-top: 1rem;
+}
+
+form a {
+    color: var(--primary-color);
+    text-decoration: none;
+    font-weight: 500;
+}
+
+form a:hover {
+    text-decoration: underline;
 }
 
 /* Responsive Design */
@@ -198,7 +231,7 @@ button:hover {
     }
 
     .modal-content {
-        margin: 20% auto;
+        margin: 10% auto;
         width: 95%;
         padding: 1.5rem;
     }
