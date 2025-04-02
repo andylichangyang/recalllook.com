@@ -43,6 +43,4 @@ class ToolCard {
 
         return card;
     }
-}
-
-export default ToolCard; 
+} 
