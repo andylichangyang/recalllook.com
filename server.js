@@ -63,9 +63,13 @@ app.get('/tools/category/:category', (req, res) => {
         });
     }
 
+    // 添加调试信息
+    console.log('Category name mapped to:', categoryName);
+    
     res.render('category', { 
         title: `${categoryName} Tools - RecallLook`,
-        categoryName: categoryName
+        categoryName: categoryName,
+        path: `/tools/category/${category}`
     });
 });
 
