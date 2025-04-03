@@ -93,13 +93,17 @@
         </div>
     </div>
 
+    <!-- 仅在非工具页面加载 main.js -->
     <script>
-        // 只有在没有阻止干扰的情况下才加载 main.js
-        if (!window.preventMainJSInterference) {
+        // 检查是否是工具相关页面
+        const isToolsPage = window.location.pathname.includes('/tools');
+        if (!isToolsPage) {
             const script = document.createElement('script');
             script.src = '/js/main.js';
-            script.async = true;
             document.body.appendChild(script);
+            console.log('加载主脚本 (main.js)');
+        } else {
+            console.log('工具页面 - 跳过加载 main.js');
         }
     </script>
 </body>
