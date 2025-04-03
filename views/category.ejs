@@ -32,34 +32,14 @@
     </section>
 
     <section class="all-tools">
-        <div class="tools-container">
-            <% tools.forEach(tool => { %>
-                <div class="tool-card">
-                    <div class="tool-header">
-                        <h3><%= tool.name %></h3>
-                        <span class="rating"><%= tool.rating %> ⭐</span>
-                    </div>
-                    <p class="description"><%= tool.description %></p>
-                    <div class="features">
-                        <h4>Key Features:</h4>
-                        <ul>
-                            <% tool.features.forEach(feature => { %>
-                                <li><%= feature %></li>
-                            <% }); %>
-                        </ul>
-                    </div>
-                    <div class="tool-footer">
-                        <div class="tool-meta">
-                            <span class="category"><%= tool.category %></span>
-                            <span class="price"><%= tool.price %></span>
-                        </div>
-                        <a href="<%= tool.url %>" target="_blank" class="visit-button">
-                            <i class="fas fa-external-link-alt"></i>
-                            Visit Website
-                        </a>
-                    </div>
-                </div>
-            <% }); %>
+        <div id="allTools" class="tools-container">
+            <!-- 工具卡片将通过 JavaScript 动态添加 -->
         </div>
     </section>
-</div> 
+</div>
+
+<script>
+    // 设置当前分类
+    window.currentCategory = '<%= categoryName %>';
+</script>
+<script src="/js/main.js"></script> 
