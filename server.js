@@ -46,6 +46,8 @@ app.get('/tools', (req, res) => {
 app.get('/tools/category/:category', (req, res) => {
     console.log('Rendering category page:', req.params.category);
     const category = req.params.category;
+    
+    // 分类URL映射到分类名称（用于显示）
     const categoryMap = {
         'text-to-speech': 'Text to Speech',
         'speech-to-text': 'Speech to Text',
@@ -54,6 +56,7 @@ app.get('/tools/category/:category', (req, res) => {
         'voice-cloning': 'Voice Cloning'
     };
     
+    // 获取分类名称
     const categoryName = categoryMap[category];
     
     if (!categoryName) {
@@ -63,9 +66,10 @@ app.get('/tools/category/:category', (req, res) => {
         });
     }
 
-    // 添加调试信息
-    console.log('Category name mapped to:', categoryName);
+    // 打印调试信息
+    console.log('分类名称:', categoryName);
     
+    // 渲染分类页面
     res.render('category', { 
         title: `${categoryName} Tools - RecallLook`,
         categoryName: categoryName,
