@@ -36,44 +36,11 @@ app.get('/', (req, res) => {
 });
 
 app.get('/tools', (req, res) => {
-    console.log('Rendering tools page');
-    res.render('tools', { 
-        title: 'All Tools - RecallLook'
-    });
-});
-
-// 分类路由
-app.get('/tools/category/:category', (req, res) => {
-    console.log('Rendering category page:', req.params.category);
-    const category = req.params.category;
-    
-    // 分类URL映射到分类名称（用于显示）
-    const categoryMap = {
-        'text-to-speech': 'Text to Speech',
-        'speech-to-text': 'Speech to Text',
-        'audio-editing': 'Audio Editing',
-        'music-generation': 'Music Generation',
-        'voice-cloning': 'Voice Cloning'
-    };
-    
-    // 获取分类名称
-    const categoryName = categoryMap[category];
-    
-    if (!categoryName) {
-        console.log('Category not found:', category);
-        return res.status(404).render('404', { 
-            title: '404 - Category Not Found'
-        });
-    }
-
-    // 打印调试信息
-    console.log('分类名称:', categoryName);
-    
-    // 渲染分类页面
-    res.render('category', { 
-        title: `${categoryName} Tools - RecallLook`,
-        categoryName: categoryName,
-        path: `/tools/category/${category}`
+    console.log('渲染工具主页');
+    res.render('tools', {
+        title: '语音 AI 工具 | 探索最佳语音技术',
+        description: '探索最新的语音人工智能工具，包括文本转语音、语音转文本、音频编辑等。',
+        page: 'tools'
     });
 });
 
