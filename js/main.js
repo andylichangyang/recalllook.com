@@ -121,7 +121,8 @@ const initializePage = () => {
     if (categoryTabs && allToolsContainer) {
         console.log('Setting up category tabs...');
         categoryTabs.forEach(tab => {
-            tab.addEventListener('click', () => {
+            tab.addEventListener('click', (e) => {
+                e.preventDefault();
                 const category = tab.dataset.category;
                 console.log('Category tab clicked:', category);
                 
@@ -129,19 +130,48 @@ const initializePage = () => {
                 categoryTabs.forEach(t => t.classList.remove('active'));
                 // Add active class to clicked tab
                 tab.classList.add('active');
-
+                
                 // Get tools for selected category
-                const tools = toolManager.getToolsByCategory(category);
-                console.log('Tools for category:', category, tools);
+                const categoryKey = category.toLowerCase().replace(/\s+/g, '');
+                const categoryTools = window.toolsData[categoryKey];
                 
-                // Clear container
-                allToolsContainer.innerHTML = '';
-                
-                // Render tools
-                tools.forEach(tool => {
-                    const toolCard = new ToolCard(tool);
-                    allToolsContainer.appendChild(toolCard.render());
-                });
+                if (categoryTools && Array.isArray(categoryTools)) {
+                    // Clear container
+                    allToolsContainer.innerHTML = '';
+                    
+                    // Render tools
+                    categoryTools.forEach(tool => {
+                        const toolCard = document.createElement('div');
+                        toolCard.className = 'tool-card';
+                        toolCard.innerHTML = `
+                            <div class="tool-header">
+                                <h3>${tool.name}</h3>
+                                <span class="rating">${tool.rating} ⭐</span>
+                            </div>
+                            <p class="description">${tool.description}</p>
+                            <div class="features">
+                                <h4>Key Features:</h4>
+                                <ul>
+                                    ${tool.features.map(feature => `<li>${feature}</li>`).join('')}
+                                </ul>
+                            </div>
+                            <div class="tool-footer">
+                                <div class="tool-meta">
+                                    <span class="category">${tool.category}</span>
+                                    <span class="price">${tool.price}</span>
+                                </div>
+                                <a href="${tool.url}" target="_blank" class="visit-button">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    Visit Website
+                                </a>
+                            </div>
+                        `;
+                        allToolsContainer.appendChild(toolCard);
+                    });
+                } else {
+                    console.error('No tools found for category:', categoryKey);
+                    allToolsContainer.innerHTML = '<p class="no-tools">No tools found for this category.</p>';
+                }
             });
         });
 
