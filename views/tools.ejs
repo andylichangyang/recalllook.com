@@ -1,148 +1,260 @@
 <%- contentFor('content') %>
-<!-- Tools Header -->
-<div class="tools-page">
-    <section class="tools-header">
-        <h1>All AI Voice Tools</h1>
-        <p>Browse our comprehensive collection of AI voice tools</p>
-    </section>
-
-    <!-- Category Tabs -->
-    <section class="category-tabs">
-        <div class="tabs-container">
-            <button class="category-tab" data-category="Text to Speech">
-                <i class="fas fa-microphone"></i>
-                Text to Speech
-            </button>
-            <button class="category-tab" data-category="Speech to Text">
-                <i class="fas fa-keyboard"></i>
-                Speech to Text
-            </button>
-            <button class="category-tab" data-category="Audio Editing">
-                <i class="fas fa-cut"></i>
-                Audio Editing
-            </button>
-            <button class="category-tab" data-category="Music Generation">
-                <i class="fas fa-music"></i>
-                Music Generation
-            </button>
-            <button class="category-tab" data-category="Voice Cloning">
-                <i class="fas fa-user-voice"></i>
-                Voice Cloning
-            </button>
+<div class="container">
+    <div class="page-header">
+        <h1>AI 语音工具</h1>
+        <p>探索最新最好的 AI 语音和音频工具，帮助您创建、编辑和转换音频内容。</p>
+    </div>
+    
+    <div class="categories-container">
+        <div class="category-buttons">
+            <button class="category-button" data-category="Text to Speech">文本转语音</button>
+            <button class="category-button" data-category="Speech to Text">语音转文本</button>
+            <button class="category-button" data-category="Audio Editing">音频编辑</button>
+            <button class="category-button" data-category="Music Generation">音乐生成</button>
+            <button class="category-button" data-category="Voice Cloning">语音克隆</button>
         </div>
-    </section>
-
-    <!-- All Tools Section -->
-    <section class="all-tools">
-        <div id="allTools" class="tools-container">
-            <!-- 工具卡片将通过 JavaScript 动态添加 -->
-        </div>
-    </section>
+    </div>
+    
+    <div class="tools-grid">
+        <!-- 工具卡片将通过 JavaScript 动态添加到这里 -->
+    </div>
 </div>
 
 <style>
-    .category-tab {
-        cursor: pointer;
-        padding: 10px 15px;
-        margin: 0 5px;
-        border: none;
-        background-color: #f5f5f5;
-        border-radius: 5px;
-    }
-    .category-tab.active {
-        background-color: #007bff;
-        color: white;
-    }
-    .no-tools {
-        padding: 20px;
+    .page-header {
         text-align: center;
-        font-size: 18px;
-        color: #666;
+        margin-bottom: 30px;
     }
-    .tool-card {
-        border: 1px solid #eee;
-        border-radius: 8px;
-        padding: 15px;
-        margin: 15px 0;
-        box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-    .tool-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-    }
-    .tool-header {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+    
+    .page-header h1 {
+        font-size: 2.5rem;
         margin-bottom: 10px;
-    }
-    .tool-header h3 {
-        margin: 0;
         color: #333;
     }
-    .rating {
-        background-color: #ffdd00;
-        color: #333;
-        padding: 3px 8px;
-        border-radius: 20px;
-        font-size: 14px;
-    }
-    .features ul {
-        padding-left: 20px;
-        margin-bottom: 15px;
-    }
-    .tool-footer {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-top: 15px;
-    }
-    .tool-meta {
-        display: flex;
-        gap: 10px;
-    }
-    .category, .price {
-        background-color: #f0f0f0;
+    
+    .page-header p {
+        font-size: 1.1rem;
         color: #666;
-        padding: 3px 8px;
-        border-radius: 20px;
-        font-size: 12px;
+        max-width: 700px;
+        margin: 0 auto;
     }
-    .visit-button {
-        background-color: #007bff;
+    
+    .categories-container {
+        margin-bottom: 20px;
+    }
+    
+    .category-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+        margin-bottom: 20px;
+    }
+    
+    .category-button {
+        background-color: #f5f5f5;
+        border: 1px solid #ddd;
+        border-radius: 30px;
+        padding: 8px 18px;
+        font-size: 1rem;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        color: #555;
+    }
+    
+    .category-button:hover {
+        background-color: #e9ecff;
+        color: #4a6cf7;
+    }
+    
+    .category-button.active {
+        background-color: #4a6cf7;
         color: white;
-        border: none;
-        padding: 8px 15px;
-        border-radius: 5px;
-        text-decoration: none;
-        font-size: 14px;
-        transition: background-color 0.3s ease;
+        border-color: #4a6cf7;
     }
-    .visit-button:hover {
-        background-color: #0056b3;
-    }
-    .tools-container {
+    
+    .tools-grid {
         display: grid;
         grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
         gap: 20px;
-        padding: 20px 0;
+        margin-top: 20px;
     }
-    .fallback-tools {
-        margin-top: 30px;
+    
+    .tool-card {
+        border: 1px solid #e0e0e0;
+        border-radius: 8px;
+        padding: 15px;
+        background: white;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        transition: transform 0.2s, box-shadow 0.2s;
     }
-    .tools-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-        gap: 15px;
-        margin-top: 15px;
+    
+    .tool-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    
+    .tool-card h3 {
+        margin-top: 0;
+        margin-bottom: 5px;
+        color: #333;
+    }
+    
+    .tool-rating {
+        color: #f5a623;
+        font-weight: bold;
+        margin-bottom: 10px;
+    }
+    
+    .tool-features {
+        margin: 10px 0;
+    }
+    
+    .feature-tag {
+        display: inline-block;
+        background: #f0f5ff;
+        color: #4a6cf7;
+        padding: 3px 8px;
+        border-radius: 12px;
+        font-size: 0.8rem;
+        margin-right: 5px;
+        margin-bottom: 5px;
+    }
+    
+    .tool-meta {
+        display: flex;
+        justify-content: space-between;
+        margin: 10px 0;
+        font-size: 0.9rem;
+        color: #666;
+    }
+    
+    .tool-link {
+        display: block;
+        text-align: center;
+        background: #4a6cf7;
+        color: white;
+        padding: 8px;
+        border-radius: 4px;
+        text-decoration: none;
+        margin-top: 10px;
+        font-weight: bold;
+        transition: background 0.2s;
+    }
+    
+    .tool-link:hover {
+        background: #3a56d4;
     }
 </style>
 
 <script>
-    console.log('工具页面 - 准备加载 dataFix.js 和 toolsFix.js');
+    console.log('工具页面 - 初始化数据');
+    
+    // 直接定义工具数据
+    window.toolsDataByName = {
+        "Text to Speech": [
+            {
+                name: "ElevenLabs",
+                url: "https://elevenlabs.io/",
+                description: "提供极其逼真的多语言 AI 语音合成，具有微妙的情感表达和音调控制。",
+                features: ["29+ 种语言", "行业领先的自然度", "API 集成"],
+                category: "文本转语音",
+                rating: 4.9,
+                price: "提供免费套餐"
+            },
+            {
+                name: "Play.ht",
+                url: "https://play.ht/",
+                description: "提供自然流畅的 AI 语音合成，支持多种语言和语音风格。",
+                features: ["900+ 种声音", "70+ 种语言", "WordPress 插件"],
+                category: "文本转语音",
+                rating: 4.7,
+                price: "付费"
+            }
+        ],
+        "Speech to Text": [
+            {
+                name: "Deepgram",
+                url: "https://deepgram.com/",
+                description: "专注于实时高精度语音转文本技术，具有行业领先的准确性。",
+                features: ["实时转录", "自定义词汇", "说话人识别"],
+                category: "语音转文本",
+                rating: 4.8,
+                price: "付费"
+            },
+            {
+                name: "Whisper",
+                url: "https://openai.com/research/whisper",
+                description: "开源语音识别系统，具有多语言能力。",
+                features: ["多语言支持", "开源", "强大的性能"],
+                category: "语音转文本",
+                rating: 4.7,
+                price: "免费"
+            }
+        ],
+        "Audio Editing": [
+            {
+                name: "Adobe Audition",
+                url: "https://www.adobe.com/products/audition.html",
+                description: "专业音频工作站，用于混音、编辑和创建音频内容。",
+                features: ["专业工具", "降噪", "多轨编辑"],
+                category: "音频编辑",
+                rating: 4.8,
+                price: "付费"
+            },
+            {
+                name: "Audacity",
+                url: "https://www.audacityteam.org/",
+                description: "免费、开源的多轨录制和编辑音频软件。",
+                features: ["免费和开源", "跨平台", "插件支持"],
+                category: "音频编辑",
+                rating: 4.6,
+                price: "免费"
+            }
+        ],
+        "Music Generation": [
+            {
+                name: "AIVA",
+                url: "https://www.aiva.ai/",
+                description: "人工智能作曲家，可创作情感音乐作品。",
+                features: ["多种音乐风格", "可定制", "专业品质"],
+                category: "音乐生成",
+                rating: 4.7,
+                price: "提供免费套餐"
+            },
+            {
+                name: "Amper Music",
+                url: "https://www.ampermusic.com/",
+                description: "AI 驱动的音乐创作平台，用于创建自定义音轨。",
+                features: ["专业品质", "简单界面", "快速创作"],
+                category: "音乐生成",
+                rating: 4.5,
+                price: "付费"
+            }
+        ],
+        "Voice Cloning": [
+            {
+                name: "Resemble AI",
+                url: "https://www.resemble.ai/",
+                description: "AI 语音生成器，支持自定义语音创建和实时合成。",
+                features: ["自定义语音", "实时合成", "API 访问"],
+                category: "语音克隆",
+                rating: 4.7,
+                price: "付费"
+            },
+            {
+                name: "Descript",
+                url: "https://www.descript.com/",
+                description: "AI 驱动的音频和视频编辑平台，允许像编辑文档一样编辑媒体。",
+                features: ["基于文本的编辑", "高质量转录", "自动删除填充词"],
+                category: "语音克隆",
+                rating: 4.8,
+                price: "付费"
+            }
+        ]
+    };
+    
     // 阻止 main.js 干扰
     window.preventMainJSInterference = true;
 </script>
-<script src="/js/dataFix.js"></script>
 <script src="/js/toolsFix.js"></script> 
