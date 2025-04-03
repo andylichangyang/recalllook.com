@@ -1,137 +1,102 @@
-// 当 DOM 加载完成时执行
+console.log('工具页面脚本已加载');
+
+// 初始化工具显示
 document.addEventListener('DOMContentLoaded', function() {
-    console.log('工具页面脚本已加载');
-    
-    // 确保全局数据存在
+    console.log('DOM 已加载，准备初始化工具');
+    initTools();
+});
+
+function initTools() {
+    // 检查数据是否存在
     if (!window.toolsDataByName) {
-        console.error('工具数据未加载，尝试重新加载');
-        
-        // 尝试重新加载数据
-        try {
-            const dataScript = document.createElement('script');
-            dataScript.src = '/js/dataFix.js';
-            dataScript.onload = function() {
-                console.log('数据已重新加载，初始化工具');
-                initTools();
-            };
-            document.body.appendChild(dataScript);
-        } catch (e) {
-            console.error('无法加载工具数据:', e);
-        }
+        console.error('工具数据未找到');
         return;
     }
     
-    initTools();
+    console.log('工具数据已加载，可用分类:', Object.keys(window.toolsDataByName));
     
-    // 初始化工具函数
-    function initTools() {
-        if (!window.toolsDataByName) {
-            console.error('工具数据仍未加载，无法继续');
-            return;
-        }
-        
-        console.log('可用分类:', Object.keys(window.toolsDataByName));
-        
-        // 获取 DOM 元素
-        const categoryTabs = document.querySelectorAll('.category-tab');
-        const allToolsContainer = document.getElementById('allTools');
-        
-        console.log('找到分类标签:', categoryTabs.length);
-        
-        if (!allToolsContainer) {
-            console.error('工具容器未找到！');
-            return;
-        }
-        
-        // 工具卡片渲染函数
-        function renderTool(tool) {
-            return `
-                <div class="tool-card">
-                    <div class="tool-header">
-                        <h3>${tool.name}</h3>
-                        <span class="rating">${tool.rating} ⭐</span>
-                    </div>
-                    <p class="description">${tool.description}</p>
-                    <div class="features">
-                        <h4>关键特点:</h4>
-                        <ul>
-                            ${tool.features.map(feature => `<li>${feature}</li>`).join('')}
-                        </ul>
-                    </div>
-                    <div class="tool-footer">
-                        <div class="tool-meta">
-                            <span class="category">${tool.category}</span>
-                            <span class="price">${tool.price}</span>
-                        </div>
-                        <a href="${tool.url}" target="_blank" class="visit-button">
-                            <i class="fas fa-external-link-alt"></i>
-                            访问网站
-                        </a>
-                    </div>
-                </div>
-            `;
-        }
-        
-        // 显示指定分类的工具
-        function showCategoryTools(category) {
-            console.log('显示分类工具:', category);
-            
-            // 获取工具数据
-            const tools = window.toolsDataByName[category];
-            
-            // 清空容器
-            allToolsContainer.innerHTML = '';
-            
-            if (tools && Array.isArray(tools) && tools.length > 0) {
-                console.log(`找到 ${tools.length} 个工具`);
+    // 设置分类点击事件
+    const categoryButtons = document.querySelectorAll('.category-button');
+    console.log('找到分类按钮:', categoryButtons.length);
+    
+    if (categoryButtons.length > 0) {
+        categoryButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const category = this.getAttribute('data-category');
+                console.log('点击了分类:', category);
                 
-                // 生成HTML
-                const toolsHTML = tools.map(renderTool).join('');
+                // 移除所有活跃状态
+                categoryButtons.forEach(btn => btn.classList.remove('active'));
                 
-                // 插入HTML
-                allToolsContainer.innerHTML = toolsHTML;
-            } else {
-                console.error('未找到分类工具:', category);
-                allToolsContainer.innerHTML = `<p class="no-tools">未找到 "${category}" 分类的工具</p>`;
-            }
-        }
-        
-        // 为每个分类标签添加点击事件
-        categoryTabs.forEach(tab => {
-            const category = tab.dataset.category;
-            
-            tab.addEventListener('click', function(e) {
-                e.preventDefault();
-                console.log('点击分类:', category);
+                // 添加活跃状态到当前按钮
+                this.classList.add('active');
                 
-                // 更新活动状态
-                categoryTabs.forEach(t => t.classList.remove('active'));
-                tab.classList.add('active');
-                
-                // 显示该分类的工具
-                showCategoryTools(category);
+                // 显示相应分类的工具
+                displayToolsByCategory(category);
             });
         });
         
-        // 默认显示第一个分类
-        if (categoryTabs.length > 0) {
-            // 检查是否是分类页面
-            if (window.currentCategory) {
-                console.log('当前分类页面:', window.currentCategory);
-                
-                // 找到对应的分类标签
-                const currentCategoryTab = Array.from(categoryTabs).find(tab => 
-                    tab.dataset.category === window.currentCategory
-                );
-                
-                if (currentCategoryTab) {
-                    currentCategoryTab.click();
-                } else {
-                    categoryTabs[0].click();
-                }
-            } else {
-                categoryTabs[0].click();
-            }
-        }
+        // 默认选中第一个分类按钮并显示其工具
+        console.log('默认选中第一个分类按钮');
+        categoryButtons[0].classList.add('active');
+        const firstCategory = categoryButtons[0].getAttribute('data-category');
+        displayToolsByCategory(firstCategory);
     }
-}); 
+}
+
+function displayToolsByCategory(category) {
+    console.log('显示分类的工具:', category);
+    const toolsGrid = document.querySelector('.tools-grid');
+    
+    if (!toolsGrid) {
+        console.error('未找到工具网格容器');
+        return;
+    }
+    
+    // 清空当前工具
+    toolsGrid.innerHTML = '';
+    
+    // 获取该分类的工具
+    const tools = window.toolsDataByName[category];
+    
+    if (!tools || tools.length === 0) {
+        console.log('该分类没有工具:', category);
+        toolsGrid.innerHTML = '<p>该分类暂无工具</p>';
+        return;
+    }
+    
+    console.log(`找到 ${tools.length} 个工具属于分类 "${category}"`);
+    
+    // 渲染工具卡片
+    tools.forEach(tool => {
+        const toolCard = createToolCard(tool);
+        toolsGrid.appendChild(toolCard);
+    });
+}
+
+function createToolCard(tool) {
+    const card = document.createElement('div');
+    card.className = 'tool-card';
+    
+    // 创建特性标签 HTML
+    let featuresHtml = '';
+    if (tool.features && tool.features.length > 0) {
+        featuresHtml = tool.features.map(feature => 
+            `<span class="feature-tag">${feature}</span>`
+        ).join('');
+    }
+    
+    card.innerHTML = `
+        <h3>${tool.name}</h3>
+        <div class="tool-rating">★ ${tool.rating}</div>
+        <p>${tool.description}</p>
+        <div class="tool-features">${featuresHtml}</div>
+        <div class="tool-meta">
+            <span class="tool-category">${tool.category || ''}</span>
+            <span class="tool-price">${tool.price || '免费'}</span>
+        </div>
+        <a href="${tool.url}" target="_blank" class="tool-link">访问网站</a>
+    `;
+    
+    return card;
+} 
