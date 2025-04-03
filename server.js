@@ -40,7 +40,7 @@ app.get('/tools', (req, res) => {
     const tools = require('./js/utils/tools.js');
     res.render('tools', { 
         title: 'All Tools - RecallLook',
-        tools: tools
+        tools: tools.tools
     });
 });
 
@@ -50,17 +50,19 @@ app.get('/tools/category/:category', (req, res) => {
     const tools = require('./js/utils/tools.js');
     const category = req.params.category;
     const categoryMap = {
-        'text-to-speech': 'Text to Speech',
-        'speech-to-text': 'Speech to Text',
-        'audio-editing': 'Audio Editing',
-        'music-generation': 'Music Generation',
-        'voice-cloning': 'Voice Cloning'
+        'text-to-speech': 'textToSpeech',
+        'speech-to-text': 'speechToText',
+        'audio-editing': 'audioEditing',
+        'music-generation': 'musicGeneration',
+        'voice-cloning': 'voiceCloning'
     };
     
-    const categoryKey = category.replace(/-/g, '');
-    const categoryName = categoryMap[category];
+    const categoryKey = categoryMap[category];
+    const categoryName = category.split('-').map(word => 
+        word.charAt(0).toUpperCase() + word.slice(1)
+    ).join(' ');
     
-    if (!categoryName || !tools[categoryKey]) {
+    if (!categoryKey || !tools.tools[categoryKey]) {
         console.log('Category not found:', category);
         return res.status(404).render('404', { 
             title: '404 - Category Not Found'
@@ -70,7 +72,7 @@ app.get('/tools/category/:category', (req, res) => {
     res.render('category', { 
         title: `${categoryName} Tools - RecallLook`,
         categoryName: categoryName,
-        tools: tools[categoryKey]
+        tools: tools.tools[categoryKey]
     });
 });
 
