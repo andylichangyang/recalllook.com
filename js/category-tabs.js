@@ -174,6 +174,41 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 默认点击第一个分类标签
     if (categoryTabs.length > 0) {
+        // 如果有window.currentCategory，则点击对应的分类标签
+        if (window.currentCategory) {
+            console.log('Current category from server:', window.currentCategory);
+            let categoryKey;
+            
+            // 映射从服务器端获取的分类名称到对应的键名
+            switch (window.currentCategory) {
+                case 'Text to Speech': categoryKey = 'textToSpeech'; break;
+                case 'Speech to Text': categoryKey = 'speechToText'; break;
+                case 'Audio Editing': categoryKey = 'audioEditing'; break;
+                case 'Music Generation': categoryKey = 'musicGeneration'; break;
+                case 'Voice Cloning': categoryKey = 'voiceCloning'; break;
+                default: categoryKey = null;
+            }
+            
+            console.log('Mapped category key:', categoryKey);
+            
+            // 查找具有该data-category属性的标签
+            if (categoryKey) {
+                const targetTab = Array.from(categoryTabs).find(tab => 
+                    tab.dataset.category === categoryKey
+                );
+                
+                if (targetTab) {
+                    console.log('Found target tab:', targetTab);
+                    targetTab.click();
+                    return;
+                }
+            }
+        }
+        
+        // 如果没有window.currentCategory或者找不到对应的标签，则点击第一个标签
+        console.log('Clicking first category tab');
         categoryTabs[0].click();
+    } else {
+        console.warn('No category tabs found');
     }
 }); 
