@@ -170,7 +170,7 @@ document.addEventListener('DOMContentLoaded', function() {
                             </div>
                             <a href="${tool.url}" target="_blank" class="visit-button">
                                 <i class="fas fa-external-link-alt"></i>
-                                Visit Website
+                                访问网站
                             </a>
                         </div>
                     `;
@@ -179,7 +179,29 @@ document.addEventListener('DOMContentLoaded', function() {
             } else {
                 console.error('No tools found for category:', category);
                 console.log('ToolsData object:', toolsData);
-                allToolsContainer.innerHTML = '<p class="no-tools">No tools found for this category</p>';
+                
+                // 显示错误消息，同时强制显示第一个分类的工具，确保页面不是空的
+                allToolsContainer.innerHTML = `
+                    <p class="no-tools">未找到"${category}"分类的工具。这可能是一个错误。</p>
+                    <div class="fallback-tools">
+                        <h3>推荐工具</h3>
+                        <div class="tools-grid">
+                            ${toolsData.textToSpeech.map(tool => `
+                                <div class="tool-card">
+                                    <div class="tool-header">
+                                        <h3>${tool.name}</h3>
+                                        <span class="rating">${tool.rating} ⭐</span>
+                                    </div>
+                                    <p class="description">${tool.description}</p>
+                                    <a href="${tool.url}" target="_blank" class="visit-button">
+                                        <i class="fas fa-external-link-alt"></i>
+                                        访问网站
+                                    </a>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `;
             }
         });
     });
@@ -188,32 +210,19 @@ document.addEventListener('DOMContentLoaded', function() {
     if (categoryTabs.length > 0) {
         // 如果有window.currentCategory，则点击对应的分类标签
         if (window.currentCategory) {
-            console.log('Current category from server:', window.currentCategory);
-            let categoryKey;
-            
-            // 映射从服务器端获取的分类名称到对应的键名
-            switch (window.currentCategory) {
-                case 'Text to Speech': categoryKey = 'textToSpeech'; break;
-                case 'Speech to Text': categoryKey = 'speechToText'; break;
-                case 'Audio Editing': categoryKey = 'audioEditing'; break;
-                case 'Music Generation': categoryKey = 'musicGeneration'; break;
-                case 'Voice Cloning': categoryKey = 'voiceCloning'; break;
-                default: categoryKey = null;
-            }
-            
-            console.log('Mapped category key:', categoryKey);
+            console.log('Current category key from server:', window.currentCategory);
             
             // 查找具有该data-category属性的标签
-            if (categoryKey) {
-                const targetTab = Array.from(categoryTabs).find(tab => 
-                    tab.dataset.category === categoryKey
-                );
-                
-                if (targetTab) {
-                    console.log('Found target tab:', targetTab);
-                    targetTab.click();
-                    return;
-                }
+            const targetTab = Array.from(categoryTabs).find(tab => 
+                tab.dataset.category === window.currentCategory
+            );
+            
+            if (targetTab) {
+                console.log('Found target tab for category:', window.currentCategory);
+                targetTab.click();
+                return;
+            } else {
+                console.warn('No tab found for category:', window.currentCategory);
             }
         }
         
