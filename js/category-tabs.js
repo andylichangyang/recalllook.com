@@ -105,131 +105,145 @@ const toolsData = {
 // 当 DOM 加载完成时执行
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Category tabs script loaded');
-    console.log('Available categories:', Object.keys(toolsData));
-    console.log('textToSpeech tools:', toolsData.textToSpeech);
-    console.log('speechToText tools:', toolsData.speechToText);
+    console.log('可用分类:', Object.keys(toolsData));
     
-    // 获取 DOM 元素
-    const categoryTabs = document.querySelectorAll('.category-tab');
-    const allToolsContainer = document.getElementById('allTools');
-    
-    console.log('Found category tabs:', categoryTabs.length);
-    console.log('Found tools container:', allToolsContainer ? 'Yes' : 'No');
-    
-    if (!allToolsContainer) {
-        console.error('Tools container not found');
-        return;
-    }
-    
-    // 为每个分类标签添加点击事件
-    categoryTabs.forEach(tab => {
-        console.log('Tab with data-category:', tab.dataset.category);
-        
-        tab.addEventListener('click', function(e) {
-            e.preventDefault();
-            
-            // 获取分类
-            const category = tab.dataset.category;
-            console.log('Category clicked:', category);
-            
-            // 移除所有标签的活动状态
-            categoryTabs.forEach(t => t.classList.remove('active'));
-            
-            // 将当前标签设为活动状态
-            tab.classList.add('active');
-            
-            // 获取该分类的工具
-            const categoryTools = toolsData[category];
-            console.log('Tools for category:', category, categoryTools);
-            
-            // 清空工具容器
-            allToolsContainer.innerHTML = '';
-            
-            if (categoryTools && Array.isArray(categoryTools)) {
-                console.log('Rendering', categoryTools.length, 'tools');
-                // 渲染工具卡片
-                categoryTools.forEach(tool => {
-                    const toolCard = document.createElement('div');
-                    toolCard.className = 'tool-card';
-                    toolCard.innerHTML = `
-                        <div class="tool-header">
-                            <h3>${tool.name}</h3>
-                            <span class="rating">${tool.rating} ⭐</span>
-                        </div>
-                        <p class="description">${tool.description}</p>
-                        <div class="features">
-                            <h4>Key Features:</h4>
-                            <ul>
-                                ${tool.features.map(feature => `<li>${feature}</li>`).join('')}
-                            </ul>
-                        </div>
-                        <div class="tool-footer">
-                            <div class="tool-meta">
-                                <span class="category">${tool.category}</span>
-                                <span class="price">${tool.price}</span>
-                            </div>
-                            <a href="${tool.url}" target="_blank" class="visit-button">
-                                <i class="fas fa-external-link-alt"></i>
-                                访问网站
-                            </a>
-                        </div>
-                    `;
-                    allToolsContainer.appendChild(toolCard);
-                });
-            } else {
-                console.error('No tools found for category:', category);
-                console.log('ToolsData object:', toolsData);
-                
-                // 显示错误消息，同时强制显示第一个分类的工具，确保页面不是空的
-                allToolsContainer.innerHTML = `
-                    <p class="no-tools">未找到"${category}"分类的工具。这可能是一个错误。</p>
-                    <div class="fallback-tools">
-                        <h3>推荐工具</h3>
-                        <div class="tools-grid">
-                            ${toolsData.textToSpeech.map(tool => `
-                                <div class="tool-card">
-                                    <div class="tool-header">
-                                        <h3>${tool.name}</h3>
-                                        <span class="rating">${tool.rating} ⭐</span>
-                                    </div>
-                                    <p class="description">${tool.description}</p>
-                                    <a href="${tool.url}" target="_blank" class="visit-button">
-                                        <i class="fas fa-external-link-alt"></i>
-                                        访问网站
-                                    </a>
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                `;
-            }
-        });
-    });
-    
-    // 默认点击第一个分类标签
-    if (categoryTabs.length > 0) {
-        // 如果有window.currentCategory，则点击对应的分类标签
-        if (window.currentCategory) {
-            console.log('Current category key from server:', window.currentCategory);
-            
-            // 查找具有该data-category属性的标签
-            const targetTab = Array.from(categoryTabs).find(tab => 
-                tab.dataset.category === window.currentCategory
-            );
-            
-            if (targetTab) {
-                console.log('Found target tab for category:', window.currentCategory);
-                targetTab.click();
-                return;
-            } else {
-                console.warn('No tab found for category:', window.currentCategory);
-            }
+    // 直接显示第一个分类的工具
+    function renderAllTools() {
+        const allToolsContainer = document.getElementById('allTools');
+        if (!allToolsContainer) {
+            console.error('工具容器未找到');
+            return;
         }
         
-        // 如果没有window.currentCategory或者找不到对应的标签，则点击第一个标签
-        console.log('Clicking first category tab');
-        categoryTabs[0].click();
-    } else {
-        console.warn('No category tabs found');
+        // 清空容器
+        allToolsContainer.innerHTML = '';
+        
+        // 创建工具卡片HTML
+        let toolsHtml = '';
+        
+        // 遍历所有分类
+        Object.keys(toolsData).forEach(category => {
+            const tools = toolsData[category];
+            if (tools && Array.isArray(tools)) {
+                tools.forEach(tool => {
+                    toolsHtml += `
+                        <div class="tool-card">
+                            <div class="tool-header">
+                                <h3>${tool.name}</h3>
+                                <span class="rating">${tool.rating} ⭐</span>
+                            </div>
+                            <p class="description">${tool.description}</p>
+                            <div class="features">
+                                <h4>关键特点:</h4>
+                                <ul>
+                                    ${tool.features.map(feature => `<li>${feature}</li>`).join('')}
+                                </ul>
+                            </div>
+                            <div class="tool-footer">
+                                <div class="tool-meta">
+                                    <span class="category">${tool.category}</span>
+                                    <span class="price">${tool.price}</span>
+                                </div>
+                                <a href="${tool.url}" target="_blank" class="visit-button">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    访问网站
+                                </a>
+                            </div>
+                        </div>
+                    `;
+                });
+            }
+        });
+        
+        // 将HTML添加到容器
+        allToolsContainer.innerHTML = toolsHtml;
+        console.log('已渲染所有工具');
     }
+    
+    // 处理分类切换
+    function setupCategoryTabs() {
+        const categoryTabs = document.querySelectorAll('.category-tab');
+        const allToolsContainer = document.getElementById('allTools');
+        
+        console.log('找到分类标签:', categoryTabs.length);
+        
+        if (!allToolsContainer) {
+            console.error('工具容器未找到');
+            return;
+        }
+        
+        categoryTabs.forEach(tab => {
+            const categoryKey = tab.dataset.category;
+            console.log('分类标签:', categoryKey);
+            
+            tab.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // 移除所有标签的active类
+                categoryTabs.forEach(t => t.classList.remove('active'));
+                
+                // 添加active类到当前标签
+                tab.classList.add('active');
+                
+                // 获取分类数据
+                const tools = toolsData[categoryKey];
+                console.log(`已点击分类: ${categoryKey}, 找到工具: ${tools ? tools.length : 0}`);
+                
+                // 清空容器
+                allToolsContainer.innerHTML = '';
+                
+                if (tools && Array.isArray(tools) && tools.length > 0) {
+                    // 渲染该分类的工具
+                    tools.forEach(tool => {
+                        const toolCard = document.createElement('div');
+                        toolCard.className = 'tool-card';
+                        toolCard.innerHTML = `
+                            <div class="tool-header">
+                                <h3>${tool.name}</h3>
+                                <span class="rating">${tool.rating} ⭐</span>
+                            </div>
+                            <p class="description">${tool.description}</p>
+                            <div class="features">
+                                <h4>关键特点:</h4>
+                                <ul>
+                                    ${tool.features.map(feature => `<li>${feature}</li>`).join('')}
+                                </ul>
+                            </div>
+                            <div class="tool-footer">
+                                <div class="tool-meta">
+                                    <span class="category">${tool.category}</span>
+                                    <span class="price">${tool.price}</span>
+                                </div>
+                                <a href="${tool.url}" target="_blank" class="visit-button">
+                                    <i class="fas fa-external-link-alt"></i>
+                                    访问网站
+                                </a>
+                            </div>
+                        `;
+                        allToolsContainer.appendChild(toolCard);
+                    });
+                } else {
+                    console.error(`未找到分类 ${categoryKey} 的工具`);
+                    // 显示所有工具
+                    renderAllTools();
+                }
+            });
+        });
+        
+        // 检查是否有active类的标签
+        const activeTab = document.querySelector('.category-tab.active');
+        if (activeTab) {
+            console.log('找到活动标签:', activeTab.dataset.category);
+            activeTab.click();
+        } else if (categoryTabs.length > 0) {
+            console.log('没有活动标签，点击第一个标签');
+            categoryTabs[0].click();
+        } else {
+            console.warn('未找到分类标签，显示所有工具');
+            renderAllTools();
+        }
+    }
+    
+    // 初始化
+    setupCategoryTabs();
 }); 
