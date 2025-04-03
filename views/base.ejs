@@ -93,7 +93,14 @@
         </div>
     </div>
 
-    <script src="/js/utils/tools.js"></script>
-    <script src="/js/main.js"></script>
+    <script>
+        // 只有在没有阻止干扰的情况下才加载 main.js
+        if (!window.preventMainJSInterference) {
+            const script = document.createElement('script');
+            script.src = '/js/main.js';
+            script.async = true;
+            document.body.appendChild(script);
+        }
+    </script>
 </body>
 </html> 
