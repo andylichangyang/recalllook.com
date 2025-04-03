@@ -8,23 +8,23 @@
     <!-- Category Tabs -->
     <section class="category-tabs">
         <div class="tabs-container">
-            <button class="category-tab" data-category="textToSpeech">
+            <button class="category-tab <%= categoryName === 'Text to Speech' ? 'active' : '' %>" data-category="textToSpeech">
                 <i class="fas fa-microphone"></i>
                 Text to Speech
             </button>
-            <button class="category-tab" data-category="speechToText">
+            <button class="category-tab <%= categoryName === 'Speech to Text' ? 'active' : '' %>" data-category="speechToText">
                 <i class="fas fa-keyboard"></i>
                 Speech to Text
             </button>
-            <button class="category-tab" data-category="audioEditing">
+            <button class="category-tab <%= categoryName === 'Audio Editing' ? 'active' : '' %>" data-category="audioEditing">
                 <i class="fas fa-cut"></i>
                 Audio Editing
             </button>
-            <button class="category-tab" data-category="musicGeneration">
+            <button class="category-tab <%= categoryName === 'Music Generation' ? 'active' : '' %>" data-category="musicGeneration">
                 <i class="fas fa-music"></i>
                 Music Generation
             </button>
-            <button class="category-tab" data-category="voiceCloning">
+            <button class="category-tab <%= categoryName === 'Voice Cloning' ? 'active' : '' %>" data-category="voiceCloning">
                 <i class="fas fa-user-voice"></i>
                 Voice Cloning
             </button>
