@@ -105,10 +105,16 @@ const toolsData = {
 // 当 DOM 加载完成时执行
 document.addEventListener('DOMContentLoaded', function() {
     console.log('Category tabs script loaded');
+    console.log('Available categories:', Object.keys(toolsData));
+    console.log('textToSpeech tools:', toolsData.textToSpeech);
+    console.log('speechToText tools:', toolsData.speechToText);
     
     // 获取 DOM 元素
     const categoryTabs = document.querySelectorAll('.category-tab');
     const allToolsContainer = document.getElementById('allTools');
+    
+    console.log('Found category tabs:', categoryTabs.length);
+    console.log('Found tools container:', allToolsContainer ? 'Yes' : 'No');
     
     if (!allToolsContainer) {
         console.error('Tools container not found');
@@ -117,6 +123,8 @@ document.addEventListener('DOMContentLoaded', function() {
     
     // 为每个分类标签添加点击事件
     categoryTabs.forEach(tab => {
+        console.log('Tab with data-category:', tab.dataset.category);
+        
         tab.addEventListener('click', function(e) {
             e.preventDefault();
             
@@ -132,11 +140,13 @@ document.addEventListener('DOMContentLoaded', function() {
             
             // 获取该分类的工具
             const categoryTools = toolsData[category];
+            console.log('Tools for category:', category, categoryTools);
             
             // 清空工具容器
             allToolsContainer.innerHTML = '';
             
             if (categoryTools && Array.isArray(categoryTools)) {
+                console.log('Rendering', categoryTools.length, 'tools');
                 // 渲染工具卡片
                 categoryTools.forEach(tool => {
                     const toolCard = document.createElement('div');
@@ -167,6 +177,8 @@ document.addEventListener('DOMContentLoaded', function() {
                     allToolsContainer.appendChild(toolCard);
                 });
             } else {
+                console.error('No tools found for category:', category);
+                console.log('ToolsData object:', toolsData);
                 allToolsContainer.innerHTML = '<p class="no-tools">No tools found for this category</p>';
             }
         });
