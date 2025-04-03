@@ -155,5 +155,8 @@
     window.currentCategory = window.categoryMap[window.currentCategoryFromServer] || 'textToSpeech';
     console.log('Category name from server:', window.currentCategoryFromServer);
     console.log('Mapped to category key:', window.currentCategory);
+    
+    // 阻止 main.js 干扰
+    window.preventMainJSInterference = true;
 </script>
 <script src="/js/category-tabs.js"></script> 
