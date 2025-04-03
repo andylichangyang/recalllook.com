@@ -109,11 +109,40 @@ const initializePage = () => {
     // Load featured tools
     if (featuredToolsContainer) {
         console.log('Loading featured tools...');
-        const featuredTools = toolManager.getFeaturedTools();
+        // 获取所有工具并按评分排序
+        const allTools = Object.values(window.toolsData).flat();
+        const featuredTools = allTools
+            .sort((a, b) => b.rating - a.rating)
+            .slice(0, 3);
+        
         console.log('Featured tools:', featuredTools);
         featuredTools.forEach(tool => {
-            const toolCard = new ToolCard(tool);
-            featuredToolsContainer.appendChild(toolCard.render());
+            const toolCard = document.createElement('div');
+            toolCard.className = 'tool-card';
+            toolCard.innerHTML = `
+                <div class="tool-header">
+                    <h3>${tool.name}</h3>
+                    <span class="rating">${tool.rating} ⭐</span>
+                </div>
+                <p class="description">${tool.description}</p>
+                <div class="features">
+                    <h4>Key Features:</h4>
+                    <ul>
+                        ${tool.features.map(feature => `<li>${feature}</li>`).join('')}
+                    </ul>
+                </div>
+                <div class="tool-footer">
+                    <div class="tool-meta">
+                        <span class="category">${tool.category}</span>
+                        <span class="price">${tool.price}</span>
+                    </div>
+                    <a href="${tool.url}" target="_blank" class="visit-button">
+                        <i class="fas fa-external-link-alt"></i>
+                        Visit Website
+                    </a>
+                </div>
+            `;
+            featuredToolsContainer.appendChild(toolCard);
         });
     }
 
