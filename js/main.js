@@ -1,6 +1,12 @@
 // 初始化页面
 const initializePage = () => {
-    console.log('Initializing page...');
+    console.log('Main.js: Initializing page...');
+    
+    // 如果有阻止干扰的标志，则不初始化分类标签功能
+    if (window.preventMainJSInterference) {
+        console.log('Main.js: 检测到阻止干扰标志，跳过分类标签初始化');
+        return;
+    }
 
     // 硬编码工具数据，确保可用
     const toolsData = {
