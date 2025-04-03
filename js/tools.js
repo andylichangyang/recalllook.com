@@ -2,28 +2,27 @@ document.addEventListener('DOMContentLoaded', function() {
     const categoryTabs = document.querySelectorAll('.category-tab');
     const allToolsContainer = document.getElementById('allTools');
 
+    // 初始化分类标签点击事件
     categoryTabs.forEach(tab => {
         tab.addEventListener('click', (e) => {
-            e.preventDefault(); // 阻止默认的链接行为
-            
+            e.preventDefault();
             const category = tab.dataset.category;
-            const categoryKey = category.toLowerCase().replace(/\s+/g, '');
-            console.log('Category clicked:', category, 'Category key:', categoryKey);
-            console.log('Available tools data:', window.toolsData);
+            console.log('Category tab clicked:', category);
             
-            // Remove active class from all tabs
+            // 移除所有标签的 active 类
             categoryTabs.forEach(t => t.classList.remove('active'));
-            // Add active class to clicked tab
+            // 添加 active 类到当前标签
             tab.classList.add('active');
-
-            // Clear container
-            allToolsContainer.innerHTML = '';
             
-            // Render tools for selected category
-            const categoryTools = window.toolsData[categoryKey];
+            // 获取当前分类的工具
+            const categoryTools = window.toolsData[category];
             console.log('Tools for category:', categoryTools);
             
             if (categoryTools && Array.isArray(categoryTools)) {
+                // 清空容器
+                allToolsContainer.innerHTML = '';
+                
+                // 渲染工具卡片
                 categoryTools.forEach(tool => {
                     const toolCard = document.createElement('div');
                     toolCard.className = 'tool-card';
@@ -53,9 +52,14 @@ document.addEventListener('DOMContentLoaded', function() {
                     allToolsContainer.appendChild(toolCard);
                 });
             } else {
-                console.error('No tools found for category:', categoryKey);
+                console.error('No tools found for category:', category);
                 allToolsContainer.innerHTML = '<p class="no-tools">No tools found for this category.</p>';
             }
         });
     });
+
+    // 默认显示第一个分类
+    if (categoryTabs.length > 0) {
+        categoryTabs[0].click();
+    }
 }); 
