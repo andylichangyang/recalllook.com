@@ -1,4 +1,7 @@
 // 工具数据
+console.log('加载工具数据...');
+
+// 确保全局变量已定义
 window.toolsDataByName = {
     "Text to Speech": [
         {
@@ -100,4 +103,17 @@ window.toolsDataByName = {
             price: "付费"
         }
     ]
+};
+
+console.log('工具数据已加载。可用分类:', Object.keys(window.toolsDataByName));
+
+// 定义一个全局函数用于检查数据是否存在
+window.checkToolsData = function() {
+    if (window.toolsDataByName) {
+        console.log('数据检查: 工具数据已存在，包含', Object.keys(window.toolsDataByName).length, '个分类');
+        return true;
+    } else {
+        console.error('数据检查: 工具数据未找到!');
+        return false;
+    }
 }; 
