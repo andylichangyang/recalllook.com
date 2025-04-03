@@ -8,23 +8,23 @@
     <!-- Category Tabs -->
     <section class="category-tabs">
         <div class="tabs-container">
-            <button class="category-tab <%= categoryName === 'Text to Speech' ? 'active' : '' %>" data-category="textToSpeech">
+            <button class="category-tab <%= categoryName === 'Text to Speech' ? 'active' : '' %>" data-category="Text to Speech">
                 <i class="fas fa-microphone"></i>
                 Text to Speech
             </button>
-            <button class="category-tab <%= categoryName === 'Speech to Text' ? 'active' : '' %>" data-category="speechToText">
+            <button class="category-tab <%= categoryName === 'Speech to Text' ? 'active' : '' %>" data-category="Speech to Text">
                 <i class="fas fa-keyboard"></i>
                 Speech to Text
             </button>
-            <button class="category-tab <%= categoryName === 'Audio Editing' ? 'active' : '' %>" data-category="audioEditing">
+            <button class="category-tab <%= categoryName === 'Audio Editing' ? 'active' : '' %>" data-category="Audio Editing">
                 <i class="fas fa-cut"></i>
                 Audio Editing
             </button>
-            <button class="category-tab <%= categoryName === 'Music Generation' ? 'active' : '' %>" data-category="musicGeneration">
+            <button class="category-tab <%= categoryName === 'Music Generation' ? 'active' : '' %>" data-category="Music Generation">
                 <i class="fas fa-music"></i>
                 Music Generation
             </button>
-            <button class="category-tab <%= categoryName === 'Voice Cloning' ? 'active' : '' %>" data-category="voiceCloning">
+            <button class="category-tab <%= categoryName === 'Voice Cloning' ? 'active' : '' %>" data-category="Voice Cloning">
                 <i class="fas fa-user-voice"></i>
                 Voice Cloning
             </button>
@@ -138,25 +138,13 @@
 </style>
 
 <script>
+    console.log('分类页面 - 准备加载 dataFix.js 和 toolsFix.js');
     // 设置当前分类
-    // 直接使用数据键名，而不是用户可读的分类名称
-    window.currentCategoryFromServer = '<%= categoryName %>';
-    
-    // 映射分类名称到键名
-    window.categoryMap = {
-        'Text to Speech': 'textToSpeech',
-        'Speech to Text': 'speechToText',
-        'Audio Editing': 'audioEditing',
-        'Music Generation': 'musicGeneration',
-        'Voice Cloning': 'voiceCloning'
-    };
-    
-    // 直接设置键名
-    window.currentCategory = window.categoryMap[window.currentCategoryFromServer] || 'textToSpeech';
-    console.log('Category name from server:', window.currentCategoryFromServer);
-    console.log('Mapped to category key:', window.currentCategory);
+    window.currentCategory = '<%= categoryName %>';
+    console.log('当前分类:', window.currentCategory);
     
     // 阻止 main.js 干扰
     window.preventMainJSInterference = true;
 </script>
-<script src="/js/category-tabs.js"></script> 
+<script src="/js/dataFix.js"></script>
+<script src="/js/toolsFix.js"></script> 
