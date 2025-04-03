@@ -93,17 +93,22 @@
         </div>
     </div>
 
-    <!-- 仅在非工具页面加载 main.js -->
+    <!-- Scripts -->
+    <script src="/js/jquery-3.6.0.min.js"></script>
+    <script src="/js/bootstrap.bundle.min.js"></script>
     <script>
-        // 检查是否是工具相关页面
+        // 判断当前是否为工具页面
         const isToolsPage = window.location.pathname.includes('/tools');
+        console.log('当前页面路径:', window.location.pathname, '是工具页面:', isToolsPage);
+        
+        // 只有在非工具页面时加载 main.js
         if (!isToolsPage) {
-            const script = document.createElement('script');
-            script.src = '/js/main.js';
-            document.body.appendChild(script);
-            console.log('加载主脚本 (main.js)');
+            console.log('加载 main.js');
+            const mainScript = document.createElement('script');
+            mainScript.src = '/js/main.js';
+            document.body.appendChild(mainScript);
         } else {
-            console.log('工具页面 - 跳过加载 main.js');
+            console.log('跳过加载 main.js，因为当前是工具页面');
         }
     </script>
 </body>
