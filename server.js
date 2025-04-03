@@ -37,32 +37,26 @@ app.get('/', (req, res) => {
 
 app.get('/tools', (req, res) => {
     console.log('Rendering tools page');
-    const tools = require('./js/utils/tools.js');
     res.render('tools', { 
-        title: 'All Tools - RecallLook',
-        tools: tools.tools
+        title: 'All Tools - RecallLook'
     });
 });
 
 // 分类路由
 app.get('/tools/category/:category', (req, res) => {
     console.log('Rendering category page:', req.params.category);
-    const tools = require('./js/utils/tools.js');
     const category = req.params.category;
     const categoryMap = {
-        'text-to-speech': 'textToSpeech',
-        'speech-to-text': 'speechToText',
-        'audio-editing': 'audioEditing',
-        'music-generation': 'musicGeneration',
-        'voice-cloning': 'voiceCloning'
+        'text-to-speech': 'Text to Speech',
+        'speech-to-text': 'Speech to Text',
+        'audio-editing': 'Audio Editing',
+        'music-generation': 'Music Generation',
+        'voice-cloning': 'Voice Cloning'
     };
     
-    const categoryKey = categoryMap[category];
-    const categoryName = category.split('-').map(word => 
-        word.charAt(0).toUpperCase() + word.slice(1)
-    ).join(' ');
+    const categoryName = categoryMap[category];
     
-    if (!categoryKey || !tools.tools[categoryKey]) {
+    if (!categoryName) {
         console.log('Category not found:', category);
         return res.status(404).render('404', { 
             title: '404 - Category Not Found'
@@ -71,8 +65,7 @@ app.get('/tools/category/:category', (req, res) => {
 
     res.render('category', { 
         title: `${categoryName} Tools - RecallLook`,
-        categoryName: categoryName,
-        tools: tools.tools[categoryKey]
+        categoryName: categoryName
     });
 });
 
