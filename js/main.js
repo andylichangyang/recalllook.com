@@ -403,4 +403,73 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log('分类按钮被点击:', button.href);
         });
     });
+});
+
+// 模态框功能
+document.addEventListener('DOMContentLoaded', function() {
+    // 获取模态框元素
+    const loginModal = document.getElementById('loginModal');
+    const signupModal = document.getElementById('signupModal');
+    const loginBtn = document.querySelector('.login-btn');
+    const signupBtn = document.querySelector('.signup-btn');
+    const closeBtns = document.querySelectorAll('.close');
+    const showSignupLink = document.getElementById('showSignup');
+    const showLoginLink = document.getElementById('showLogin');
+
+    // 打开登录模态框
+    loginBtn.onclick = function() {
+        loginModal.style.display = "block";
+    }
+
+    // 打开注册模态框
+    signupBtn.onclick = function() {
+        signupModal.style.display = "block";
+    }
+
+    // 关闭模态框
+    closeBtns.forEach(btn => {
+        btn.onclick = function() {
+            loginModal.style.display = "none";
+            signupModal.style.display = "none";
+        }
+    });
+
+    // 在模态框外点击关闭
+    window.onclick = function(event) {
+        if (event.target == loginModal) {
+            loginModal.style.display = "none";
+        }
+        if (event.target == signupModal) {
+            signupModal.style.display = "none";
+        }
+    }
+
+    // 切换登录和注册模态框
+    showSignupLink.onclick = function(e) {
+        e.preventDefault();
+        loginModal.style.display = "none";
+        signupModal.style.display = "block";
+    }
+
+    showLoginLink.onclick = function(e) {
+        e.preventDefault();
+        signupModal.style.display = "none";
+        loginModal.style.display = "block";
+    }
+
+    // 处理表单提交
+    const loginForm = document.getElementById('loginForm');
+    const signupForm = document.getElementById('signupForm');
+
+    loginForm.onsubmit = function(e) {
+        e.preventDefault();
+        // TODO: 实现登录逻辑
+        console.log('登录表单提交');
+    }
+
+    signupForm.onsubmit = function(e) {
+        e.preventDefault();
+        // TODO: 实现注册逻辑
+        console.log('注册表单提交');
+    }
 }); 
