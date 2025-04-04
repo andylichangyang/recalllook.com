@@ -63,11 +63,12 @@
     border-radius: 10px;
     padding: 20px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    transition: transform 0.3s;
+    transition: transform 0.3s, box-shadow 0.3s;
 }
 
 .tool-card:hover {
     transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
 .tool-header {
@@ -79,7 +80,16 @@
 
 .tool-header h3 {
     margin: 0;
+}
+
+.tool-header h3 a {
     color: #333;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.tool-header h3 a:hover {
+    color: var(--primary-color);
 }
 
 .category-tag {
@@ -93,12 +103,14 @@
 .tool-card p {
     color: #666;
     margin-bottom: 20px;
+    line-height: 1.5;
 }
 
 .tool-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    margin-top: auto;
 }
 
 .rating {
@@ -110,6 +122,19 @@
 
 .rating span {
     color: #666;
+}
+
+.btn-primary {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 8px 16px;
+    border-radius: 5px;
+    text-decoration: none;
+    transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+    background-color: var(--primary-color-dark);
 }
 
 /* 响应式设计 */
