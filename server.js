@@ -23,9 +23,10 @@ app.use((req, res, next) => {
 });
 
 // 静态文件服务
-app.use(express.static(path.join(__dirname)));
+app.use('/static', express.static(path.join(__dirname, 'public')));
 app.use('/js', express.static(path.join(__dirname, 'js')));
 app.use('/css', express.static(path.join(__dirname, 'css')));
+app.use('/images', express.static(path.join(__dirname, 'images')));
 
 // 中间件：添加当前路径到所有视图
 app.use((req, res, next) => {
@@ -97,6 +98,10 @@ app.get('/tools/category/:category', (req, res) => {
     // 获取英文分类名和中文分类名
     const categoryName = categoryMap[categoryKey];
     const categoryChineseName = categoryChineseNames[categoryKey];
+    
+    console.log('分类键值:', categoryKey);
+    console.log('英文分类名:', categoryName);
+    console.log('中文分类名:', categoryChineseName);
     
     if (!categoryName) {
         console.log('未找到分类:', categoryKey);
@@ -202,6 +207,7 @@ app.get('/tools/category/:category', (req, res) => {
     // 获取当前分类的工具
     const tools = toolsData[categoryName] || [];
     console.log(`找到 ${tools.length} 个工具`);
+    console.log('工具数据:', tools);
 
     // 渲染分类页面
     res.render('category', {
