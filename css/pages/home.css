@@ -1,0 +1,129 @@
+/* 分类导航样式 */
+.category-nav {
+    padding: 40px 0;
+    background-color: #f8f9fa;
+}
+
+.category-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.category-btn {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: white;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    text-decoration: none;
+    color: #333;
+    transition: transform 0.3s, box-shadow 0.3s;
+    min-width: 150px;
+}
+
+.category-btn:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+    color: var(--primary-color);
+}
+
+.category-btn i {
+    font-size: 24px;
+    margin-bottom: 10px;
+    color: var(--primary-color);
+}
+
+.category-btn span {
+    font-weight: 500;
+}
+
+/* 热门工具样式 */
+.popular-tools {
+    padding: 60px 0;
+}
+
+.popular-tools h2 {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.tools-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 0 20px;
+}
+
+.tool-card {
+    background: white;
+    border-radius: 10px;
+    padding: 20px;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+
+.tool-card:hover {
+    transform: translateY(-5px);
+}
+
+.tool-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.tool-header h3 {
+    margin: 0;
+    color: #333;
+}
+
+.category-tag {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 0.8em;
+}
+
+.tool-card p {
+    color: #666;
+    margin-bottom: 20px;
+}
+
+.tool-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.rating {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    color: #ffc107;
+}
+
+.rating span {
+    color: #666;
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .category-buttons {
+        gap: 10px;
+    }
+
+    .category-btn {
+        min-width: 120px;
+        padding: 15px;
+    }
+
+    .tools-grid {
+        grid-template-columns: 1fr;
+    }
+} 
