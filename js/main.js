@@ -388,4 +388,19 @@ if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initializePage);
 } else {
     initializePage();
-} 
+}
+
+// 主要的JavaScript功能
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('页面加载完成');
+
+    // 获取所有分类按钮
+    const categoryButtons = document.querySelectorAll('.category-button');
+    
+    // 为每个按钮添加点击事件监听器
+    categoryButtons.forEach(button => {
+        button.addEventListener('click', function(e) {
+            console.log('分类按钮被点击:', button.href);
+        });
+    });
+}); 
