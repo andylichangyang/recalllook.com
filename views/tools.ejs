@@ -7,12 +7,17 @@
     
     <div class="categories-container">
         <div class="category-buttons">
-            <button class="category-button" data-category="Text to Speech">文本转语音</button>
-            <button class="category-button" data-category="Speech to Text">语音转文本</button>
-            <button class="category-button" data-category="Audio Editing">音频编辑</button>
-            <button class="category-button" data-category="Music Generation">音乐生成</button>
-            <button class="category-button" data-category="Voice Cloning">语音克隆</button>
+            <a href="/tools/category/text-to-speech" class="category-button">文本转语音</a>
+            <a href="/tools/category/speech-to-text" class="category-button">语音转文本</a>
+            <a href="/tools/category/audio-editing" class="category-button">音频编辑</a>
+            <a href="/tools/category/music-generation" class="category-button">音乐生成</a>
+            <a href="/tools/category/voice-cloning" class="category-button">语音克隆</a>
         </div>
+    </div>
+    
+    <div class="tools-introduction">
+        <h2>选择一个分类以查看相关工具</h2>
+        <p>点击上方任意分类按钮，浏览该分类下的专业工具。</p>
     </div>
     
     <div class="tools-grid">
@@ -60,11 +65,15 @@
         cursor: pointer;
         transition: all 0.3s ease;
         color: #555;
+        text-decoration: none;
+        display: inline-block;
+        text-align: center;
     }
     
     .category-button:hover {
         background-color: #e9ecff;
         color: #4a6cf7;
+        text-decoration: none;
     }
     
     .category-button.active {
@@ -144,6 +153,25 @@
     
     .tool-link:hover {
         background: #3a56d4;
+    }
+    
+    .tools-introduction {
+        text-align: center;
+        margin: 40px 0;
+        padding: 20px;
+        background-color: #f9f9f9;
+        border-radius: 8px;
+    }
+    
+    .tools-introduction h2 {
+        color: #333;
+        margin-bottom: 10px;
+    }
+    
+    .tools-introduction p {
+        color: #666;
+        max-width: 600px;
+        margin: 0 auto;
     }
 </style>
 
