@@ -11,9 +11,16 @@ app.set('views', path.join(__dirname, 'views'));
 // 使用布局系统
 app.use(expressLayouts);
 app.set('layout', 'base');
-app.set("layout extractScripts", true);
-app.set("layout extractStyles", true);
-app.set("layout extractMetas", true);
+app.set('layout extractScripts', true);
+app.set('layout extractStyles', true);
+app.set('layout extractMetas', true);
+
+// 设置默认变量
+app.use((req, res, next) => {
+    res.locals.style = '';
+    res.locals.script = '';
+    next();
+});
 
 // 静态文件服务
 app.use(express.static(path.join(__dirname)));
@@ -97,123 +104,111 @@ app.get('/tools/category/:category', (req, res) => {
             title: '404 - 分类未找到'
         });
     }
-    
-    // 使用硬编码数据
-    const hardcodedData = {
-        "Text to Speech": [
+
+    // 工具数据
+    const toolsData = {
+        'Text to Speech': [
             {
                 name: "ElevenLabs",
                 url: "https://elevenlabs.io/",
                 description: "提供极其逼真的多语言 AI 语音合成，具有微妙的情感表达和音调控制。",
                 features: ["29+ 种语言", "行业领先的自然度", "API 集成"],
-                category: "文本转语音",
-                rating: 4.9,
-                price: "提供免费套餐"
+                rating: 4.8,
+                price: "免费版可用"
             },
             {
-                name: "Play.ht",
-                url: "https://play.ht/",
-                description: "提供自然流畅的 AI 语音合成，支持多种语言和语音风格。",
-                features: ["900+ 种声音", "70+ 种语言", "WordPress 插件"],
-                category: "文本转语音",
-                rating: 4.7,
-                price: "付费"
+                name: "Murf.ai",
+                url: "https://murf.ai/",
+                description: "专业的 AI 语音合成平台，提供多种声音和情感选项。",
+                features: ["120+ 种声音", "情感控制", "团队协作"],
+                rating: 4.6,
+                price: "免费版可用"
             }
         ],
-        "Speech to Text": [
-            {
-                name: "Deepgram",
-                url: "https://deepgram.com/",
-                description: "专注于实时高精度语音转文本技术，具有行业领先的准确性。",
-                features: ["实时转录", "自定义词汇", "说话人识别"],
-                category: "语音转文本",
-                rating: 4.8,
-                price: "付费"
-            },
+        'Speech to Text': [
             {
                 name: "Whisper",
                 url: "https://openai.com/research/whisper",
-                description: "开源语音识别系统，具有多语言能力。",
-                features: ["多语言支持", "开源", "强大的性能"],
-                category: "语音转文本",
+                description: "OpenAI 开发的高精度语音识别系统，支持多种语言。",
+                features: ["多语言支持", "高准确率", "开源"],
                 rating: 4.7,
                 price: "免费"
-            }
-        ],
-        "Audio Editing": [
-            {
-                name: "Adobe Audition",
-                url: "https://www.adobe.com/products/audition.html",
-                description: "专业音频工作站，用于混音、编辑和创建音频内容。",
-                features: ["专业工具", "降噪", "多轨编辑"],
-                category: "音频编辑",
-                rating: 4.8,
-                price: "付费"
             },
             {
-                name: "Audacity",
-                url: "https://www.audacityteam.org/",
-                description: "免费、开源的多轨录制和编辑音频软件。",
-                features: ["免费和开源", "跨平台", "插件支持"],
-                category: "音频编辑",
-                rating: 4.6,
-                price: "免费"
-            }
-        ],
-        "Music Generation": [
-            {
-                name: "AIVA",
-                url: "https://www.aiva.ai/",
-                description: "人工智能作曲家，可创作情感音乐作品。",
-                features: ["多种音乐风格", "可定制", "专业品质"],
-                category: "音乐生成",
-                rating: 4.7,
-                price: "提供免费套餐"
-            },
-            {
-                name: "Amper Music",
-                url: "https://www.ampermusic.com/",
-                description: "AI 驱动的音乐创作平台，用于创建自定义音轨。",
-                features: ["专业品质", "简单界面", "快速创作"],
-                category: "音乐生成",
+                name: "Azure Speech Services",
+                url: "https://azure.microsoft.com/zh-cn/products/cognitive-services/speech-services/",
+                description: "微软提供的企业级语音识别服务。",
+                features: ["实时转写", "自定义模型", "多语言支持"],
                 rating: 4.5,
-                price: "付费"
+                price: "按使用量计费"
             }
         ],
-        "Voice Cloning": [
-            {
-                name: "Resemble AI",
-                url: "https://www.resemble.ai/",
-                description: "AI 语音生成器，支持自定义语音创建和实时合成。",
-                features: ["自定义语音", "实时合成", "API 访问"],
-                category: "语音克隆",
-                rating: 4.7,
-                price: "付费"
-            },
+        'Audio Editing': [
             {
                 name: "Descript",
                 url: "https://www.descript.com/",
-                description: "AI 驱动的音频和视频编辑平台，允许像编辑文档一样编辑媒体。",
-                features: ["基于文本的编辑", "高质量转录", "自动删除填充词"],
-                category: "语音克隆",
+                description: "革命性的音频编辑工具，支持文本编辑音频。",
+                features: ["文本编辑音频", "自动转录", "多轨道编辑"],
+                rating: 4.6,
+                price: "免费版可用"
+            },
+            {
+                name: "Adobe Audition",
+                url: "https://www.adobe.com/products/audition.html",
+                description: "专业的音频编辑软件，提供全面的编辑工具。",
+                features: ["专业级编辑", "降噪", "音频修复"],
                 rating: 4.8,
-                price: "付费"
+                price: "订阅制"
+            }
+        ],
+        'Music Generation': [
+            {
+                name: "Mubert",
+                url: "https://mubert.com/",
+                description: "AI 驱动的音乐生成平台，可创建各种风格的音乐。",
+                features: ["多种音乐风格", "实时生成", "API 支持"],
+                rating: 4.4,
+                price: "免费版可用"
+            },
+            {
+                name: "Soundraw",
+                url: "https://soundraw.io/",
+                description: "智能音乐生成工具，适合视频创作者。",
+                features: ["自定义长度", "情绪选择", "无版权音乐"],
+                rating: 4.5,
+                price: "订阅制"
+            }
+        ],
+        'Voice Cloning': [
+            {
+                name: "Coqui",
+                url: "https://coqui.ai/",
+                description: "开源的声音克隆技术，支持多种语言。",
+                features: ["开源", "多语言支持", "高质量克隆"],
+                rating: 4.3,
+                price: "免费"
+            },
+            {
+                name: "Resemble AI",
+                url: "https://www.resemble.ai/",
+                description: "专业的声音克隆平台，提供 API 集成。",
+                features: ["快速克隆", "API 集成", "情感控制"],
+                rating: 4.6,
+                price: "按使用量计费"
             }
         ]
     };
-    
-    // 获取该分类的工具
-    const categoryTools = hardcodedData[categoryName] || [];
-    console.log(`找到 ${categoryTools.length} 个 "${categoryName}" 类工具`);
-    
+
+    // 获取当前分类的工具
+    const tools = toolsData[categoryName] || [];
+    console.log(`找到 ${tools.length} 个工具`);
+
     // 渲染分类页面
     res.render('category', {
-        title: `${categoryChineseName} 工具 | RecallLook`,
+        title: `${categoryChineseName}工具 | RecallLook`,
         description: `探索最佳${categoryChineseName}工具和服务`,
-        tools: categoryTools,
         categoryName: categoryChineseName,
-        categoryKey: categoryKey,
-        page: 'tools'
+        tools: tools
     });
 });
 
