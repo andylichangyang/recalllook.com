@@ -15,7 +15,11 @@
                     <div class="tool-header">
                         <h3><a href="<%= tool.url %>" target="_blank"><%= tool.name %></a></h3>
                         <div class="tool-rating">
-                            <span class="stars" style="--rating: <%= tool.rating %>"></span>
+                            <div class="stars">
+                                <% for(let i = 1; i <= 5; i++) { %>
+                                    <span class="star <%= i <= tool.rating ? 'filled' : '' %>">★</span>
+                                <% } %>
+                            </div>
                             <span class="rating-value"><%= tool.rating %></span>
                         </div>
                     </div>
@@ -105,23 +109,21 @@
 }
 
 .stars {
-    --percent: calc(var(--rating) / 5 * 100%);
-    display: inline-block;
-    font-size: 1.25rem;
-    font-family: Times;
-    line-height: 1;
+    display: flex;
+    gap: 2px;
 }
 
-.stars::before {
-    content: '★★★★★';
-    letter-spacing: 3px;
-    background: linear-gradient(90deg, #fc0 var(--percent), #ddd var(--percent));
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+.star {
+    color: #ddd;
+    font-size: 1.2rem;
+}
+
+.star.filled {
+    color: #ffd700;
 }
 
 .rating-value {
-    font-weight: bold;
+    font-size: 0.9rem;
     color: #666;
 }
 
@@ -135,15 +137,15 @@
     display: flex;
     flex-wrap: wrap;
     gap: 0.5rem;
-    margin-bottom: 1rem;
+    margin-bottom: 1.5rem;
 }
 
 .feature-tag {
     background: #f0f0f0;
-    padding: 0.25rem 0.75rem;
+    color: #666;
+    padding: 0.3rem 0.8rem;
     border-radius: 15px;
     font-size: 0.9rem;
-    color: #666;
 }
 
 .tool-footer {
@@ -155,7 +157,7 @@
 
 .tool-price {
     color: #666;
-    font-weight: 500;
+    font-size: 0.9rem;
 }
 
 .btn-primary {
@@ -168,15 +170,15 @@
 }
 
 .btn-primary:hover {
-    background: #0009CC;
+    background: #0009cc;
 }
 
 .no-tools {
-    grid-column: 1 / -1;
     text-align: center;
     padding: 3rem;
     background: #f9f9f9;
     border-radius: 10px;
+    grid-column: 1 / -1;
 }
 
 .no-tools p {
