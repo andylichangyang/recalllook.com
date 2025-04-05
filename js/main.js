@@ -758,7 +758,7 @@ const initializePage = () => {
                     ${tool.features.map(feature => `<span>${feature}</span>`).join('')}
                 </div>
                 <div class="tool-actions">
-                    <a href="${tool.url}" target="_blank" class="btn-view">访问网站</a>
+                    <a href="${tool.url}" target="_blank" class="btn-view">Visit Website</a>
                 </div>
             </div>
         `;
@@ -791,9 +791,9 @@ const initializePage = () => {
                 categorySection.classList.toggle('expanded');
                 
                 if (categorySection.classList.contains('expanded')) {
-                    this.innerHTML = '收起 <i class="fas fa-chevron-up"></i>';
+                    this.innerHTML = 'Less <i class="fas fa-chevron-up"></i>';
                 } else {
-                    this.innerHTML = '更多 <i class="fas fa-chevron-down"></i>';
+                    this.innerHTML = 'More <i class="fas fa-chevron-down"></i>';
                 }
             });
         });
@@ -926,7 +926,7 @@ document.addEventListener('DOMContentLoaded', function() {
                         ${tool.features.map(feature => `<span>${feature}</span>`).join('')}
                     </div>
                     <div class="tool-actions">
-                        <a href="${tool.url}" target="_blank" class="btn-view">访问网站</a>
+                        <a href="${tool.url}" target="_blank" class="btn-view">Visit Website</a>
                     </div>
                 `;
                 toolsGrid.appendChild(toolCard);
@@ -942,9 +942,9 @@ document.addEventListener('DOMContentLoaded', function() {
             categorySection.classList.toggle('expanded');
             
             if (categorySection.classList.contains('expanded')) {
-                this.innerHTML = '收起 <i class="fas fa-chevron-up"></i>';
+                this.innerHTML = 'Less <i class="fas fa-chevron-up"></i>';
             } else {
-                this.innerHTML = '更多 <i class="fas fa-chevron-down"></i>';
+                this.innerHTML = 'More <i class="fas fa-chevron-down"></i>';
             }
         });
     });
