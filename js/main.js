@@ -474,15 +474,22 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
+// 展开/收起功能
 document.addEventListener('DOMContentLoaded', function() {
-    // 展开/收起功能
-    document.querySelectorAll('.btn-more').forEach(button => {
+    // 获取所有更多按钮
+    const moreButtons = document.querySelectorAll('.btn-more');
+    
+    // 为每个按钮添加点击事件
+    moreButtons.forEach(button => {
         button.addEventListener('click', function() {
-            const section = this.closest('.category-section');
-            section.classList.toggle('expanded');
-            this.classList.toggle('expanded');
+            // 获取当前分类部分
+            const categorySection = this.closest('.category-section');
             
-            if (this.classList.contains('expanded')) {
+            // 切换展开状态
+            categorySection.classList.toggle('expanded');
+            
+            // 更新按钮文本和图标
+            if (categorySection.classList.contains('expanded')) {
                 this.innerHTML = '收起 <i class="fas fa-chevron-up"></i>';
             } else {
                 this.innerHTML = '更多 <i class="fas fa-chevron-down"></i>';
