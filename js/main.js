@@ -741,9 +741,70 @@ const initializePage = () => {
             }
         }
     }
+
+    // 渲染工具卡片的函数
+    const renderToolCard = (tool) => {
+        return `
+            <div class="tool-card">
+                <div class="tool-header">
+                    <h3><a href="${tool.url}" target="_blank">${tool.name}</a></h3>
+                    <div class="tool-meta">
+                        <span class="rating"><i class="fas fa-star"></i> ${tool.rating}/5</span>
+                        <span class="price">${tool.price}</span>
+                    </div>
+                </div>
+                <p>${tool.description}</p>
+                <div class="tool-features">
+                    ${tool.features.map(feature => `<span>${feature}</span>`).join('')}
+                </div>
+                <div class="tool-actions">
+                    <a href="${tool.url}" target="_blank" class="btn-view">访问网站</a>
+                </div>
+            </div>
+        `;
+    };
+
+    // 初始化工具卡片
+    const initializeToolCards = () => {
+        const categories = {
+            'text-to-speech': toolsData.textToSpeech,
+            'speech-to-text': toolsData.speechToText,
+            'audio-editing': toolsData.audioEditing,
+            'music-generation': toolsData.musicGeneration,
+            'voice-cloning': toolsData.voiceCloning
+        };
+
+        Object.entries(categories).forEach(([categoryId, tools]) => {
+            const toolsGrid = document.querySelector(`#${categoryId} .tools-grid`);
+            if (toolsGrid && tools) {
+                toolsGrid.innerHTML = tools.map(tool => renderToolCard(tool)).join('');
+            }
+        });
+    };
+
+    // 初始化展开/收起功能
+    const initializeExpandButtons = () => {
+        const moreButtons = document.querySelectorAll('.btn-more');
+        moreButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                const categorySection = this.closest('.category-section');
+                categorySection.classList.toggle('expanded');
+                
+                if (categorySection.classList.contains('expanded')) {
+                    this.innerHTML = '收起 <i class="fas fa-chevron-up"></i>';
+                } else {
+                    this.innerHTML = '更多 <i class="fas fa-chevron-down"></i>';
+                }
+            });
+        });
+    };
+
+    // 初始化所有功能
+    initializeToolCards();
+    initializeExpandButtons();
 };
 
-// Wait for DOM to be ready
+// 页面加载完成后初始化
 if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initializePage);
 } else {
