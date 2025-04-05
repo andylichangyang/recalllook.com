@@ -472,4 +472,21 @@ document.addEventListener('DOMContentLoaded', function() {
         // TODO: 实现注册逻辑
         console.log('注册表单提交');
     }
+});
+
+document.addEventListener('DOMContentLoaded', function() {
+    // 展开/收起功能
+    document.querySelectorAll('.btn-more').forEach(button => {
+        button.addEventListener('click', function() {
+            const section = this.closest('.category-section');
+            section.classList.toggle('expanded');
+            this.classList.toggle('expanded');
+            
+            if (this.classList.contains('expanded')) {
+                this.innerHTML = '收起 <i class="fas fa-chevron-up"></i>';
+            } else {
+                this.innerHTML = '更多 <i class="fas fa-chevron-down"></i>';
+            }
+        });
+    });
 }); 
