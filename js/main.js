@@ -28,6 +28,78 @@ const initializePage = () => {
                 category: "文本转语音",
                 rating: 4.7,
                 price: "付费"
+            },
+            {
+                name: "Murf AI",
+                url: "https://murf.ai/",
+                description: "专业的AI语音生成器，适用于视频配音和演示。",
+                features: ["120+ 种声音", "多语言支持", "实时编辑"],
+                category: "文本转语音",
+                rating: 4.8,
+                price: "提供免费试用"
+            },
+            {
+                name: "Speechify",
+                url: "https://speechify.com/",
+                description: "将任何文本转换为自然的语音，支持多平台使用。",
+                features: ["多设备同步", "OCR功能", "自然语音"],
+                category: "文本转语音",
+                rating: 4.6,
+                price: "提供免费版本"
+            },
+            {
+                name: "Amazon Polly",
+                url: "https://aws.amazon.com/polly/",
+                description: "亚马逊的云端文本转语音服务，提供企业级解决方案。",
+                features: ["多种语言", "SSML支持", "神经语音"],
+                category: "文本转语音",
+                rating: 4.8,
+                price: "按使用付费"
+            },
+            {
+                name: "Cepstral",
+                url: "https://www.cepstral.com/",
+                description: "专业的文本转语音引擎，提供高质量的合成声音。",
+                features: ["离线使用", "自定义发音", "多语言支持"],
+                category: "文本转语音",
+                rating: 4.5,
+                price: "一次性购买"
+            },
+            {
+                name: "NaturalReader",
+                url: "https://www.naturalreaders.com/",
+                description: "易用的在线文本转语音工具，支持多种文档格式。",
+                features: ["文档转换", "Chrome扩展", "移动应用"],
+                category: "文本转语音",
+                rating: 4.4,
+                price: "提供免费版本"
+            },
+            {
+                name: "Acapela Group",
+                url: "https://www.acapela-group.com/",
+                description: "专业的语音合成解决方案，提供个性化声音服务。",
+                features: ["情感语音", "定制声音", "多行业解决方案"],
+                category: "文本转语音",
+                rating: 4.6,
+                price: "企业定制"
+            },
+            {
+                name: "ReadSpeaker",
+                url: "https://www.readspeaker.com/",
+                description: "企业级文本转语音解决方案，支持网站集成。",
+                features: ["网站集成", "企业解决方案", "多语言支持"],
+                category: "文本转语音",
+                rating: 4.7,
+                price: "企业定价"
+            },
+            {
+                name: "Balabolka",
+                url: "http://www.cross-plus-a.com/balabolka.htm",
+                description: "免费的桌面文本转语音软件，支持多种语音引擎。",
+                features: ["批量转换", "多格式支持", "调音设置"],
+                category: "文本转语音",
+                rating: 4.3,
+                price: "免费"
             }
         ],
         speechToText: [
@@ -48,6 +120,78 @@ const initializePage = () => {
                 category: "语音转文本",
                 rating: 4.7,
                 price: "免费"
+            },
+            {
+                name: "Rev.ai",
+                url: "https://www.rev.ai/",
+                description: "专业的语音识别API，提供高精度转录服务。",
+                features: ["实时转录", "API接入", "定制模型"],
+                category: "语音转文本",
+                rating: 4.8,
+                price: "按分钟计费"
+            },
+            {
+                name: "Otter.ai",
+                url: "https://otter.ai/",
+                description: "智能会议记录和实时转录工具。",
+                features: ["实时会议记录", "智能摘要", "团队协作"],
+                category: "语音转文本",
+                rating: 4.7,
+                price: "提供免费版本"
+            },
+            {
+                name: "Google Speech-to-Text",
+                url: "https://cloud.google.com/speech-to-text",
+                description: "谷歌的企业级语音识别服务。",
+                features: ["自动标点", "说话人分离", "行业适配"],
+                category: "语音转文本",
+                rating: 4.9,
+                price: "按使用付费"
+            },
+            {
+                name: "Sonix",
+                url: "https://sonix.ai/",
+                description: "自动转录和翻译平台，支持多种语言。",
+                features: ["自动翻译", "字幕生成", "团队共享"],
+                category: "语音转文本",
+                rating: 4.6,
+                price: "按分钟收费"
+            },
+            {
+                name: "Speechmatics",
+                url: "https://www.speechmatics.com/",
+                description: "企业级语音识别解决方案。",
+                features: ["多方言支持", "定制词汇", "批量处理"],
+                category: "语音转文本",
+                rating: 4.7,
+                price: "企业定价"
+            },
+            {
+                name: "Voicera",
+                url: "https://www.voicera.ai/",
+                description: "智能会议助手和语音转文本服务。",
+                features: ["会议总结", "行动项提取", "智能分析"],
+                category: "语音转文本",
+                rating: 4.5,
+                price: "订阅制"
+            },
+            {
+                name: "Verbit",
+                url: "https://verbit.ai/",
+                description: "AI驱动的转录和字幕解决方案。",
+                features: ["实时字幕", "专业转录", "教育解决方案"],
+                category: "语音转文本",
+                rating: 4.8,
+                price: "定制方案"
+            },
+            {
+                name: "Temi",
+                url: "https://www.temi.com/",
+                description: "快速准确的语音转文本服务。",
+                features: ["快速处理", "简单定价", "编辑器集成"],
+                category: "语音转文本",
+                rating: 4.6,
+                price: "按分钟付费"
             }
         ],
         audioEditing: [
@@ -67,6 +211,78 @@ const initializePage = () => {
                 features: ["免费和开源", "跨平台", "插件支持"],
                 category: "音频编辑",
                 rating: 4.6,
+                price: "免费"
+            },
+            {
+                name: "FL Studio",
+                url: "https://www.image-line.com/",
+                description: "专业的数字音频工作站，适合音乐制作。",
+                features: ["音乐制作", "虚拟乐器", "MIDI支持"],
+                category: "音频编辑",
+                rating: 4.8,
+                price: "一次性购买"
+            },
+            {
+                name: "Logic Pro",
+                url: "https://www.apple.com/logic-pro/",
+                description: "苹果专业音频制作软件。",
+                features: ["专业混音", "虚拟乐器", "音频特效"],
+                category: "音频编辑",
+                rating: 4.9,
+                price: "一次性购买"
+            },
+            {
+                name: "Reaper",
+                url: "https://www.reaper.fm/",
+                description: "轻量级但功能强大的数字音频工作站。",
+                features: ["性能优化", "定制界面", "插件支持"],
+                category: "音频编辑",
+                rating: 4.7,
+                price: "低价付费"
+            },
+            {
+                name: "Studio One",
+                url: "https://www.presonus.com/products/Studio-One",
+                description: "现代化的音频制作软件。",
+                features: ["直观界面", "拖放工作流", "集成工具"],
+                category: "音频编辑",
+                rating: 4.7,
+                price: "多个版本"
+            },
+            {
+                name: "Soundforge",
+                url: "https://www.magix.com/us/music/sound-forge/",
+                description: "专业的音频编辑和母带处理软件。",
+                features: ["专业音频处理", "母带制作", "音频恢复"],
+                category: "音频编辑",
+                rating: 4.6,
+                price: "付费"
+            },
+            {
+                name: "WavePad",
+                url: "https://www.nch.com.au/wavepad/",
+                description: "简单易用的音频编辑软件。",
+                features: ["基础编辑", "音频效果", "格式转换"],
+                category: "音频编辑",
+                rating: 4.4,
+                price: "免费版本可用"
+            },
+            {
+                name: "Ardour",
+                url: "https://ardour.org/",
+                description: "开源的专业数字音频工作站。",
+                features: ["开源", "专业功能", "跨平台"],
+                category: "音频编辑",
+                rating: 4.5,
+                price: "自愿付费"
+            },
+            {
+                name: "Ocenaudio",
+                url: "https://www.ocenaudio.com/",
+                description: "跨平台的音频编辑器，简单但功能强大。",
+                features: ["实时预览", "多文件编辑", "VST插件支持"],
+                category: "音频编辑",
+                rating: 4.5,
                 price: "免费"
             }
         ],
@@ -88,6 +304,78 @@ const initializePage = () => {
                 category: "音乐生成",
                 rating: 4.5,
                 price: "付费"
+            },
+            {
+                name: "OpenAI MuseNet",
+                url: "https://openai.com/research/musenet",
+                description: "深度神经网络音乐生成系统。",
+                features: ["多种风格", "乐器组合", "开源"],
+                category: "音乐生成",
+                rating: 4.6,
+                price: "免费"
+            },
+            {
+                name: "Soundraw",
+                url: "https://soundraw.io/",
+                description: "AI音乐生成平台，适用于视频创作者。",
+                features: ["定制音乐", "无版权", "多种风格"],
+                category: "音乐生成",
+                rating: 4.7,
+                price: "订阅制"
+            },
+            {
+                name: "Mubert",
+                url: "https://mubert.com/",
+                description: "实时AI音乐生成平台。",
+                features: ["流媒体", "API接入", "场景音乐"],
+                category: "音乐生成",
+                rating: 4.5,
+                price: "多种套餐"
+            },
+            {
+                name: "Boomy",
+                url: "https://boomy.com/",
+                description: "AI辅助音乐创作平台。",
+                features: ["快速创作", "版权收益", "社区分享"],
+                category: "音乐生成",
+                rating: 4.4,
+                price: "免费开始"
+            },
+            {
+                name: "Ecrett Music",
+                url: "https://ecrettmusic.com/",
+                description: "为视频制作AI背景音乐。",
+                features: ["场景匹配", "情感识别", "快速导出"],
+                category: "音乐生成",
+                rating: 4.6,
+                price: "订阅制"
+            },
+            {
+                name: "Amadeus Code",
+                url: "https://amadeuscode.com/",
+                description: "AI作曲助手应用。",
+                features: ["旋律生成", "和声编排", "风格转换"],
+                category: "音乐生成",
+                rating: 4.5,
+                price: "应用内购买"
+            },
+            {
+                name: "Infinite Album",
+                url: "https://infinitealbum.io/",
+                description: "生成无限独特的音乐作品。",
+                features: ["无限变化", "风格混合", "实时生成"],
+                category: "音乐生成",
+                rating: 4.4,
+                price: "订阅服务"
+            },
+            {
+                name: "Beatoven.ai",
+                url: "https://www.beatoven.ai/",
+                description: "定制化AI音乐创作平台。",
+                features: ["情感驱动", "视频配乐", "专业品质"],
+                category: "音乐生成",
+                rating: 4.6,
+                price: "信用点数制"
             }
         ],
         voiceCloning: [
@@ -108,6 +396,78 @@ const initializePage = () => {
                 category: "语音克隆",
                 rating: 4.8,
                 price: "付费"
+            },
+            {
+                name: "Lyrebird AI",
+                url: "https://www.descript.com/lyrebird",
+                description: "专业的声音克隆技术。",
+                features: ["声音复制", "情感控制", "实时合成"],
+                category: "语音克隆",
+                rating: 4.7,
+                price: "集成定价"
+            },
+            {
+                name: "VocaliD",
+                url: "https://www.vocalid.ai/",
+                description: "个性化语音合成解决方案。",
+                features: ["声音银行", "定制声音", "医疗应用"],
+                category: "语音克隆",
+                rating: 4.6,
+                price: "定制方案"
+            },
+            {
+                name: "Respeecher",
+                url: "https://www.respeecher.com/",
+                description: "专业的声音转换和克隆服务。",
+                features: ["语音转换", "年龄变化", "性别转换"],
+                category: "语音克隆",
+                rating: 4.8,
+                price: "企业定价"
+            },
+            {
+                name: "CereProc",
+                url: "https://www.cereproc.com/",
+                description: "定制化文本转语音解决方案。",
+                features: ["声音定制", "多语言支持", "情感合成"],
+                category: "语音克隆",
+                rating: 4.5,
+                price: "联系定价"
+            },
+            {
+                name: "Replica Studios",
+                url: "https://replicastudios.com/",
+                description: "AI语音生成器，专注于游戏和娱乐。",
+                features: ["游戏配音", "实时合成", "角色声音"],
+                category: "语音克隆",
+                rating: 4.7,
+                price: "订阅制"
+            },
+            {
+                name: "Synthesia",
+                url: "https://www.synthesia.io/",
+                description: "AI视频生成平台，包含语音克隆功能。",
+                features: ["视频合成", "多语言配音", "企业定制"],
+                category: "语音克隆",
+                rating: 4.8,
+                price: "企业方案"
+            },
+            {
+                name: "Coqui",
+                url: "https://coqui.ai/",
+                description: "开源语音合成工具包。",
+                features: ["开源框架", "多语言支持", "社区支持"],
+                category: "语音克隆",
+                rating: 4.4,
+                price: "免费/开源"
+            },
+            {
+                name: "Voice.ai",
+                url: "https://voice.ai/",
+                description: "实时语音转换和克隆工具。",
+                features: ["实时转换", "多声音模型", "流媒体集成"],
+                category: "语音克隆",
+                rating: 4.6,
+                price: "免费增值"
             }
         ]
     };
