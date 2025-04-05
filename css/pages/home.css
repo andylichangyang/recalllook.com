@@ -55,7 +55,10 @@
 
 /* 分类导航样式 */
 .category-nav {
-    margin-bottom: 30px;
+    background-color: var(--white);
+    padding: 30px 0;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    margin-bottom: 0;
 }
 
 .category-buttons {
@@ -72,28 +75,27 @@
     flex-direction: column;
     align-items: center;
     padding: 25px 35px;
-    background-color: rgba(255, 255, 255, 0.15);
-    border: 2px solid rgba(255, 255, 255, 0.3);
+    background-color: var(--background-light);
+    border: 2px solid rgba(74, 144, 226, 0.2);
     border-radius: 16px;
     text-decoration: none;
-    color: var(--white);
+    color: var(--text-color);
     transition: var(--transition);
     min-width: 200px;
-    backdrop-filter: blur(10px);
-    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    box-shadow: var(--shadow);
 }
 
 .category-btn:hover {
     transform: translateY(-5px);
-    background-color: rgba(255, 255, 255, 0.25);
-    border-color: rgba(255, 255, 255, 0.5);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    background-color: var(--white);
+    border-color: var(--primary-color);
+    box-shadow: var(--shadow-hover);
 }
 
 .category-btn i {
     font-size: 32px;
     margin-bottom: 15px;
-    color: var(--white);
+    color: var(--primary-color);
     transition: var(--transition);
 }
 
