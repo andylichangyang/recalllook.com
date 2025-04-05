@@ -834,21 +834,52 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// 展开/收起功能
+// 页面加载完成后初始化
 document.addEventListener('DOMContentLoaded', function() {
-    // 获取所有更多按钮
+    // 获取所有分类部分
+    const categories = {
+        'text-to-speech': toolsData.textToSpeech,
+        'speech-to-text': toolsData.speechToText,
+        'audio-editing': toolsData.audioEditing,
+        'music-generation': toolsData.musicGeneration,
+        'voice-cloning': toolsData.voiceCloning
+    };
+
+    // 为每个分类渲染工具卡片
+    Object.entries(categories).forEach(([categoryId, tools]) => {
+        const toolsGrid = document.querySelector(`#${categoryId} .tools-grid`);
+        if (toolsGrid && tools) {
+            tools.forEach(tool => {
+                const toolCard = document.createElement('div');
+                toolCard.className = 'tool-card';
+                toolCard.innerHTML = `
+                    <div class="tool-header">
+                        <h3><a href="${tool.url}" target="_blank">${tool.name}</a></h3>
+                        <div class="tool-meta">
+                            <span class="rating"><i class="fas fa-star"></i> ${tool.rating}/5</span>
+                            <span class="price">${tool.price}</span>
+                        </div>
+                    </div>
+                    <p>${tool.description}</p>
+                    <div class="tool-features">
+                        ${tool.features.map(feature => `<span>${feature}</span>`).join('')}
+                    </div>
+                    <div class="tool-actions">
+                        <a href="${tool.url}" target="_blank" class="btn-view">访问网站</a>
+                    </div>
+                `;
+                toolsGrid.appendChild(toolCard);
+            });
+        }
+    });
+
+    // 展开/收起功能
     const moreButtons = document.querySelectorAll('.btn-more');
-    
-    // 为每个按钮添加点击事件
     moreButtons.forEach(button => {
         button.addEventListener('click', function() {
-            // 获取当前分类部分
             const categorySection = this.closest('.category-section');
-            
-            // 切换展开状态
             categorySection.classList.toggle('expanded');
             
-            // 更新按钮文本和图标
             if (categorySection.classList.contains('expanded')) {
                 this.innerHTML = '收起 <i class="fas fa-chevron-up"></i>';
             } else {
